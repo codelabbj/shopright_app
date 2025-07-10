@@ -10,6 +10,6 @@ class ProfileMobileScreen extends StatefulWidget {
 class _ProfileMobileScreenState extends State<ProfileMobileScreen> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return const SizedBox();
   }
 }
