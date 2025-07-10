@@ -85,11 +85,15 @@ class _ChartMobileScreenState extends State<ChartMobileScreen> {
           ),
         ),
         actions: [
-          Image.asset(
-            "assets/logo/srt.png",
-            width: 80,
-            height: 80,
-          )
+          Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Image.asset(
+              "assets/logo/srtc.png",
+              width: 65,
+              height: 65,
+              color: Colors.black,
+            ),
+          ),
         ],
       ),
       body: Column(

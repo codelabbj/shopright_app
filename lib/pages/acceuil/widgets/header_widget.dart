@@ -10,8 +10,8 @@ class HeaderWidget extends StatelessWidget {
       children: [
         Image.asset(
           "assets/logo/srtc.png",
-          width: 65,
-          height: 65,
+          width: 50,
+          height: 50,
           color: Colors.black,
         ),
         Row(
