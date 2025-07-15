@@ -1,6 +1,5 @@
 import 'package:e_com_app/pages/profile/widgets/profile_header_widget.dart';
 import 'package:e_com_app/pages/profile/widgets/profile_section_widget.dart';
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 import '../widgets/profile_section_holder_widget.dart';
@@ -15,46 +14,28 @@ class ProfileMobileScreen extends StatefulWidget {
 class _ProfileMobileScreenState extends State<ProfileMobileScreen> {
   @override
   Widget build(BuildContext context) {
+    bool isDark = false;
+
     return Scaffold(
+      // appBar: AppBar(
+      //   leadingWidth: 100,
+      //   leading: Padding(
+      //     padding: const EdgeInsets.all(8.0),
+      //     child: const Text(
+      //       'Profile',
+      //       style: TextStyle(
+      //         fontSize: 24,
+      //         fontWeight: FontWeight.w700,
+      //         color: Colors.black87,
+      //       ),
+      //     ),
+      //   ),
+      // ),
       body: SafeArea(
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
             // Barre d'en-tête
-            Container(
-              margin: EdgeInsets.only(bottom: 10),
-              decoration: BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.circular(12),
-                border: Border.all(color: Colors.grey.shade300),
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.black12,
-                    blurRadius: 4,
-                    offset: Offset(0, 2),
-                  )
-                ],
-              ),
-              child: Row(
-                children: [
-                  const Text(
-                    'Profile',
-                    style: TextStyle(
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                      color: Colors.black87,
-                    ),
-                  ),
-                  const Spacer(),
-                  IconButton(
-                    onPressed: () => Navigator.of(context).pop(),
-                    icon: const Icon(
-                      Icons.close,
-                      color: Colors.black87,
-                    ),
-                  ),
-                ],
-              ),
-            ),
 
             // Contenu scrollable
             Expanded(
@@ -94,6 +75,27 @@ class _ProfileMobileScreenState extends State<ProfileMobileScreen> {
                           icon: Icons.notifications_outlined,
                           title: 'Notification',
                           onTap: () => print('Notification tapped'),
+                        ),
+                        ProfileSectionWidget(
+                          iconWidget: AnimatedSwitcher(
+                            duration: const Duration(milliseconds: 300),
+                            transitionBuilder: (child, animation) {
+                              return RotationTransition(
+                                  turns: animation, child: child);
+                            },
+                            child: Icon(
+                              isDark ? Icons.dark_mode : Icons.light_mode,
+                              key: ValueKey(isDark),
+                              color: isDark ? Colors.amber : Colors.blueGrey,
+                            ),
+                          ),
+                          showTrailing: false,
+                          title: 'Changer le thème',
+                          onTap: () {
+                            setState(() {
+                              isDark = !isDark;
+                            });
+                          },
                         ),
                       ],
                     ),

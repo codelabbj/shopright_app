@@ -1,7 +1,7 @@
+import 'package:e_com_app/pages/acceuil/screens/product_details_screen.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/product_model.dart';
-import '../screens/details_product_screen.dart';
 
 class ProductCard extends StatelessWidget {
   final String name;
@@ -57,7 +57,8 @@ class ProductCard extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
-                    borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
+                    borderRadius:
+                        const BorderRadius.vertical(top: Radius.circular(20)),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
@@ -109,7 +110,8 @@ class ProductCard extends StatelessWidget {
                   CircleAvatar(
                     backgroundColor: Colors.amber,
                     radius: 16,
-                    child: Icon(Icons.shopping_cart_outlined, size: 20, color: Colors.black),
+                    child: Icon(Icons.shopping_cart_outlined,
+                        size: 20, color: Colors.black),
                   ),
                 ],
               ),

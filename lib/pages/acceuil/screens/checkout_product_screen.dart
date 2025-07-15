@@ -1,11 +1,12 @@
 import 'package:flutter/material.dart';
+
 import '../../../constantes/const.dart';
 import '../../../models/product_model.dart';
 
-class ProductDetailScreen extends StatelessWidget {
+class CheckoutProductScreen extends StatelessWidget {
   final ProductModel product;
 
-  const ProductDetailScreen({super.key, required this.product});
+  const CheckoutProductScreen({super.key, required this.product});
 
   @override
   Widget build(BuildContext context) {
@@ -27,20 +28,38 @@ class ProductDetailScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(product.name, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text(product.name,
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall!
+                              .copyWith(
+                                  fontSize: 18, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 4),
-                      Text("by Fashion Brand", style: Theme.of(context).textTheme.labelSmall), // Marque fixe ou dynamique
+                      Text("by Fashion Brand",
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall), // Marque fixe ou dynamique
                       const SizedBox(height: 4),
-                      Text(product.price, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 16)),
+                      Text(product.price,
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall!
+                              .copyWith(fontSize: 16)),
                     ],
                   ),
                 ),
-                Container(margin: EdgeInsets.all(6), decoration: BoxDecoration(border: Border.all()), child: Icon(Icons.remove)),
+                Container(
+                    margin: EdgeInsets.all(6),
+                    decoration: BoxDecoration(border: Border.all()),
+                    child: Icon(Icons.remove)),
                 Text(
                   "1",
                   style: Theme.of(context).textTheme.labelSmall,
                 ),
-                Container(margin: EdgeInsets.all(6), decoration: BoxDecoration(border: Border.all()), child: Icon(Icons.add)),
+                Container(
+                    margin: EdgeInsets.all(6),
+                    decoration: BoxDecoration(border: Border.all()),
+                    child: Icon(Icons.add)),
               ],
             ),
             const SizedBox(height: 40),
@@ -59,7 +78,11 @@ class ProductDetailScreen extends StatelessWidget {
                       SizedBox(
                         width: 12,
                       ),
-                      Text("Add Product", style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold)),
+                      Text("Add Product",
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelMedium!
+                              .copyWith(fontWeight: FontWeight.bold)),
                     ],
                   )),
             ),
@@ -69,8 +92,10 @@ class ProductDetailScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Subtotal:", style: Theme.of(context).textTheme.labelSmall),
-                Text(product.price, style: Theme.of(context).textTheme.labelSmall),
+                Text("Subtotal:",
+                    style: Theme.of(context).textTheme.labelSmall),
+                Text(product.price,
+                    style: Theme.of(context).textTheme.labelSmall),
               ],
             ),
             const SizedBox(height: 10),
@@ -88,8 +113,16 @@ class ProductDetailScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Total:", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
-                Text(product.price, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
+                Text("Total:",
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelSmall!
+                        .copyWith(fontWeight: FontWeight.bold)),
+                Text(product.price,
+                    style: Theme.of(context)
+                        .textTheme
+                        .labelSmall!
+                        .copyWith(fontWeight: FontWeight.bold)),
               ],
             ),
             const SizedBox(height: 20),
@@ -105,7 +138,11 @@ class ProductDetailScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("I have a discount code", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.w900)),
+                      Text("I have a discount code",
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall!
+                              .copyWith(fontWeight: FontWeight.w900)),
                     ],
                   )),
             ),
@@ -121,7 +158,11 @@ class ProductDetailScreen extends StatelessWidget {
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Pay later with Klarna", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.w900)),
+                      Text("Pay later with Klarna",
+                          style: Theme.of(context)
+                              .textTheme
+                              .labelSmall!
+                              .copyWith(fontWeight: FontWeight.w900)),
                     ],
                   )),
             ),
@@ -144,13 +185,20 @@ class ProductDetailScreen extends StatelessWidget {
                     width: Const.screenWidth(context) * 0.65,
                     height: 45,
                     child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(backgroundColor: Colors.black, shape: RoundedRectangleBorder()),
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.black,
+                          shape: RoundedRectangleBorder()),
                       onPressed: () {
                         // Action de paiement
                       },
                       child: Text(
                         "Confirm payment",
-                        style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.w900, color: Colors.white),
+                        style: Theme.of(context)
+                            .textTheme
+                            .labelMedium!
+                            .copyWith(
+                                fontWeight: FontWeight.w900,
+                                color: Colors.white),
                       ),
                     ),
                   ),

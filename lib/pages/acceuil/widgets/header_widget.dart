@@ -1,3 +1,4 @@
+import 'package:e_com_app/pages/acceuil/screens/list_articles_screen.dart';
 import 'package:flutter/material.dart';
 
 class HeaderWidget extends StatelessWidget {
@@ -16,10 +17,20 @@ class HeaderWidget extends StatelessWidget {
         ),
         Row(
           children: [
-            Image.asset(
-              "assets/images/marketplace1.png",
-              width: 22,
-              height: 22,
+            InkWell(
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute(
+                    builder: (_) => ListArticlesScreen(),
+                  ),
+                );
+              },
+              child: Image.asset(
+                "assets/images/marketplace1.png",
+                width: 22,
+                height: 22,
+              ),
             ),
             Stack(
               alignment: Alignment.topRight,

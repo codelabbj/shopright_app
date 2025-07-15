@@ -8,20 +8,20 @@ class SearchWidget extends StatelessWidget {
     return Container(
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(12),
-        color: Colors.white,
+        color: Colors.grey[100],
       ),
       child: TextField(
         style: Theme.of(context).textTheme.labelSmall,
         decoration: InputDecoration(
-          hintText: 'Search',
+          hintText: "Men's fashion",
           border: OutlineInputBorder(
-            borderRadius: BorderRadius.circular(5),
+            borderRadius: BorderRadius.circular(12),
             borderSide: BorderSide(
               color: Colors.black, // Couleur de la bordure
               width: 1.5, // Épaisseur de la bordure
             ),
           ),
-          prefixIcon: Icon(Icons.search, color: Colors.black),
+          suffixIcon: Icon(Icons.search, color: Colors.black),
         ),
       ),
     );

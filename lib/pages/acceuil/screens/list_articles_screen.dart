@@ -1,13 +1,12 @@
-import 'package:e_com_app/pages/acceuil/widgets/filter_search_widget.dart';
+import 'package:e_com_app/pages/acceuil/widgets/search_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../models/product_model.dart';
-import '../widgets/header_widget.dart';
+import '../widgets/filter_bar_widget.dart';
 import '../widgets/product_card_widget.dart';
-import '../widgets/promo_banner_widget.dart';
 
-class AcceuilMobileScreen extends StatelessWidget {
-  const AcceuilMobileScreen({super.key});
+class ListArticlesScreen extends StatelessWidget {
+  const ListArticlesScreen({super.key});
 
   List<ProductModel> get products => [
         ProductModel(
@@ -39,40 +38,17 @@ class AcceuilMobileScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(),
       body: SizedBox.expand(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              const HeaderWidget(),
-              const SizedBox(height: 10),
-              FilterSearchWidget(),
+              SearchWidget(),
+              SizedBox(height: 8),
+              FilterBarWidget(),
               const SizedBox(height: 20),
-              const PromoBannerWidget(),
-              const SizedBox(height: 20),
-              Row(
-                children: [
-                  Text(
-                    "Recommended Styles",
-                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                          fontSize: 16,
-                          fontWeight: FontWeight.bold,
-                        ),
-                  ),
-                  // Spacer(),
-                  // Row(
-                  //   children: [
-                  //     Image.asset(
-                  //       "assets/images/marketplace1.png",
-                  //       width: 22,
-                  //       height: 22,
-                  //     ),
-                  //   ],
-                  // )
-                ],
-              ),
-              const SizedBox(height: 12),
               Expanded(
                 child: GridView.count(
                   crossAxisCount: 2,

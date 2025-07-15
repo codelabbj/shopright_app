@@ -17,25 +17,39 @@ class ProfileHeaderWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 20),
       margin: const EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.white.withOpacity(0.3),
-        borderRadius: BorderRadius.circular(16),
+        color: Colors.white,
+        borderRadius: BorderRadius.circular(20),
+        boxShadow: [
+          BoxShadow(
+            color: Colors.black12.withOpacity(0.05),
+            blurRadius: 12,
+            offset: const Offset(0, 6),
+          ),
+        ],
       ),
       child: Row(
         children: [
-          CircleAvatar(
-            radius: 30,
-            backgroundColor: Colors.white.withOpacity(0.5),
-            backgroundImage: avatarUrl != null ? NetworkImage(avatarUrl!) : null,
-            child: avatarUrl == null
-                ? const Icon(
-                    Icons.person,
-                    size: 30,
-                    color: Colors.black54,
-                  )
-                : null,
+          Container(
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.grey.shade300, width: 2),
+            ),
+            child: CircleAvatar(
+              radius: 35,
+              backgroundColor: Colors.grey.shade100,
+              backgroundImage:
+                  avatarUrl != null ? NetworkImage(avatarUrl!) : null,
+              child: avatarUrl == null
+                  ? const Icon(
+                      Icons.person,
+                      size: 36,
+                      color: Colors.grey,
+                    )
+                  : null,
+            ),
           ),
           const SizedBox(width: 16),
           Expanded(
@@ -44,29 +58,25 @@ class ProfileHeaderWidget extends StatelessWidget {
               children: [
                 Text(
                   name,
-                  style: const TextStyle(
-                    fontSize: 18,
-                    fontWeight: FontWeight.w600,
-                    color: Colors.black87,
-                  ),
+                  style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                        fontWeight: FontWeight.bold,
+                        color: Colors.black87,
+                      ),
                 ),
                 const SizedBox(height: 4),
                 Text(
                   email,
-                  style: const TextStyle(
-                    fontSize: 14,
-                    color: Colors.black54,
-                  ),
+                  style: Theme.of(context).textTheme.labelSmall?.copyWith(
+                        color: Colors.grey.shade600,
+                      ),
                 ),
               ],
             ),
           ),
           IconButton(
             onPressed: onEditTap,
-            icon: const Icon(
-              Icons.edit,
-              color: Colors.black54,
-            ),
+            tooltip: "Modifier le profil",
+            icon: const Icon(Icons.edit_note, color: Colors.blueGrey, size: 28),
           ),
         ],
       ),

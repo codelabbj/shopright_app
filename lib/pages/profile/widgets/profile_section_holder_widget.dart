@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class ProfileSectionHolderWidget extends StatelessWidget {
@@ -20,11 +19,11 @@ class ProfileSectionHolderWidget extends StatelessWidget {
           padding: const EdgeInsets.symmetric(horizontal: 16, vertical: 8),
           child: Text(
             title,
-            style: const TextStyle(
-              fontSize: 18,
-              fontWeight: FontWeight.w600,
-              color: Colors.black87,
-            ),
+            style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                  fontSize: 18,
+                  fontWeight: FontWeight.w600,
+                  color: Colors.black87,
+                ),
           ),
         ),
         Padding(
