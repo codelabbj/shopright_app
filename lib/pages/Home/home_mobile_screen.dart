@@ -21,14 +21,6 @@ class HomeScreen extends StatefulWidget {
 class _HomeScreenState extends State<HomeScreen> {
   Widget content = const AcceuilMobileScreen();
 
-  List<ProductModel> get products => [
-        ProductModel(name: "Dries Van Noten", price: "\$580", imagePath: "assets/images/winter_cap.webp"),
-        ProductModel(name: "Wales Bonner", price: "\$280", imagePath: "assets/images/winter_cap.webp"),
-        ProductModel(name: "Rick Owens", price: "\$650", imagePath: "assets/images/winter_cap.webp"),
-        ProductModel(name: "Jacquemus", price: "\$420", imagePath: "assets/images/winter_cap.webp"),
-        ProductModel(name: "Prada", price: "\$720", imagePath: "assets/images/winter_cap.webp"),
-        ProductModel(name: "Balenciaga", price: "\$850", imagePath: "assets/images/winter_cap.webp"),
-      ];
   int currentIndex = 0;
   @override
   Widget build(BuildContext context) {

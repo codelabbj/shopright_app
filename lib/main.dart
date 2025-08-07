@@ -1,13 +1,21 @@
+import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:e_com_app/pages/Home/home_mobile_screen.dart';
+import 'package:e_com_app/pages/authentification/login_screen.dart';
+import 'package:e_com_app/pages/authentification/register_screen.dart';
+import 'package:e_com_app/theme/app_dark_theme.dart';
+import 'package:e_com_app/theme/app_light_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:google_fonts/google_fonts.dart';
 
-void main() {
-  runApp(MyApp());
+void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  final savedThemeMode = await AdaptiveTheme.getThemeMode();
+  runApp(MyApp(savedThemeMode: savedThemeMode));
 }
 
 class MyApp extends StatelessWidget {
-  MyApp({super.key});
+  final AdaptiveThemeMode? savedThemeMode;
+
+  MyApp({super.key, required this.savedThemeMode});
 
   final kColorScheme = ColorScheme.fromSeed(
     seedColor: Colors.white,
@@ -17,47 +25,19 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Flutter Demo',
-      theme: ThemeData().copyWith(
-        appBarTheme: const AppBarTheme(
-          backgroundColor: Color(0xFFFCFCFC),
-        ),
-        scaffoldBackgroundColor: const Color(0xFFFCFCFC),
-        colorScheme: kColorScheme,
-        textTheme: const TextTheme().copyWith(
-          displayLarge: GoogleFonts.montserrat(
-            fontSize: 19,
-            color: Colors.black,
-          ),
-          labelLarge: GoogleFonts.montserrat(
-            fontSize: 20,
-            color: Colors.black,
-          ),
-          displayMedium: GoogleFonts.montserrat(
-            fontSize: 15,
-            color: Colors.black,
-          ),
-          labelSmall: GoogleFonts.montserrat(
-            fontSize: 13,
-            color: Colors.black,
-          ),
-          displaySmall: GoogleFonts.montserrat(
-            fontSize: 11,
-            color: Colors.black,
-          ),
-          labelMedium: GoogleFonts.montserrat(
-            fontSize: 17,
-            color: Colors.black,
-          ),
-          titleSmall: GoogleFonts.montserrat(
-            fontSize: 8,
-            color: Colors.black,
-          ),
-        ),
-      ),
-      home: HomeScreen(),
+    return AdaptiveTheme(
+      dark: AppDarkTheme,
+      light: AppLightTheme,
+      initial: savedThemeMode ?? AdaptiveThemeMode.light,
+      builder: (theme, darkTheme) {
+        return MaterialApp(
+          debugShowCheckedModeBanner: false,
+          title: 'E-Commerce App',
+          theme: theme,
+          darkTheme: darkTheme,
+          home: HomeScreen(),
+        );
+      },
     );
   }
 }

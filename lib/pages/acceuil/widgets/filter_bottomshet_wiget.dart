@@ -59,11 +59,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Catégorie",
-                  style: Theme.of(context)
-                      .textTheme
-                      .labelSmall!
-                      .copyWith(fontWeight: FontWeight.bold)),
+              Text("Catégorie", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
               Wrap(
                 spacing: 8,
@@ -72,13 +68,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     backgroundColor: Colors.white,
                     label: Text(
                       cat,
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelSmall!
-                          .copyWith(fontSize: 15),
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 15),
                     ),
                     selected: selectedMainCategory == cat,
-                    selectedColor: accentColor,
+                    selectedColor: Color(0xFFFF9B00),
                     onSelected: (val) {
                       setState(() {
                         selectedMainCategory = val ? cat : null;
@@ -96,11 +89,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text("Sous-catégories",
-                  style: Theme.of(context)
-                      .textTheme
-                      .labelSmall!
-                      .copyWith(fontWeight: FontWeight.bold)),
+              Text("Sous-catégories", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
               const SizedBox(height: 8),
               Wrap(
                 spacing: 5,
@@ -109,13 +98,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                     backgroundColor: Colors.white,
                     label: Text(
                       subCat,
-                      style: Theme.of(context)
-                          .textTheme
-                          .labelSmall!
-                          .copyWith(fontSize: 15),
+                      style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 15),
                     ),
                     selected: selectedSubCategory == subCat,
-                    selectedColor: accentColor,
+                    selectedColor: Color(0xFFFF9B00),
                     onSelected: (val) {
                       setState(() {
                         selectedSubCategory = val ? subCat : null;
@@ -135,11 +121,7 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text("Taille",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(fontWeight: FontWeight.bold)),
+                Text("Taille", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
                 const SizedBox(height: 8),
                 Wrap(
                   spacing: 8,
@@ -148,13 +130,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
                       backgroundColor: Colors.white,
                       label: Text(
                         size,
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelSmall!
-                            .copyWith(fontSize: 15),
+                        style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 15),
                       ),
                       selected: selectedSize == size,
-                      selectedColor: accentColor,
+                      selectedColor: Color(0xFFFF9B00),
                       onSelected: (val) {
                         setState(() {
                           selectedSize = val ? size : null;
@@ -180,13 +159,10 @@ class _FilterBottomSheetState extends State<FilterBottomSheet> {
               },
               label: Text(
                 "Appliquer les filtres",
-                style: Theme.of(context)
-                    .textTheme
-                    .labelMedium!
-                    .copyWith(color: Colors.black),
+                style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.black),
               ),
               style: ElevatedButton.styleFrom(
-                backgroundColor: accentColor,
+                backgroundColor: Color(0xFFFF9B00),
                 foregroundColor: Colors.white,
                 minimumSize: const Size(double.infinity, 48),
                 shape: RoundedRectangleBorder(

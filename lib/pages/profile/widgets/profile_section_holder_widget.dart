@@ -12,6 +12,10 @@ class ProfileSectionHolderWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    final theme = Theme.of(context);
+    final colorScheme = theme.colorScheme;
+
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -22,7 +26,7 @@ class ProfileSectionHolderWidget extends StatelessWidget {
             style: Theme.of(context).textTheme.labelSmall!.copyWith(
                   fontSize: 18,
                   fontWeight: FontWeight.w600,
-                  color: Colors.black87,
+                  color: colorScheme.onBackground,
                 ),
           ),
         ),

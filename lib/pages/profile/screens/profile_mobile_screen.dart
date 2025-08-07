@@ -1,58 +1,33 @@
-import 'package:e_com_app/pages/profile/widgets/profile_header_widget.dart';
-import 'package:e_com_app/pages/profile/widgets/profile_section_widget.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:e_com_app/pages/card/screens/chart_mobile_screen.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
+import '../../../cubits/theme/theme_cubit.dart';
+import '../widgets/profile_header_widget.dart';
+import '../widgets/profile_section_widget.dart';
 import '../widgets/profile_section_holder_widget.dart';
 
-class ProfileMobileScreen extends StatefulWidget {
+class ProfileMobileScreen extends StatelessWidget {
   const ProfileMobileScreen({Key? key}) : super(key: key);
 
   @override
-  State<ProfileMobileScreen> createState() => _ProfileMobileScreenState();
-}
-
-class _ProfileMobileScreenState extends State<ProfileMobileScreen> {
-  @override
   Widget build(BuildContext context) {
-    bool isDark = false;
+    final isDark = Theme.of(context).brightness == Brightness.dark;
 
     return Scaffold(
-      // appBar: AppBar(
-      //   leadingWidth: 100,
-      //   leading: Padding(
-      //     padding: const EdgeInsets.all(8.0),
-      //     child: const Text(
-      //       'Profile',
-      //       style: TextStyle(
-      //         fontSize: 24,
-      //         fontWeight: FontWeight.w700,
-      //         color: Colors.black87,
-      //       ),
-      //     ),
-      //   ),
-      // ),
       body: SafeArea(
         child: Column(
-          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            // Barre d'en-tête
-
-            // Contenu scrollable
             Expanded(
               child: SingleChildScrollView(
                 child: Column(
                   children: [
-                    // En-tête du profil
                     ProfileHeaderWidget(
                       name: 'Your profile',
                       email: 'example@gmail.com',
-                      onEditTap: () {
-                        // Action d'édition
-                        print('Edit profile tapped');
-                      },
+                      onEditTap: () => print('Edit profile tapped'),
                     ),
-
-                    // Section Account
                     ProfileSectionHolderWidget(
                       title: 'Account',
                       children: [
@@ -79,10 +54,7 @@ class _ProfileMobileScreenState extends State<ProfileMobileScreen> {
                         ProfileSectionWidget(
                           iconWidget: AnimatedSwitcher(
                             duration: const Duration(milliseconds: 300),
-                            transitionBuilder: (child, animation) {
-                              return RotationTransition(
-                                  turns: animation, child: child);
-                            },
+                            transitionBuilder: (child, animation) => RotationTransition(turns: animation, child: child),
                             child: Icon(
                               isDark ? Icons.dark_mode : Icons.light_mode,
                               key: ValueKey(isDark),
@@ -92,15 +64,17 @@ class _ProfileMobileScreenState extends State<ProfileMobileScreen> {
                           showTrailing: false,
                           title: 'Changer le thème',
                           onTap: () {
-                            setState(() {
-                              isDark = !isDark;
+                            WidgetsBinding.instance.addPostFrameCallback((_) {
+                              AdaptiveTheme.of(context).toggleThemeMode();
                             });
+                            // Navigator.push(
+                            //   context,
+                            //   MaterialPageRoute(builder: (_) => ChartMobileScreen()),
+                            // );
                           },
                         ),
                       ],
                     ),
-
-                    // Section Security
                     ProfileSectionHolderWidget(
                       title: 'Security',
                       children: [
@@ -111,8 +85,6 @@ class _ProfileMobileScreenState extends State<ProfileMobileScreen> {
                         ),
                       ],
                     ),
-
-                    // Section Support
                     ProfileSectionHolderWidget(
                       title: 'Support',
                       children: [

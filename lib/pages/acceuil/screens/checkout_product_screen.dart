@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../../constantes/const.dart';
 import '../../../models/product_model.dart';
+import '../../Home/home_mobile_screen.dart';
 
 class CheckoutProductScreen extends StatelessWidget {
   final ProductModel product;
@@ -11,7 +12,39 @@ class CheckoutProductScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(title: Text("Checkout")),
+      appBar: AppBar(
+        leadingWidth: Const.screenWidth(context) * 0.33,
+        leading: SizedBox(
+          height: 40,
+          child: GestureDetector(
+            onTap: () => Navigator.push(
+              context,
+              MaterialPageRoute(builder: (_) => HomeScreen()),
+            ),
+            child: Container(
+              margin: const EdgeInsets.symmetric(horizontal: 12),
+              padding: const EdgeInsets.only(right: 3),
+              decoration: BoxDecoration(
+                color: Colors.grey[200],
+                borderRadius: BorderRadius.circular(35),
+              ),
+              child: Row(
+                children: [
+                  Container(
+                      padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        shape: BoxShape.circle,
+                      ),
+                      child: Icon(Icons.arrow_back, size: 22)),
+                  SizedBox(width: 6),
+                  Text("Back", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.w500)),
+                ],
+              ),
+            ),
+          ),
+        ),
+      ),
       body: Padding(
         padding: const EdgeInsets.all(16),
         child: Column(
@@ -28,29 +61,17 @@ class CheckoutProductScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(product.name,
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelSmall!
-                              .copyWith(
-                                  fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text(product.name, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 18, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 4),
-                      Text("by Fashion Brand",
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelSmall), // Marque fixe ou dynamique
+                      Text("by Fashion Brand", style: Theme.of(context).textTheme.labelSmall), // Marque fixe ou dynamique
                       const SizedBox(height: 4),
-                      Text(product.price,
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelSmall!
-                              .copyWith(fontSize: 16)),
+                      Text(product.price, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 16)),
                     ],
                   ),
                 ),
                 Container(
                     margin: EdgeInsets.all(6),
-                    decoration: BoxDecoration(border: Border.all()),
+                    decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(5)),
                     child: Icon(Icons.remove)),
                 Text(
                   "1",
@@ -58,7 +79,7 @@ class CheckoutProductScreen extends StatelessWidget {
                 ),
                 Container(
                     margin: EdgeInsets.all(6),
-                    decoration: BoxDecoration(border: Border.all()),
+                    decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(5)),
                     child: Icon(Icons.add)),
               ],
             ),
@@ -68,9 +89,7 @@ class CheckoutProductScreen extends StatelessWidget {
                   width: Const.screenWidth(context),
                   height: Const.screenHeight(context) * 0.05,
                   margin: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                  ),
+                  decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(10)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
@@ -78,11 +97,7 @@ class CheckoutProductScreen extends StatelessWidget {
                       SizedBox(
                         width: 12,
                       ),
-                      Text("Add Product",
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelMedium!
-                              .copyWith(fontWeight: FontWeight.bold)),
+                      Text("Add Product", style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold)),
                     ],
                   )),
             ),
@@ -92,10 +107,8 @@ class CheckoutProductScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Subtotal:",
-                    style: Theme.of(context).textTheme.labelSmall),
-                Text(product.price,
-                    style: Theme.of(context).textTheme.labelSmall),
+                Text("Subtotal:", style: Theme.of(context).textTheme.labelSmall),
+                Text(product.price, style: Theme.of(context).textTheme.labelSmall),
               ],
             ),
             const SizedBox(height: 10),
@@ -113,16 +126,8 @@ class CheckoutProductScreen extends StatelessWidget {
             Row(
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
-                Text("Total:",
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(fontWeight: FontWeight.bold)),
-                Text(product.price,
-                    style: Theme.of(context)
-                        .textTheme
-                        .labelSmall!
-                        .copyWith(fontWeight: FontWeight.bold)),
+                Text("Total:", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
+                Text(product.price, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
               ],
             ),
             const SizedBox(height: 20),
@@ -132,17 +137,11 @@ class CheckoutProductScreen extends StatelessWidget {
                   width: Const.screenWidth(context),
                   height: Const.screenHeight(context) * 0.05,
                   margin: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                  ),
+                  decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(10)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("I have a discount code",
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelSmall!
-                              .copyWith(fontWeight: FontWeight.w900)),
+                      Text("I have a discount code", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.w900)),
                     ],
                   )),
             ),
@@ -152,58 +151,45 @@ class CheckoutProductScreen extends StatelessWidget {
                   width: Const.screenWidth(context),
                   height: Const.screenHeight(context) * 0.05,
                   margin: EdgeInsets.all(6),
-                  decoration: BoxDecoration(
-                    border: Border.all(),
-                  ),
+                  decoration: BoxDecoration(border: Border.all(), borderRadius: BorderRadius.circular(10)),
                   child: Row(
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text("Pay later with Klarna",
-                          style: Theme.of(context)
-                              .textTheme
-                              .labelSmall!
-                              .copyWith(fontWeight: FontWeight.w900)),
+                      Text("Pay later with Klarna", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.w900)),
                     ],
                   )),
             ),
             SizedBox(
               height: 10,
             ),
-            Divider(),
+            Divider(
+              color: Colors.grey,
+            ),
             SizedBox(
               height: 10,
             ),
-            Padding(
-              padding: const EdgeInsets.only(bottom: 12.0),
-              child: Row(
-                children: [
-                  // Image.asset("assets/icons/mastercard.png", height: 24), // ou icône Flutter
-                  // const SizedBox(width: 8),
-                  // const Text("•• 78"),
-                  const Spacer(),
-                  SizedBox(
-                    width: Const.screenWidth(context) * 0.65,
-                    height: 45,
-                    child: ElevatedButton(
-                      style: ElevatedButton.styleFrom(
-                          backgroundColor: Colors.black,
-                          shape: RoundedRectangleBorder()),
-                      onPressed: () {
-                        // Action de paiement
-                      },
-                      child: Text(
-                        "Confirm payment",
-                        style: Theme.of(context)
-                            .textTheme
-                            .labelMedium!
-                            .copyWith(
-                                fontWeight: FontWeight.w900,
-                                color: Colors.white),
-                      ),
+            Row(
+              children: [
+                // Image.asset("assets/icons/mastercard.png", height: 24), // ou icône Flutter
+                // const SizedBox(width: 8),
+                // const Text("•• 78"),
+                const Spacer(),
+                SizedBox(
+                  width: Const.screenWidth(context) * 0.65,
+                  height: 60,
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.black, shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12))),
+                    onPressed: () {
+                      // Action de paiement
+                    },
+                    child: Text(
+                      "Confirm payment",
+                      style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.w900, color: Colors.white),
                     ),
                   ),
-                ],
-              ),
+                ),
+              ],
             ),
           ],
         ),

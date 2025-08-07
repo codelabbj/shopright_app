@@ -57,8 +57,7 @@ class ProductCard extends StatelessWidget {
                   padding: const EdgeInsets.all(8),
                   decoration: BoxDecoration(
                     color: Colors.grey[200],
-                    borderRadius:
-                        const BorderRadius.vertical(top: Radius.circular(20)),
+                    borderRadius: const BorderRadius.vertical(top: Radius.circular(20)),
                   ),
                   child: ClipRRect(
                     borderRadius: BorderRadius.circular(12),
@@ -74,7 +73,11 @@ class ProductCard extends StatelessWidget {
                   child: CircleAvatar(
                     radius: 14,
                     backgroundColor: Colors.white,
-                    child: Icon(Icons.favorite_border, size: 16),
+                    child: Icon(
+                      Icons.favorite_border,
+                      size: 16,
+                      color: Colors.black,
+                    ),
                   ),
                 ),
               ],
@@ -108,10 +111,9 @@ class ProductCard extends StatelessWidget {
                   ),
                   const Spacer(),
                   CircleAvatar(
-                    backgroundColor: Colors.amber,
+                    backgroundColor: Color(0xFFFF9B00),
                     radius: 16,
-                    child: Icon(Icons.shopping_cart_outlined,
-                        size: 20, color: Colors.black),
+                    child: Icon(Icons.shopping_cart_outlined, size: 20, color: Colors.black),
                   ),
                 ],
               ),

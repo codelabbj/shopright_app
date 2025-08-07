@@ -148,15 +148,19 @@ class _ChartMobileScreenState extends State<ChartMobileScreen> {
                 SizedBox(height: 10),
                 _buildSummaryRow('Total', total, isBold: true),
                 SizedBox(height: 16),
-                ElevatedButton(
-                  onPressed: () {
-                    // TODO: Commander
-                  },
-                  style: ElevatedButton.styleFrom(
-                    padding: EdgeInsets.symmetric(horizontal: 40, vertical: 14),
-                    shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                SizedBox(
+                  width: double.infinity,
+                  child: ElevatedButton(
+                    onPressed: () {
+                      // TODO: Commander
+                    },
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: Color(0xFFFF9B00),
+                      padding: EdgeInsets.symmetric(horizontal: 40, vertical: 14),
+                      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(10)),
+                    ),
+                    child: Text('Commander', style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 16)),
                   ),
-                  child: Text('Commander', style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 16)),
                 ),
               ],
             ),

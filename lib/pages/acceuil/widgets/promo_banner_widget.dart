@@ -9,7 +9,7 @@ class PromoBannerWidget extends StatelessWidget {
       width: double.infinity,
       padding: EdgeInsets.all(16),
       decoration: BoxDecoration(
-        color: Colors.yellow[700],
+        color: Color(0xFFFF9B00),
         borderRadius: BorderRadius.circular(16),
       ),
       child: Row(
