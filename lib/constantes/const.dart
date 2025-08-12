@@ -1,9 +1,9 @@
-import 'package:e_com_app/pages/favoris/screens/wish_mobile_screen.dart';
 import 'package:flutter/material.dart';
 
-import '../pages/acceuil/screens/acceuil_mobile_screen.dart';
-import '../pages/card/screens/chart_mobile_screen.dart';
-import '../pages/profile/screens/profile_mobile_screen.dart';
+import '../pages/mobile/acceuil/screens/acceuil_mobile_screen.dart';
+import '../pages/mobile/card/screens/chart_mobile_screen.dart';
+import '../pages/mobile/favoris/screens/wish_mobile_screen.dart';
+import '../pages/mobile/profile/screens/profile_mobile_screen.dart';
 
 class Const {
   static double screenWidth(BuildContext context) {
