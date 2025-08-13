@@ -1,18 +1,18 @@
+import 'package:e_com_app/pages/web/product/widgets/product_table_widget.dart';
+import 'package:e_com_app/widgets/card_list_widget.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../widgets/app_bar_widget.dart';
 import '../../../../widgets/drawer_widget.dart';
 
-class StatistiquesScreen extends StatefulWidget {
-  const StatistiquesScreen({super.key});
+class ProductWebScreen extends StatefulWidget {
+  const ProductWebScreen({super.key});
 
   @override
-  State<StatistiquesScreen> createState() => _StatistiquesScreenState();
+  State<ProductWebScreen> createState() => _ProductWebScreenState();
 }
 
-class _StatistiquesScreenState extends State<StatistiquesScreen> {
-  late Future<Map<String, dynamic>> _statsFuture;
-
+class _ProductWebScreenState extends State<ProductWebScreen> {
   @override
   void initState() {
     super.initState();
@@ -41,70 +41,101 @@ class _StatistiquesScreenState extends State<StatistiquesScreen> {
               child: Column(
                 children: [
                   AppbarDashboard(),
-                  Container(
-                    padding: EdgeInsets.all(15),
-                    margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-                    decoration: BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withValues(alpha: 0.2),
-                          spreadRadius: 10,
-                          blurRadius: 10,
-                          offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                        ),
-                      ],
-                    ),
-                    child: Row(
-                      children: [
+                  Expanded(
+                    child: CardListWidget(
+                      title: "Product List",
+                      subtitle: "Tracks stocks levels.",
+                      actions: [
                         Container(
-                          margin: EdgeInsets.all(10),
                           padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
-                              color: Colors.white, borderRadius: BorderRadius.circular(5), border: Border.all(color: Colors.grey[300]!)),
-                          child: Icon(Icons.arrow_back),
-                        ),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              "Add new Product",
-                              style: Theme.of(context).textTheme.labelMedium,
-                            ),
-                            Text(
-                              "you can see all sales analysis result more completely",
-                              style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.grey[300]),
-                            )
-                          ],
-                        )
-                      ],
-                    ),
-                  ),
-                  Expanded(
-                      child: Row(
-                    children: [
-                      // Expanded(flex: 2, child: AddProductsWidget()),
-                      Flexible(
-                        flex: 3,
-                        child: Container(
-                          margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withValues(alpha: 0.2),
-                                spreadRadius: 10,
-                                blurRadius: 10,
-                                offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                              border: Border.all(color: Colors.grey[200]!),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Row(
+                            children: [
+                              Icon(
+                                Icons.add,
+                                size: 18,
+                              ),
+                              Text(
+                                "Add Product",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall!
+                                    .copyWith(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
                         ),
-                      )
-                    ],
-                  ))
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey[200]!),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/filtre.png",
+                                width: 18,
+                                height: 18,
+                                color: Colors.black,
+                              ),
+                              Text(
+                                "Filter",
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall!
+                                    .copyWith(fontWeight: FontWeight.bold),
+                              ),
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey[200]!),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Icon(Icons.picture_in_picture_alt_outlined,
+                              size: 18, color: Colors.black),
+                        ),
+                        SizedBox(
+                          width: 10,
+                        ),
+                        Container(
+                          padding: EdgeInsets.all(5),
+                          decoration: BoxDecoration(
+                              border: Border.all(color: Colors.grey[200]!),
+                              borderRadius: BorderRadius.circular(5)),
+                          child: Row(
+                            children: [
+                              Icon(Icons.grid_view,
+                                  size: 18, color: Colors.grey),
+                              Icon(
+                                Icons.table_rows_outlined,
+                                size: 18,
+                                color: Colors.grey,
+                              ),
+                            ],
+                          ),
+                        )
+                      ],
+                      child: SingleChildScrollView(
+                        scrollDirection: Axis.horizontal,
+                        child: ConstrainedBox(
+                          constraints: BoxConstraints(
+                            minWidth: MediaQuery.of(context).size.width,
+                          ),
+                          child: ProductTableWidget(),
+                        ),
+                      ),
+                    ),
+                  ),
                 ],
               ),
             ),
