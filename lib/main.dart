@@ -1,5 +1,7 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:e_com_app/pages/mobile/Home/home_mobile_screen.dart';
+import 'package:e_com_app/pages/web/dasboard/screen/dashboard_screen.dart';
+import 'package:e_com_app/pages/web/orders/screens/blala.dart';
 import 'package:e_com_app/pages/web/orders/screens/list_orders_screen.dart';
 import 'package:e_com_app/pages/web/product/screen/product_web_screen.dart';
 import 'package:e_com_app/theme/app_colors.dart';
@@ -161,7 +163,7 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                 ),
-                home: ListOrdersScreen(),
+                home: ReceiptPage(),
               );
             }));
       },

@@ -1,16 +1,16 @@
 import 'package:flutter/material.dart';
 
 class CardListWidget extends StatelessWidget {
-  final String title;
-  final String subtitle;
-  final List<Widget> actions; // boutons en haut à droite
+  final String? title;
+  final String? subtitle;
+  final List<Widget>? actions; // boutons en haut à droite
   final Widget child; // le contenu : grille ou table
 
   const CardListWidget({
     Key? key,
-    required this.title,
-    required this.subtitle,
-    required this.actions,
+    this.title,
+    this.subtitle,
+    this.actions,
     required this.child,
   }) : super(key: key);
 
@@ -41,22 +41,25 @@ class CardListWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  Text(
-                    title,
-                    style: Theme.of(context).textTheme.displayMedium!.copyWith(fontWeight: FontWeight.bold),
-                  ),
-                  const SizedBox(height: 4),
-                  Text(
-                    subtitle,
-                    style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.grey[300]),
-                  ),
+                  if (title != null)
+                    Text(
+                      title!,
+                      style: Theme.of(context).textTheme.displayMedium!.copyWith(fontWeight: FontWeight.bold),
+                    ),
+                  if (subtitle != null) ...[
+                    const SizedBox(height: 4),
+                    Text(
+                      subtitle!,
+                      style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.grey[300]),
+                    ),
+                  ],
                 ],
               ),
               Spacer(),
               SizedBox(
                 width: 10,
               ),
-              Row(children: actions),
+              if (actions != null) Row(children: actions!),
             ],
           ),
           const SizedBox(height: 16),
