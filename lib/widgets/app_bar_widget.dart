@@ -10,7 +10,7 @@ class AppbarDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      color: Colors.grey[200], // fond général
+      color: Colors.grey[100], // fond général
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [

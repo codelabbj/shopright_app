@@ -1,7 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:e_com_app/pages/mobile/Home/home_mobile_screen.dart';
 import 'package:e_com_app/pages/web/dasboard/screen/dashboard_screen.dart';
-import 'package:e_com_app/pages/web/orders/screens/blala.dart';
+
 import 'package:e_com_app/pages/web/orders/screens/list_orders_screen.dart';
 import 'package:e_com_app/pages/web/product/screen/add_product_screen.dart';
 import 'package:e_com_app/pages/web/product/screen/list_grid_product_screen.dart';
@@ -165,7 +164,7 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                 ),
-                home: AddProductScreen(),
+                home: DashboardScreen(),
               );
             }));
       },
