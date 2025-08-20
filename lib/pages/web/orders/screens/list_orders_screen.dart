@@ -1,7 +1,5 @@
-import 'package:e_com_app/pages/web/orders/widgets/orders_tab_widget.dart'
-    show OrdersTabWidget;
-import 'package:e_com_app/pages/web/orders/widgets/sales_card_widget.dart'
-    show SalesCardWidget;
+import 'package:e_com_app/pages/web/orders/widgets/orders_tab_widget.dart' show OrdersTabWidget;
+import 'package:e_com_app/pages/web/orders/widgets/sales_card_widget.dart' show SalesCardWidget;
 import 'package:e_com_app/widgets/app_bar_widget.dart';
 import 'package:e_com_app/widgets/card_list_widget.dart' show CardListWidget;
 import 'package:e_com_app/widgets/drawer_widget.dart' show DrawerDashboard;
@@ -29,78 +27,75 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
               child: Column(
                 children: [
                   SizedBox(height: 60, child: AppbarDashboard()),
-                  SizedBox(height: 30),
-                  Row(
-                    children: [
-                      Expanded(
-                        child: SalesCardWidget(
-                          title: 'Total Sales',
-                          subtitle: 'Total earnings from sales.',
-                          amount: '\$189,374',
-                          percentage: '9%',
-                          isPositive: true,
-                          footerText: 'From last month',
-                          onDetailTap: () {
-                            // action on detail click
-                            print("Details tapped!");
-                          },
-                        ),
-                      ),
-                      Expanded(
-                        child: SalesCardWidget(
-                          title: 'Total Sales',
-                          subtitle: 'Total earnings from sales.',
-                          amount: '\$189,374',
-                          percentage: '9%',
-                          isPositive: true,
-                          footerText: 'From last month',
-                          onDetailTap: () {
-                            // action on detail click
-                            print("Details tapped!");
-                          },
-                        ),
-                      ),
-                      Expanded(
-                        child: SalesCardWidget(
-                          title: 'Total Sales',
-                          subtitle: 'Total earnings from sales.',
-                          amount: '\$189,374',
-                          percentage: '9%',
-                          isPositive: true,
-                          footerText: 'From last month',
-                          onDetailTap: () {
-                            // action on detail click
-                            print("Details tapped!");
-                          },
-                        ),
-                      ),
-                      Expanded(
-                        child: SalesCardWidget(
-                          title: 'Total Sales',
-                          subtitle: 'Total earnings from sales.',
-                          amount: '\$189,374',
-                          percentage: '9%',
-                          isPositive: true,
-                          footerText: 'From last month',
-                          onDetailTap: () {
-                            // action on detail click
-                            print("Details tapped!");
-                          },
-                        ),
-                      ),
-                    ],
-                  ),
+                  // SizedBox(height: 30),
+                  // Row(
+                  //   children: [
+                  //     Expanded(
+                  //       child: SalesCardWidget(
+                  //         title: 'Total Sales',
+                  //         subtitle: 'Total earnings from sales.',
+                  //         amount: '\$189,374',
+                  //         percentage: '9%',
+                  //         isPositive: true,
+                  //         footerText: 'From last month',
+                  //         onDetailTap: () {
+                  //           // action on detail click
+                  //           print("Details tapped!");
+                  //         },
+                  //       ),
+                  //     ),
+                  //     Expanded(
+                  //       child: SalesCardWidget(
+                  //         title: 'Total Sales',
+                  //         subtitle: 'Total earnings from sales.',
+                  //         amount: '\$189,374',
+                  //         percentage: '9%',
+                  //         isPositive: true,
+                  //         footerText: 'From last month',
+                  //         onDetailTap: () {
+                  //           // action on detail click
+                  //           print("Details tapped!");
+                  //         },
+                  //       ),
+                  //     ),
+                  //     Expanded(
+                  //       child: SalesCardWidget(
+                  //         title: 'Total Sales',
+                  //         subtitle: 'Total earnings from sales.',
+                  //         amount: '\$189,374',
+                  //         percentage: '9%',
+                  //         isPositive: true,
+                  //         footerText: 'From last month',
+                  //         onDetailTap: () {
+                  //           // action on detail click
+                  //           print("Details tapped!");
+                  //         },
+                  //       ),
+                  //     ),
+                  //     Expanded(
+                  //       child: SalesCardWidget(
+                  //         title: 'Total Sales',
+                  //         subtitle: 'Total earnings from sales.',
+                  //         amount: '\$189,374',
+                  //         percentage: '9%',
+                  //         isPositive: true,
+                  //         footerText: 'From last month',
+                  //         onDetailTap: () {
+                  //           // action on detail click
+                  //           print("Details tapped!");
+                  //         },
+                  //       ),
+                  //     ),
+                  //   ],
+                  // ),
                   Expanded(
                     child: CardListWidget(
                       title: "Orders List",
-                      subtitle:
-                          "Track stock levels, availability, and restocking needs in real time.",
+                      subtitle: "Track stock levels, availability, and restocking needs in real time.",
                       actions: [
                         Container(
                           padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey[200]!),
-                              borderRadius: BorderRadius.circular(5)),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
                           child: Row(
                             children: [
                               Image.asset(
@@ -111,10 +106,7 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                               ),
                               Text(
                                 "Filter",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displaySmall!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -124,9 +116,7 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                         ),
                         Container(
                           padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey[200]!),
-                              borderRadius: BorderRadius.circular(5)),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
                           child: Row(
                             children: [
                               Image.asset(
@@ -137,10 +127,7 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                               ),
                               Text(
                                 "Customize",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displaySmall!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -150,9 +137,7 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                         ),
                         Container(
                           padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey[200]!),
-                              borderRadius: BorderRadius.circular(5)),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
                           child: Row(
                             children: [
                               Image.asset(
@@ -163,10 +148,7 @@ class _ListOrdersScreenState extends State<ListOrdersScreen> {
                               ),
                               Text(
                                 "Export",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displaySmall!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),

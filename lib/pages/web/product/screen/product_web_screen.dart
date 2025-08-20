@@ -1,6 +1,7 @@
 import 'package:e_com_app/pages/web/product/widgets/product_table_widget.dart';
 import 'package:e_com_app/widgets/card_list_widget.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../widgets/app_bar_widget.dart';
 import '../../../../widgets/drawer_widget.dart';
@@ -46,25 +47,25 @@ class _ProductWebScreenState extends State<ProductWebScreen> {
                       title: "Product List",
                       subtitle: "Tracks stocks levels.",
                       actions: [
-                        Container(
-                          padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey[200]!),
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Row(
-                            children: [
-                              Icon(
-                                Icons.add,
-                                size: 18,
-                              ),
-                              Text(
-                                "Add Product",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displaySmall!
-                                    .copyWith(fontWeight: FontWeight.bold),
-                              ),
-                            ],
+                        InkWell(
+                          onTap: () {
+                            context.go('/add-product');
+                          },
+                          child: Container(
+                            padding: EdgeInsets.all(5),
+                            decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.add,
+                                  size: 18,
+                                ),
+                                Text(
+                                  "Add Product",
+                                  style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
+                                ),
+                              ],
+                            ),
                           ),
                         ),
                         SizedBox(
@@ -72,9 +73,7 @@ class _ProductWebScreenState extends State<ProductWebScreen> {
                         ),
                         Container(
                           padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey[200]!),
-                              borderRadius: BorderRadius.circular(5)),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
                           child: Row(
                             children: [
                               Image.asset(
@@ -85,10 +84,7 @@ class _ProductWebScreenState extends State<ProductWebScreen> {
                               ),
                               Text(
                                 "Filter",
-                                style: Theme.of(context)
-                                    .textTheme
-                                    .displaySmall!
-                                    .copyWith(fontWeight: FontWeight.bold),
+                                style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold),
                               ),
                             ],
                           ),
@@ -98,24 +94,18 @@ class _ProductWebScreenState extends State<ProductWebScreen> {
                         ),
                         Container(
                           padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey[200]!),
-                              borderRadius: BorderRadius.circular(5)),
-                          child: Icon(Icons.picture_in_picture_alt_outlined,
-                              size: 18, color: Colors.black),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                          child: Icon(Icons.picture_in_picture_alt_outlined, size: 18, color: Colors.black),
                         ),
                         SizedBox(
                           width: 10,
                         ),
                         Container(
                           padding: EdgeInsets.all(5),
-                          decoration: BoxDecoration(
-                              border: Border.all(color: Colors.grey[200]!),
-                              borderRadius: BorderRadius.circular(5)),
+                          decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
                           child: Row(
                             children: [
-                              Icon(Icons.grid_view,
-                                  size: 18, color: Colors.grey),
+                              Icon(Icons.grid_view, size: 18, color: Colors.grey),
                               Icon(
                                 Icons.table_rows_outlined,
                                 size: 18,

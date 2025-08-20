@@ -1,7 +1,10 @@
+import 'package:e_com_app/pages/web/product/screen/add_product_image_screen.dart';
 import 'package:e_com_app/pages/web/product/widgets/add_products_widget.dart';
 import 'package:e_com_app/widgets/app_bar_widget.dart';
 import 'package:e_com_app/widgets/drawer_widget.dart';
 import 'package:flutter/material.dart';
+
+import 'add_product_info_screen.dart';
 
 class AddProductScreen extends StatefulWidget {
   const AddProductScreen({super.key});
@@ -50,8 +53,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                           color: Colors.grey.withValues(alpha: 0.2),
                           spreadRadius: 10,
                           blurRadius: 10,
-                          offset: Offset(0,
-                              3), // Décalage horizontal et vertical de l'ombre
+                          offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
                         ),
                       ],
                     ),
@@ -61,9 +63,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                           margin: EdgeInsets.all(10),
                           padding: EdgeInsets.all(5),
                           decoration: BoxDecoration(
-                              color: Colors.white,
-                              borderRadius: BorderRadius.circular(5),
-                              border: Border.all(color: Colors.grey[300]!)),
+                              color: Colors.white, borderRadius: BorderRadius.circular(5), border: Border.all(color: Colors.grey[300]!)),
                           child: Icon(Icons.arrow_back),
                         ),
                         Column(
@@ -75,10 +75,7 @@ class _AddProductScreenState extends State<AddProductScreen> {
                             ),
                             Text(
                               "you can see all sales analysis result more completely",
-                              style: Theme.of(context)
-                                  .textTheme
-                                  .labelMedium!
-                                  .copyWith(color: Colors.grey[300]),
+                              style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.grey[300]),
                             )
                           ],
                         )
@@ -88,25 +85,10 @@ class _AddProductScreenState extends State<AddProductScreen> {
                   Expanded(
                       child: Row(
                     children: [
-                      Expanded(flex: 2, child: AddProductsWidget()),
+                      Expanded(flex: 2, child: AddProductImageScreen()),
                       Flexible(
                         flex: 3,
-                        child: Container(
-                          margin: EdgeInsets.only(left: 10, right: 10, top: 10),
-                          decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(10),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withValues(alpha: 0.2),
-                                spreadRadius: 10,
-                                blurRadius: 10,
-                                offset: Offset(0,
-                                    3), // Décalage horizontal et vertical de l'ombre
-                              ),
-                            ],
-                          ),
-                        ),
+                        child: AddProductInfo(),
                       )
                     ],
                   ))

@@ -110,17 +110,33 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                           blurRadius: 10,
                           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
                         )
-                      : BoxShadow(
-
-                          // Décalage horizontal et vertical de l'ombre
-                          )
+                      : context.read<SwitchPageCubit>().state.selectedPage == 6
+                          ? BoxShadow()
+                          : context.read<SwitchPageCubit>().state.selectedPage == 7
+                              ? BoxShadow()
+                              : context.read<SwitchPageCubit>().state.selectedPage == 7
+                                  ? BoxShadow(
+                                      color: Colors.grey.withValues(alpha: 0.2),
+                                      spreadRadius: 10,
+                                      blurRadius: 10,
+                                      offset: Offset(0, 3),
+                                    )
+                                  : BoxShadow(),
                 ],
-                color: context.read<SwitchPageCubit>().state.selectedPage == 1 ? Theme.of(context).colorScheme.primary : Colors.grey[200],
+                color: context.read<SwitchPageCubit>().state.selectedPage == 1
+                    ? Theme.of(context).colorScheme.primary
+                    : context.read<SwitchPageCubit>().state.selectedPage == 6
+                        ? Colors.grey[200]
+                        : context.read<SwitchPageCubit>().state.selectedPage == 7
+                            ? Colors.grey[200]
+                            : context.read<SwitchPageCubit>().state.selectedPage == 7
+                                ? Theme.of(context).colorScheme.primary
+                                : Colors.grey[200],
               ),
               child: TextButton(
                 onPressed: () {
                   context.read<SwitchPageCubit>().switchPage(1);
-                  context.go('/document/List_document');
+                  // context.go('/products');
                 },
                 style: ButtonStyle(
                   overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -152,6 +168,132 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 ),
               ),
             ),
+            context.read<SwitchPageCubit>().state.selectedPage == 1 ||
+                    context.read<SwitchPageCubit>().state.selectedPage == 6 ||
+                    context.read<SwitchPageCubit>().state.selectedPage == 7
+                ? Padding(
+                    padding: const EdgeInsets.symmetric(horizontal: 10),
+                    child: Column(
+                      children: [
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          width: Const.screenWidth(context) * 0.19,
+                          height: 35,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6),
+                            boxShadow: [
+                              context.read<SwitchPageCubit>().state.selectedPage == 6
+                                  ? BoxShadow(
+                                      color: Colors.grey.withValues(alpha: 0.2),
+                                      spreadRadius: 10,
+                                      blurRadius: 10,
+                                      offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                                    )
+                                  : BoxShadow(
+
+                                      // Décalage horizontal et vertical de l'ombre
+                                      )
+                            ],
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 6 ? Theme.of(context).colorScheme.primary : Colors.grey[200],
+                          ),
+                          child: TextButton(
+                            onPressed: () {
+                              context.read<SwitchPageCubit>().switchPage(6);
+                              context.go('/products');
+                            },
+                            style: ButtonStyle(
+                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                                (Set<MaterialState> states) {
+                                  if (states.contains(MaterialState.hovered)) {
+                                    return Colors.transparent; // Pas d'effet au survol
+                                  }
+                                  return null; // Laisser les autres états par défaut
+                                },
+                              ),
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.subdirectory_arrow_right,
+                                  color: context.read<SwitchPageCubit>().state.selectedPage == 6 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                                ),
+                                SizedBox(width: 5),
+                                SizedBox(
+                                  width: Const.screenWidth(context) * 0.1,
+                                  child: Text(
+                                    'Listes',
+                                    style: Theme.of(context).textTheme.displayMedium?.copyWith(
+                                          color: context.read<SwitchPageCubit>().state.selectedPage == 6 ? Colors.white : Colors.black,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                        Container(
+                          margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                          padding: EdgeInsets.symmetric(vertical: 10),
+                          width: Const.screenWidth(context) * 0.19,
+                          height: 35,
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(6),
+                            boxShadow: [
+                              context.read<SwitchPageCubit>().state.selectedPage == 7
+                                  ? BoxShadow(
+                                      color: Colors.grey.withValues(alpha: 0.2),
+                                      spreadRadius: 10,
+                                      blurRadius: 10,
+                                      offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                                    )
+                                  : BoxShadow(
+
+                                      // Décalage horizontal et vertical de l'ombre
+                                      )
+                            ],
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 7 ? Theme.of(context).colorScheme.primary : Colors.grey[200],
+                          ),
+                          child: TextButton(
+                            onPressed: () {
+                              context.read<SwitchPageCubit>().switchPage(7);
+                              context.go('/add-product');
+                            },
+                            style: ButtonStyle(
+                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                                (Set<MaterialState> states) {
+                                  if (states.contains(MaterialState.hovered)) {
+                                    return Colors.transparent; // Pas d'effet au survol
+                                  }
+                                  return null; // Laisser les autres états par défaut
+                                },
+                              ),
+                            ),
+                            child: Row(
+                              children: [
+                                Icon(
+                                  Icons.subdirectory_arrow_right,
+                                  color: context.read<SwitchPageCubit>().state.selectedPage == 7 ? Colors.white : Colors.grey.withValues(alpha: 0.2),
+                                ),
+                                SizedBox(width: 5),
+                                SizedBox(
+                                  width: Const.screenWidth(context) * 0.1,
+                                  child: Text(
+                                    'Ajouter',
+                                    style: Theme.of(context).textTheme.displayMedium!.copyWith(
+                                          overflow: TextOverflow.ellipsis,
+                                          color: context.read<SwitchPageCubit>().state.selectedPage == 7 ? Colors.white : Colors.black,
+                                        ),
+                                  ),
+                                ),
+                              ],
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  )
+                : SizedBox(),
             Container(
               margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
               padding: EdgeInsets.symmetric(vertical: 10),
@@ -234,7 +376,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
               child: TextButton(
                 onPressed: () {
                   context.read<SwitchPageCubit>().switchPage(3);
-                  context.go('/document/List_document');
+                  context.go('/orders');
                 },
                 style: ButtonStyle(
                   overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -293,7 +435,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
               child: TextButton(
                 onPressed: () {
                   context.read<SwitchPageCubit>().switchPage(4);
-                  context.go('/document/List_document');
+                  context.go('/promote');
                 },
                 style: ButtonStyle(
                   overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -327,6 +469,40 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 ),
               ),
             ),
+            Spacer(),
+            // Container(
+            //   margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+            //   padding: EdgeInsets.symmetric(vertical: 10),
+            //   width: Const.screenWidth(context) * 0.19,
+            //   height: 35,
+            //   decoration: BoxDecoration(
+            //     color: Colors.white,
+            //     borderRadius: BorderRadius.circular(6),
+            //     border: Border.all(color: Colors.grey.shade300),
+            //     boxShadow: [
+            //       BoxShadow(
+            //         color: Colors.redAccent.withOpacity(0.2),
+            //         blurRadius: 4,
+            //         offset: Offset(0, 2),
+            //       )
+            //     ],
+            //   ),
+            //   child: Row(
+            //     children: [
+            //       Icon(Icons.logout, color: Colors.red),
+            //       SizedBox(width: 5),
+            //       SizedBox(
+            //         width: Const.screenWidth(context) * 0.1,
+            //         child: Text(
+            //           "Déconnexion",
+            //           style: Theme.of(context).textTheme.displayMedium?.copyWith(
+            //                 color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.black,
+            //               ),
+            //         ),
+            //       ),
+            //     ],
+            //   ),
+            // ),
           ],
         ),
       ),

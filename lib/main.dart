@@ -1,4 +1,5 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
+import 'package:e_com_app/pages/web/authentification/login_screen.dart';
 import 'package:e_com_app/pages/web/dasboard/screen/dashboard_screen.dart';
 
 import 'package:e_com_app/pages/web/orders/screens/list_orders_screen.dart';
@@ -13,12 +14,14 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:url_strategy/url_strategy.dart';
 
 import 'cubits/switch_page/switch_page_cubit.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
   final savedThemeMode = await AdaptiveTheme.getThemeMode();
+  setPathUrlStrategy();
   runApp(MyApp(savedThemeMode: savedThemeMode));
 }
 
@@ -35,40 +38,47 @@ class MyApp extends StatelessWidget {
   final GoRouter _router = GoRouter(
     initialLocation: '/',
     routes: [
-      // GoRoute(
-      //   path: '/login',
-      //   builder: (BuildContext context, GoRouterState state) {
-      //     return const LoginPage();
-      //   },
-      // ),
-      // GoRoute(
-      //   path: '/dashboard',
-      //   builder: (BuildContext context, GoRouterState state) {
-      //     context.read<SwitchPageCubit>().switchPage(0);
-      //     return const StatistiquesScreen();
-      //   },
-      // ),
-      // GoRoute(
-      //   path: '/document/List_document',
-      //   builder: (BuildContext context, GoRouterState state) {
-      //     context.read<SwitchPageCubit>().switchPage(1); // Sélectionner la page Liste des documents
-      //     return ListDocumentScreen();
-      //   },
-      // ),
-      // GoRoute(
-      //   path: '/document/nouveau_document',
-      //   builder: (BuildContext context, GoRouterState state) {
-      //     context.read<SwitchPageCubit>().switchPage(2); // Sélectionner la page Nouveau document
-      //     return const NewDocumentScreen();
-      //   },
-      // ),
-      // GoRoute(
-      //   path: '/historiques',
-      //   builder: (BuildContext context, GoRouterState state) {
-      //     context.read<SwitchPageCubit>().switchPage(3); // Sélectionner la page Collaborateurs
-      //     return DashboardHomeScreen(widget: const HistoryScreen());
-      //   },
-      // ),
+      GoRoute(
+        path: '/',
+        builder: (BuildContext context, GoRouterState state) {
+          return const LoginScreen();
+        },
+      ),
+      GoRoute(
+        path: '/dashboard',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(0);
+          return const DashboardScreen();
+        },
+      ),
+      GoRoute(
+        path: '/products',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(6); // Sélectionner la page Liste des documents
+          return ProductWebScreen();
+        },
+      ),
+      GoRoute(
+        path: '/add-product',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(7); // Sélectionner la page Nouveau document
+          return const AddProductScreen();
+        },
+      ),
+      GoRoute(
+        path: '/orders',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(3); // Sélectionner la page Collaborateurs
+          return ListOrdersScreen();
+        },
+      ),
+      GoRoute(
+        path: '/promote',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(4); // Sélectionner la page Collaborateurs
+          return ListOrdersScreen();
+        },
+      ),
       // GoRoute(
       //   path: '/collaborateur/List_collaborateurs',
       //   builder: (BuildContext context, GoRouterState state) {
@@ -123,10 +133,10 @@ class MyApp extends StatelessWidget {
             ],
             child: Builder(builder: (context) {
               WidgetsBinding.instance.addPostFrameCallback((_) {});
-              return MaterialApp(
+              return MaterialApp.router(
                 debugShowCheckedModeBanner: false,
                 title: 'Flutter Demo',
-                // routerConfig: _router,
+                routerConfig: _router,
                 theme: ThemeData().copyWith(
                   appBarTheme: const AppBarTheme(
                     backgroundColor: Color(0xFFFCFCFC),
@@ -164,7 +174,6 @@ class MyApp extends StatelessWidget {
                     ),
                   ),
                 ),
-                home: DashboardScreen(),
               );
             }));
       },
