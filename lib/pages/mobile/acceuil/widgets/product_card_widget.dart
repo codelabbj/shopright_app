@@ -27,7 +27,7 @@ class ProductCard extends StatelessWidget {
               product: ProductModel(
                 name: name,
                 price: price,
-                imagePath: imagePath,
+                imageUrl: imagePath,
               ),
             ),
           ),

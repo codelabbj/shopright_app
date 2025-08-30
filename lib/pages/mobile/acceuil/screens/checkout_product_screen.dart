@@ -53,7 +53,7 @@ class CheckoutProductScreen extends StatelessWidget {
             Row(
               children: [
                 Image.asset(
-                  product.imagePath,
+                  product.imageUrl ?? "",
                   height: 100,
                   width: 100,
                 ),
@@ -62,11 +62,11 @@ class CheckoutProductScreen extends StatelessWidget {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Text(product.name, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 18, fontWeight: FontWeight.bold)),
+                      Text(product.name ?? "", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 18, fontWeight: FontWeight.bold)),
                       const SizedBox(height: 4),
                       Text("by Fashion Brand", style: Theme.of(context).textTheme.labelSmall), // Marque fixe ou dynamique
                       const SizedBox(height: 4),
-                      Text(product.price, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 16)),
+                      Text(product.price ?? "", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontSize: 16)),
                     ],
                   ),
                 ),
@@ -109,7 +109,7 @@ class CheckoutProductScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Subtotal:", style: Theme.of(context).textTheme.labelSmall),
-                Text(product.price, style: Theme.of(context).textTheme.labelSmall),
+                Text(product.price ?? "", style: Theme.of(context).textTheme.labelSmall),
               ],
             ),
             const SizedBox(height: 10),
@@ -128,7 +128,7 @@ class CheckoutProductScreen extends StatelessWidget {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text("Total:", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
-                Text(product.price, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
+                Text(product.price ?? "", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
               ],
             ),
             const SizedBox(height: 20),

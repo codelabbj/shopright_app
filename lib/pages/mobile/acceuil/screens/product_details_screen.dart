@@ -84,7 +84,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
             padding: const EdgeInsets.all(16),
             child: Center(
               child: Image.asset(
-                widget.product.imagePath,
+                widget.product.imageUrl ?? "",
                 height: 220,
               ),
             ),
@@ -115,11 +115,11 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
                             Text(
-                              widget.product.name,
+                              widget.product.name ?? "",
                               style: Theme.of(context).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.bold),
                             ),
                             Text(
-                              widget.product.price,
+                              widget.product.price ?? "",
                               style: Theme.of(context).textTheme.labelMedium?.copyWith(fontWeight: FontWeight.bold),
                             ),
                           ],
@@ -280,7 +280,7 @@ class _ProductDetailScreenState extends State<ProductDetailScreen> {
                               product: ProductModel(
                                 name: widget.product.name,
                                 price: widget.product.price,
-                                imagePath: widget.product.imagePath,
+                                imageUrl: widget.product.imageUrl,
                               ),
                             ),
                           ),

@@ -1,3 +1,4 @@
+import 'package:e_com_app/theme/app_colors.dart';
 import 'package:flutter/material.dart';
 import 'package:go_router/go_router.dart';
 
@@ -10,7 +11,7 @@ class AppbarDashboard extends StatelessWidget {
   Widget build(BuildContext context) {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
-      color: Colors.grey[100], // fond général
+      color: AppColors.PRIMARY_BLACK3_COLOR, // fond général
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
@@ -43,19 +44,31 @@ class AppbarDashboard extends StatelessWidget {
 
           const SizedBox(width: 20),
 
-          // Container(
-          //   height: 40,
-          //   padding: const EdgeInsets.symmetric(horizontal: 20),
-          //   decoration: BoxDecoration(
-          //     color: Colors.black,
-          //     borderRadius: BorderRadius.circular(25),
-          //   ),
-          //   alignment: Alignment.center,
-          //   child: const Text(
-          //     'Create',
-          //     style: TextStyle(color: Colors.white, fontWeight: FontWeight.w500),
-          //   ),
-          // ),
+          Container(
+            height: 40,
+            padding: const EdgeInsets.symmetric(horizontal: 20),
+            decoration: BoxDecoration(
+              // color: Colors.black,
+              border: Border.all(color: Colors.grey),
+              borderRadius: BorderRadius.circular(8),
+            ),
+            alignment: Alignment.center,
+            child: Row(
+              children: [
+                Image.asset(
+                  "assets/images/globe.png",
+                  width: 22,
+                  height: 22,
+                  color: Colors.white,
+                ),
+                SizedBox(width: 8),
+                Text(
+                  'View website',
+                  style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
+          ),
 
           const SizedBox(width: 15),
 
@@ -68,14 +81,15 @@ class AppbarDashboard extends StatelessWidget {
           _iconCircle("assets/images/responsiveness.png"),
 
           const SizedBox(width: 10),
-
+          _iconCircle("assets/images/shopping-bag.png"),
           CircleAvatar(
-              backgroundColor: Colors.white,
+              // backgroundColor: Colors.white,
               radius: 18,
               child: Image.asset(
                 "assets/images/user.png",
                 width: 20,
                 height: 20,
+                color: Colors.white,
               )),
         ],
       ),
@@ -89,11 +103,14 @@ class AppbarDashboard extends StatelessWidget {
       width: 36,
       decoration: const BoxDecoration(
         shape: BoxShape.circle,
-        color: Colors.white,
+        // color: Colors.white,
       ),
       padding: const EdgeInsets.all(8), // espace autour de l'image
       child: Image.asset(
         imageUrl,
+        width: 25,
+        height: 25,
+        color: Colors.white,
         fit: BoxFit.contain, // ajuste l'image à la taille disponible
       ),
     );

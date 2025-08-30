@@ -1,38 +1,43 @@
-import 'package:e_com_app/models/tracking_step_widget.dart'
-    show TrackingStepModel;
+import 'package:e_com_app/models/tracking_step_widget.dart';
 
 class OrderModel {
-  final String id;
-  final String formattedDate;
+  final String? id;
+  final String? formattedDate;
   final String status;
-  final String productName;
-  final String productCategory;
-  final String productColor;
-  final String productStorage;
+  final String? productName;
+  final String? productCategory;
+  final String? productColor;
+  final String? productStorage;
   final String? originalPrice;
-  final String currentPrice;
+  final String? currentPrice;
   final String? discount;
-  final String subtotal;
-  final String shipping;
-  final String taxes;
+  final String? subtotal;
+  final String? shipping;
+  final String? taxes;
   final String total;
-  final List<TrackingStepModel> trackingSteps;
+  final List<TrackingStepModel>? trackingSteps;
+  final String? reference;
+  final String? date;
+  final String? customer;
 
   OrderModel({
-    required this.id,
-    required this.formattedDate,
+    this.id,
+    this.formattedDate,
     required this.status,
-    required this.productName,
-    required this.productCategory,
-    required this.productColor,
-    required this.productStorage,
+    this.productName,
+    this.productCategory,
+    this.productColor,
+    this.productStorage,
     this.originalPrice,
-    required this.currentPrice,
+    this.currentPrice,
     this.discount,
-    required this.subtotal,
-    required this.shipping,
-    required this.taxes,
+    this.subtotal,
+    this.shipping,
+    this.taxes,
     required this.total,
-    required this.trackingSteps,
+    this.trackingSteps,
+    this.reference,
+    this.date,
+    this.customer,
   });
 }

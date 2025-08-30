@@ -32,7 +32,7 @@ class MyApp extends StatelessWidget {
 
   final kColorScheme = ColorScheme.fromSeed(
     seedColor: Colors.white,
-    primary: AppColors.PRIMARY_BLUE_COLOR,
+    primary: Color(0xFF3BA3F2),
   );
 
   final GoRouter _router = GoRouter(

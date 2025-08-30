@@ -10,12 +10,12 @@ class AcceuilMobileScreen extends StatelessWidget {
   const AcceuilMobileScreen({super.key});
 
   List<ProductModel> get products => [
-        ProductModel(name: "Dries Van Noten", price: "\$580", imagePath: "assets/images/winter_hooby.webp"),
-        ProductModel(name: "Wales Bonner", price: "\$280", imagePath: 'assets/images/clothe.jpeg'),
-        ProductModel(name: "Rick Owens", price: "\$650", imagePath: 'assets/images/winter_hooby.webp'),
-        ProductModel(name: "Jacquemus", price: "\$420", imagePath: "assets/images/winter_cap.webp"),
-        ProductModel(name: "Prada", price: "\$720", imagePath: "assets/images/winter_cap.webp"),
-        ProductModel(name: "Balenciaga", price: "\$850", imagePath: 'assets/images/clothe.jpeg'),
+        ProductModel(name: "Dries Van Noten", price: "\$580", imageUrl: "assets/images/winter_hooby.webp"),
+        ProductModel(name: "Wales Bonner", price: "\$280", imageUrl: 'assets/images/clothe.jpeg'),
+        ProductModel(name: "Rick Owens", price: "\$650", imageUrl: 'assets/images/winter_hooby.webp'),
+        ProductModel(name: "Jacquemus", price: "\$420", imageUrl: "assets/images/winter_cap.webp"),
+        ProductModel(name: "Prada", price: "\$720", imageUrl: "assets/images/winter_cap.webp"),
+        ProductModel(name: "Balenciaga", price: "\$850", imageUrl: 'assets/images/clothe.jpeg'),
       ];
 
   @override
@@ -63,9 +63,9 @@ class AcceuilMobileScreen extends StatelessWidget {
                   childAspectRatio: 0.9,
                   children: products.map((product) {
                     return ProductCard(
-                      name: product.name,
-                      price: product.price,
-                      imagePath: product.imagePath,
+                      name: product.name ?? "",
+                      price: product.price ?? "",
+                      imagePath: product.imageUrl ?? "",
                     );
                   }).toList(),
                 ),
