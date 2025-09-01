@@ -70,18 +70,20 @@ class AppbarDashboard extends StatelessWidget {
             ),
           ),
 
-          const SizedBox(width: 15),
+          const SizedBox(width: 10),
+          _iconCircle("assets/images/day-mode.png"),
 
+          const SizedBox(width: 3),
           // 🔔 Notification
           _iconCircle("assets/images/notification.png"),
 
-          const SizedBox(width: 10),
+          const SizedBox(width: 3),
 
           // 💬 Message
-          _iconCircle("assets/images/responsiveness.png"),
+          _iconCircle("assets/images/messenger1.png"),
 
-          const SizedBox(width: 10),
-          _iconCircle("assets/images/shopping-bag.png"),
+          const SizedBox(width: 3),
+          _iconCircle("assets/images/panier.png"),
           CircleAvatar(
               // backgroundColor: Colors.white,
               radius: 18,

@@ -6,6 +6,7 @@ import 'package:e_com_app/pages/web/orders/screens/list_orders_screen.dart';
 import 'package:e_com_app/pages/web/product/screen/add_product_screen.dart';
 import 'package:e_com_app/pages/web/product/screen/list_grid_product_screen.dart';
 import 'package:e_com_app/pages/web/product/screen/product_web_screen.dart';
+import 'package:e_com_app/routes/routes.dart';
 import 'package:e_com_app/theme/app_colors.dart';
 
 import 'package:e_com_app/theme/app_dark_theme.dart';
@@ -35,88 +36,6 @@ class MyApp extends StatelessWidget {
     primary: Color(0xFF3BA3F2),
   );
 
-  final GoRouter _router = GoRouter(
-    initialLocation: '/',
-    routes: [
-      GoRoute(
-        path: '/',
-        builder: (BuildContext context, GoRouterState state) {
-          return const LoginScreen();
-        },
-      ),
-      GoRoute(
-        path: '/dashboard',
-        builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(0);
-          return const DashboardScreen();
-        },
-      ),
-      GoRoute(
-        path: '/products',
-        builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(6); // Sélectionner la page Liste des documents
-          return ProductWebScreen();
-        },
-      ),
-      GoRoute(
-        path: '/add-product',
-        builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(7); // Sélectionner la page Nouveau document
-          return const AddProductScreen();
-        },
-      ),
-      GoRoute(
-        path: '/orders',
-        builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(3); // Sélectionner la page Collaborateurs
-          return ListOrdersScreen();
-        },
-      ),
-      GoRoute(
-        path: '/promote',
-        builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(4); // Sélectionner la page Collaborateurs
-          return ListOrdersScreen();
-        },
-      ),
-      // GoRoute(
-      //   path: '/collaborateur/List_collaborateurs',
-      //   builder: (BuildContext context, GoRouterState state) {
-      //     context.read<SwitchPageCubit>().switchPage(7); // Sélectionner la page Liste des documents
-      //     return ListCollaborateurScreen();
-      //   },
-      // ),
-      // GoRoute(
-      //   path: '/collaborateur/nouveau_collaborateur',
-      //   builder: (BuildContext context, GoRouterState state) {
-      //     context.read<SwitchPageCubit>().switchPage(8);
-      //     return const NewCollaborateurScreen();
-      //   },
-      // ),
-      // GoRoute(
-      //   path: '/rapports',
-      //   builder: (BuildContext context, GoRouterState state) {
-      //     context.read<SwitchPageCubit>().switchPage(4);
-      //     return const RapportsScreen();
-      //   },
-      // ),
-      // GoRoute(
-      //   path: '/',
-      //   builder: (BuildContext context, GoRouterState state) {
-      //     return const UserVerifyPage();
-      //   },
-      // ),
-      // GoRoute(
-      //   path: '/document/view/:identifier',
-      //   builder: (context, state) {
-      //     final identifier = state.pathParameters['identifier']!;
-      //     return DocumentDetailsScreen(
-      //       documentId: 1,
-      //     );
-      //   },
-      // ),
-    ],
-  );
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
@@ -128,7 +47,6 @@ class MyApp extends StatelessWidget {
             providers: [
               BlocProvider<SwitchPageCubit>(
                 create: (context) => SwitchPageCubit(),
-                child: ListOrdersScreen(),
               ),
             ],
             child: Builder(builder: (context) {
@@ -136,7 +54,7 @@ class MyApp extends StatelessWidget {
               return MaterialApp.router(
                 debugShowCheckedModeBanner: false,
                 title: 'Flutter Demo',
-                routerConfig: _router,
+                routerConfig: AppRouter.router,
                 theme: ThemeData().copyWith(
                   appBarTheme: const AppBarTheme(
                     backgroundColor: Color(0xFFFCFCFC),

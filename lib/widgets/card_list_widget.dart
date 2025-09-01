@@ -4,6 +4,7 @@ class CardListWidget extends StatelessWidget {
   final String? title;
   final String? subtitle;
   final List<Widget>? actions; // boutons en haut à droite
+  final List<Widget>? buttons;
   final Widget child; // le contenu : grille ou table
 
   const CardListWidget({
@@ -11,6 +12,7 @@ class CardListWidget extends StatelessWidget {
     this.title,
     this.subtitle,
     this.actions,
+    this.buttons,
     required this.child,
   }) : super(key: key);
 
@@ -41,6 +43,7 @@ class CardListWidget extends StatelessWidget {
               Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
+                  if (buttons != null) Row(children: buttons!),
                   if (title != null)
                     Text(
                       title!,

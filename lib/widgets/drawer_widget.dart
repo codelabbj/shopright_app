@@ -148,7 +148,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 width: Const.screenWidth(context) * 0.19,
                 height: 35,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
+                  // borderRadius: BorderRadius.circular(6),
                   // boxShadow: [
                   //   context.read<SwitchPageCubit>().state.selectedPage == 4
                   //       ? BoxShadow(
@@ -167,7 +167,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 child: TextButton(
                   onPressed: () {
                     context.read<SwitchPageCubit>().switchPage(4);
-                    context.go('/promote');
+                    context.go('/pages');
                   },
                   style: ButtonStyle(
                     overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -189,7 +189,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                       ),
                       SizedBox(width: 5),
                       Text(
-                        'Page',
+                        'Pages',
                         style: Theme.of(context).textTheme.displaySmall?.copyWith(
                               color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
                             ),
@@ -206,7 +206,7 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 width: Const.screenWidth(context) * 0.19,
                 height: 35,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
+                  // borderRadius: BorderRadius.circular(6),
                   // boxShadow: [
                   //   context.read<SwitchPageCubit>().state.selectedPage == 4
                   //       ? BoxShadow(
@@ -220,12 +220,12 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                   //           // Décalage horizontal et vertical de l'ombre
                   //           )
                   // ],
-                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                  color: context.read<SwitchPageCubit>().state.selectedPage == 7 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                 ),
                 child: TextButton(
                   onPressed: () {
-                    context.read<SwitchPageCubit>().switchPage(4);
-                    context.go('/promote');
+                    context.read<SwitchPageCubit>().switchPage(7);
+                    context.go('/galeries');
                   },
                   style: ButtonStyle(
                     overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -243,13 +243,13 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                         "assets/images/gallery.png",
                         width: 20,
                         height: 20,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 7 ? Colors.white : Colors.grey[500],
                       ),
                       SizedBox(width: 5),
                       Text(
                         'Galeries',
                         style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                              color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                              color: context.read<SwitchPageCubit>().state.selectedPage == 7 ? Colors.white : Colors.grey[500],
                             ),
                       ),
                     ],
@@ -262,26 +262,12 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 width: Const.screenWidth(context) * 0.19,
                 height: 35,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  // boxShadow: [
-                  //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                  //       ? BoxShadow(
-                  //           color: Colors.grey.withValues(alpha: 0.2),
-                  //           spreadRadius: 10,
-                  //           blurRadius: 10,
-                  //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                  //         )
-                  //       : BoxShadow(
-                  //
-                  //           // Décalage horizontal et vertical de l'ombre
-                  //           )
-                  // ],
-                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                  color: context.read<SwitchPageCubit>().state.selectedPage == 8 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                 ),
                 child: TextButton(
                   onPressed: () {
-                    context.read<SwitchPageCubit>().switchPage(4);
-                    context.go('/promote');
+                    context.read<SwitchPageCubit>().switchPage(8);
+                    context.go('/testimonials');
                   },
                   style: ButtonStyle(
                     overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -299,13 +285,13 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                         "assets/images/testimonies.png",
                         width: 20,
                         height: 20,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 8 ? Colors.white : Colors.grey[500],
                       ),
                       SizedBox(width: 5),
                       Text(
                         'Testimonies',
                         style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                              color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                              color: context.read<SwitchPageCubit>().state.selectedPage == 8 ? Colors.white : Colors.grey[500],
                             ),
                       ),
                     ],
@@ -319,26 +305,14 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 width: Const.screenWidth(context) * 0.19,
                 height: 35,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  // boxShadow: [
-                  //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                  //       ? BoxShadow(
-                  //           color: Colors.grey.withValues(alpha: 0.2),
-                  //           spreadRadius: 10,
-                  //           blurRadius: 10,
-                  //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                  //         )
-                  //       : BoxShadow(
-                  //
-                  //           // Décalage horizontal et vertical de l'ombre
-                  //           )
-                  // ],
-                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                  // borderRadius: BorderRadius.circular(6),
+
+                  color: context.read<SwitchPageCubit>().state.selectedPage == 10 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                 ),
                 child: TextButton(
                   onPressed: () {
-                    context.read<SwitchPageCubit>().switchPage(4);
-                    context.go('/promote');
+                    context.read<SwitchPageCubit>().switchPage(10);
+                    context.go('/annoncements');
                   },
                   style: ButtonStyle(
                     overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -353,16 +327,16 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                   child: Row(
                     children: [
                       Image.asset(
-                        "assets/images/promotion.png",
+                        "assets/images/marketing.png",
                         width: 20,
                         height: 20,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 10 ? Colors.white : Colors.grey[500],
                       ),
                       SizedBox(width: 5),
                       Text(
                         'Annoncements',
                         style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                              color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                              color: context.read<SwitchPageCubit>().state.selectedPage == 10 ? Colors.white : Colors.grey[500],
                             ),
                       ),
                     ],
@@ -484,121 +458,121 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 ),
               ),
               LocationsDrawerWidget(),
-              Container(
-                // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
-                height: 35,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  // boxShadow: [
-                  //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                  //       ? BoxShadow(
-                  //           color: Colors.grey.withValues(alpha: 0.2),
-                  //           spreadRadius: 10,
-                  //           blurRadius: 10,
-                  //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                  //         )
-                  //       : BoxShadow(
-                  //
-                  //           // Décalage horizontal et vertical de l'ombre
-                  //           )
-                  // ],
-                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                ),
-                child: TextButton(
-                  onPressed: () {
-                    context.read<SwitchPageCubit>().switchPage(4);
-                    context.go('/promote');
-                  },
-                  style: ButtonStyle(
-                    overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.hovered)) {
-                          return Colors.transparent; // Pas d'effet au survol
-                        }
-                        return null; // Laisser les autres états par défaut
-                      },
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        "assets/images/social-media.png",
-                        width: 20,
-                        height: 20,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
-                      ),
-                      SizedBox(width: 5),
-                      Text(
-                        'Media',
-                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                              color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Container(
+              //   // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+              //   padding: EdgeInsets.symmetric(vertical: 10),
+              //   width: Const.screenWidth(context) * 0.19,
+              //   height: 35,
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(6),
+              //     // boxShadow: [
+              //     //   context.read<SwitchPageCubit>().state.selectedPage == 4
+              //     //       ? BoxShadow(
+              //     //           color: Colors.grey.withValues(alpha: 0.2),
+              //     //           spreadRadius: 10,
+              //     //           blurRadius: 10,
+              //     //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+              //     //         )
+              //     //       : BoxShadow(
+              //     //
+              //     //           // Décalage horizontal et vertical de l'ombre
+              //     //           )
+              //     // ],
+              //     color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+              //   ),
+              //   child: TextButton(
+              //     onPressed: () {
+              //       context.read<SwitchPageCubit>().switchPage(4);
+              //       context.go('/promote');
+              //     },
+              //     style: ButtonStyle(
+              //       overlayColor: MaterialStateProperty.resolveWith<Color?>(
+              //         (Set<MaterialState> states) {
+              //           if (states.contains(MaterialState.hovered)) {
+              //             return Colors.transparent; // Pas d'effet au survol
+              //           }
+              //           return null; // Laisser les autres états par défaut
+              //         },
+              //       ),
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         Image.asset(
+              //           "assets/images/social-media.png",
+              //           width: 20,
+              //           height: 20,
+              //           color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+              //         ),
+              //         SizedBox(width: 5),
+              //         Text(
+              //           'Media',
+              //           style: Theme.of(context).textTheme.displaySmall?.copyWith(
+              //                 color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+              //               ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               AppearenceWidget(),
               PluginsDrawerWidget(),
               ToolsDrawerWidget(),
-              Container(
-                // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
-                height: 35,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  // boxShadow: [
-                  //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                  //       ? BoxShadow(
-                  //           color: Colors.grey.withValues(alpha: 0.2),
-                  //           spreadRadius: 10,
-                  //           blurRadius: 10,
-                  //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                  //         )
-                  //       : BoxShadow(
-                  //
-                  //           // Décalage horizontal et vertical de l'ombre
-                  //           )
-                  // ],
-                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                ),
-                child: TextButton(
-                  onPressed: () {
-                    context.read<SwitchPageCubit>().switchPage(4);
-                    context.go('/promote');
-                  },
-                  style: ButtonStyle(
-                    overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.hovered)) {
-                          return Colors.transparent; // Pas d'effet au survol
-                        }
-                        return null; // Laisser les autres états par défaut
-                      },
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        "assets/images/settings.png",
-                        width: 20,
-                        height: 20,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
-                      ),
-                      SizedBox(width: 5),
-                      Text(
-                        'Settings',
-                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                              color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Container(
+              //   // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+              //   padding: EdgeInsets.symmetric(vertical: 10),
+              //   width: Const.screenWidth(context) * 0.19,
+              //   height: 35,
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(6),
+              //     // boxShadow: [
+              //     //   context.read<SwitchPageCubit>().state.selectedPage == 4
+              //     //       ? BoxShadow(
+              //     //           color: Colors.grey.withValues(alpha: 0.2),
+              //     //           spreadRadius: 10,
+              //     //           blurRadius: 10,
+              //     //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+              //     //         )
+              //     //       : BoxShadow(
+              //     //
+              //     //           // Décalage horizontal et vertical de l'ombre
+              //     //           )
+              //     // ],
+              //     color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+              //   ),
+              //   child: TextButton(
+              //     onPressed: () {
+              //       context.read<SwitchPageCubit>().switchPage(4);
+              //       context.go('/promote');
+              //     },
+              //     style: ButtonStyle(
+              //       overlayColor: MaterialStateProperty.resolveWith<Color?>(
+              //         (Set<MaterialState> states) {
+              //           if (states.contains(MaterialState.hovered)) {
+              //             return Colors.transparent; // Pas d'effet au survol
+              //           }
+              //           return null; // Laisser les autres états par défaut
+              //         },
+              //       ),
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         Image.asset(
+              //           "assets/images/settings.png",
+              //           width: 20,
+              //           height: 20,
+              //           color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+              //         ),
+              //         SizedBox(width: 5),
+              //         Text(
+              //           'Settings',
+              //           style: Theme.of(context).textTheme.displaySmall?.copyWith(
+              //                 color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+              //               ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               Container(
                 // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),

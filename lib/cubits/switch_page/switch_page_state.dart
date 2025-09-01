@@ -1,7 +1,7 @@
 import 'package:equatable/equatable.dart';
 
 class SwitchPageState extends Equatable {
-  final int selectedPage;
+  final double selectedPage;
   const SwitchPageState({
     required this.selectedPage,
   });
@@ -13,7 +13,7 @@ class SwitchPageState extends Equatable {
   }
 
   SwitchPageState copyWith({
-    int? selectedPage,
+    double? selectedPage,
   }) {
     return SwitchPageState(
       selectedPage: selectedPage ?? this.selectedPage,

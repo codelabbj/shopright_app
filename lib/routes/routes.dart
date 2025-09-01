@@ -1,0 +1,92 @@
+import 'package:e_com_app/pages/web/annoncement/screens/annoncement_screen.dart';
+import 'package:e_com_app/pages/web/testimonials/widgets/testimonials_widget.dart';
+import 'package:flutter/cupertino.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:go_router/go_router.dart';
+
+import '../cubits/switch_page/switch_page_cubit.dart';
+import '../pages/web/authentification/login_screen.dart';
+import '../pages/web/dasboard/screen/dashboard_screen.dart';
+import '../pages/web/galleries/screens/galleries_sceen.dart';
+import '../pages/web/orders/screens/list_orders_screen.dart';
+import '../pages/web/pages-section/screens/pages_screen.dart';
+import '../pages/web/product/screen/add_product_screen.dart';
+import '../pages/web/product/screen/product_web_screen.dart';
+import '../pages/web/testimonials/screens/testimonals_screen.dart';
+
+class AppRouter {
+  static final GoRouter router = GoRouter(
+    initialLocation: '/',
+    routes: [
+      GoRoute(
+        path: '/',
+        builder: (BuildContext context, GoRouterState state) {
+          return const LoginScreen();
+        },
+      ),
+      GoRoute(
+        path: '/dashboard',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(0);
+          return const DashboardScreen();
+        },
+      ),
+      GoRoute(
+        path: '/pages',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(4);
+          return const PagesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/products',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(6);
+          return ProductWebScreen();
+        },
+      ),
+      // GoRoute(
+      //   path: '/add-product',
+      //   builder: (BuildContext context, GoRouterState state) {
+      //     context.read<SwitchPageCubit>().switchPage(7);
+      //     return const AddProductScreen();
+      //   },
+      // ),
+      GoRoute(
+        path: '/galeries',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(7);
+          return const GalleriesSceen();
+        },
+      ),
+      GoRoute(
+        path: '/testimonials',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(8);
+          return const TestimonalsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/annoncements',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(10);
+          return const AnnoncementScreen();
+        },
+      ),
+      GoRoute(
+        path: '/orders',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(3);
+          return ListOrdersScreen();
+        },
+      ),
+      GoRoute(
+        path: '/promote',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(4);
+          return ListOrdersScreen();
+        },
+      ),
+    ],
+  );
+}

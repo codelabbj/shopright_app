@@ -53,7 +53,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                     //                   )
                     //                 : BoxShadow(),
                   ],
-                  color: context.read<SwitchPageCubit>().state.selectedPage == 23
+                  color: context.read<SwitchPageCubit>().state.selectedPage == 1
                       ? Colors.transparent
                       : context.read<SwitchPageCubit>().state.selectedPage == 24
                           ? Colors.transparent
