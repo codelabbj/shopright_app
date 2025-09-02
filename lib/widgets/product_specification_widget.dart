@@ -16,7 +16,7 @@ class ProductSpecificationWidget extends StatefulWidget {
 }
 
 class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget> {
-  bool isExpanded = false;
+  // bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SwitchPageCubit, SwitchPageState>(
@@ -56,15 +56,11 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                 ),
                 child: TextButton(
                   onPressed: () {
-                    if (state.selectedPage == 2 || isExpanded) {
-                      setState(() {
-                        isExpanded = false;
-                      });
+                    if (state.selectedPage == 2 || state.isSpecExpanded == true) {
+                      context.read<SwitchPageCubit>().setSpecExpanded(false);
                     } else {
                       // context.read<SwitchPageCubit>().switchPage(23);
-                      setState(() {
-                        isExpanded = true;
-                      });
+                      context.read<SwitchPageCubit>().setSpecExpanded(true);
                     }
                   },
                   style: ButtonStyle(
@@ -81,17 +77,17 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                     children: [
                       Image.asset(
                         "assets/images/specification.png",
-                        color: isExpanded == true ? Colors.white : Colors.grey[500],
+                        color: state.isSpecExpanded == true ? Colors.white : Colors.grey[500],
                       ),
                       SizedBox(width: 5),
                       Text(
                         'Product Specification',
                         style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                              color: isExpanded == true ? Colors.white : Colors.grey[500],
+                              color: state.isSpecExpanded == true ? Colors.white : Colors.grey[500],
                             ),
                       ),
                       Spacer(),
-                      isExpanded == true
+                      state.isSpecExpanded == true
                           ? InkWell(onTap: () {}, child: Icon(Icons.arrow_drop_down, color: Colors.white))
                           : Icon(
                               Icons.arrow_right,
@@ -102,7 +98,7 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                 ),
               ),
             ),
-            isExpanded
+            state.isSpecExpanded
                 // context.read<SwitchPageCubit>().state.selectedPage == 6 ||
                 // context.read<SwitchPageCubit>().state.selectedPage == 7
                 ? Padding(
@@ -115,7 +111,7 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                           width: Const.screenWidth(context) * 0.19,
                           height: 35,
                           decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
+                            // borderRadius: BorderRadius.circular(6),
                             // boxShadow: [
                             //   context.read<SwitchPageCubit>().state.selectedPage == 4
                             //       ? BoxShadow(
@@ -129,13 +125,13 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                             //           // Décalage horizontal et vertical de l'ombre
                             //           )
                             // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 2.1 ? Colors.grey[850] : Colors.transparent,
                           ),
                           child: TextButton(
                             onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(4);
-                              context.go('/promote');
+                              context.read<SwitchPageCubit>().switchPage(2.1);
+                              context.go('/product/groups');
+                              context.read<SwitchPageCubit>().setSpecExpanded(true);
                             },
                             style: ButtonStyle(
                               overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -186,13 +182,13 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                             //           // Décalage horizontal et vertical de l'ombre
                             //           )
                             // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 2.2 ? Colors.grey[800] : Colors.transparent,
                           ),
                           child: TextButton(
                             onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
+                              context.read<SwitchPageCubit>().switchPage(2.2);
+                              context.go('/product/attributes');
+                              context.read<SwitchPageCubit>().setSpecExpanded(true);
                             },
                             style: ButtonStyle(
                               overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -209,13 +205,13 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                                 Image.asset(
                                   "assets/images/groups.png",
                                   height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
+                                  color: context.read<SwitchPageCubit>().state.selectedPage == 2.2 ? Colors.white : Colors.grey[500],
                                 ),
                                 SizedBox(width: 5),
                                 Text(
                                   'Attributes',
                                   style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
+                                        color: context.read<SwitchPageCubit>().state.selectedPage == 2.2 ? Colors.white : Colors.grey[500],
                                       ),
                                 ),
                               ],
@@ -242,13 +238,13 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                             //           // Décalage horizontal et vertical de l'ombre
                             //           )
                             // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 2.3 ? Colors.grey[800] : Colors.transparent,
                           ),
                           child: TextButton(
                             onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
+                              context.read<SwitchPageCubit>().switchPage(2.3);
+                              context.go('/product/tables');
+                              context.read<SwitchPageCubit>().setSpecExpanded(true);
                             },
                             style: ButtonStyle(
                               overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -266,13 +262,13 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                                   "assets/images/database-table.png",
                                   width: 20,
                                   height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
+                                  color: context.read<SwitchPageCubit>().state.selectedPage == 2.3 ? Colors.white : Colors.grey[500],
                                 ),
                                 SizedBox(width: 5),
                                 Text(
                                   'Tables',
                                   style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
+                                        color: context.read<SwitchPageCubit>().state.selectedPage == 2.3 ? Colors.white : Colors.grey[500],
                                       ),
                                 ),
                               ],

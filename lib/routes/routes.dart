@@ -1,4 +1,8 @@
 import 'package:e_com_app/pages/web/annoncement/screens/annoncement_screen.dart';
+import 'package:e_com_app/pages/web/marketplace/screens/market_stores_screen.dart';
+import 'package:e_com_app/pages/web/product-specification/screens/product_attributes_screen.dart';
+import 'package:e_com_app/pages/web/product-specification/screens/product_group_screen.dart';
+import 'package:e_com_app/pages/web/product-specification/screens/product_table_screen.dart';
 import 'package:e_com_app/pages/web/testimonials/widgets/testimonials_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -78,6 +82,34 @@ class AppRouter {
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(3);
           return ListOrdersScreen();
+        },
+      ),
+      GoRoute(
+        path: '/product/groups',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(2.1);
+          return ProductGroupScreen();
+        },
+      ),
+      GoRoute(
+        path: '/product/attributes',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(2.2);
+          return ProductAttributesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/product/tables',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(2.3);
+          return ProductTableScreen();
+        },
+      ),
+      GoRoute(
+        path: '/marketplace/stores',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(3.1);
+          return MarketStoresScreen();
         },
       ),
       GoRoute(

@@ -1,29 +1,69 @@
+import 'package:e_com_app/models/market_store_model.dart';
 import 'package:e_com_app/models/page_item_model.dart';
-import 'package:e_com_app/models/product_group_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../models/gallerie_model.dart';
 import '../../../../utils/utils.dart';
 
-class ProductGroupWidget extends StatefulWidget {
-  const ProductGroupWidget({Key? key}) : super(key: key);
+class MarketStoresWidget extends StatefulWidget {
+  const MarketStoresWidget({Key? key}) : super(key: key);
 
   @override
-  State<ProductGroupWidget> createState() => _ProductGroupWidgetState();
+  State<MarketStoresWidget> createState() => _MarketStoresWidgetState();
 }
 
-class _ProductGroupWidgetState extends State<ProductGroupWidget> {
-  List<ProductGroupModel> items = [
-    ProductGroupModel(
+class _MarketStoresWidgetState extends State<MarketStoresWidget> {
+  List<MarketStoreModel> items = [
+    MarketStoreModel(
       id: 1,
-      name: "Perfect",
-      description: "Published",
+      name: "Old El Paso",
+      status: "Approved",
+      logo: 'assets/images/winter_cap.webp',
+      earnings: "2300.00\$",
+      productsCount: "3",
+      vendorFullame: "Elliott Durgan",
       createdAt: '2025-08-08',
     ),
-    ProductGroupModel(id: 2, name: "New Day", description: "Not Published", createdAt: '2025-08-08'),
-    ProductGroupModel(id: 3, name: "Happy Day", description: "Published", createdAt: '2025-08-08'),
-    ProductGroupModel(id: 4, name: "Nature", description: "Deleted", createdAt: '2025-08-08'),
-    ProductGroupModel(id: 5, name: "Morning", description: "Published", createdAt: '2025-08-08'),
+    MarketStoreModel(
+      id: 2,
+      name: "StarKist",
+      status: "Approved",
+      logo: 'assets/images/winter_cap.webp',
+      earnings: "2300.00\$",
+      productsCount: "5",
+      vendorFullame: "Mr. Dane Tromp",
+      createdAt: '2025-08-08',
+    ),
+    MarketStoreModel(
+      id: 3,
+      name: "Robert’s Store",
+      status: "Rejected",
+      logo: 'assets/images/winter_cap.webp',
+      earnings: "28.80\$",
+      productsCount: "6",
+      vendorFullame: "Dr. Gonzalo Kertzmann",
+      createdAt: '2025-08-08',
+    ),
+    MarketStoreModel(
+      id: 4,
+      name: "Stouffer",
+      status: "Pending",
+      logo: 'assets/images/winter_cap.webp',
+      earnings: "456.80\$",
+      productsCount: "9",
+      vendorFullame: "Prof. Cleta Mueller",
+      createdAt: '2025-08-08',
+    ),
+    MarketStoreModel(
+      id: 5,
+      name: "Young Shop",
+      status: "Rejected",
+      logo: 'assets/images/winter_cap.webp',
+      earnings: "74.40\$",
+      productsCount: "9",
+      vendorFullame: "Ms. Marisa Block Jr.",
+      createdAt: '2025-08-08',
+    ),
   ];
 
   List<bool> selected = [];
@@ -63,9 +103,10 @@ class _ProductGroupWidgetState extends State<ProductGroupWidget> {
             label: Text(
           "ID",
         )),
+        DataColumn(label: Text("Images")),
         DataColumn(label: Text("Name")),
-        DataColumn(label: Text("Description")),
         DataColumn(label: Text("Created at")),
+        DataColumn(label: Text("Status")),
         DataColumn(label: Text("Actions")),
       ],
       rows: List.generate(items.length, (index) {
@@ -97,17 +138,54 @@ class _ProductGroupWidgetState extends State<ProductGroupWidget> {
               item.id.toString(),
               style: Theme.of(context).textTheme.labelSmall,
             )),
-            DataCell(Text(
-              item.name,
-              style: Theme.of(context).textTheme.labelSmall,
+            DataCell(Image.asset(
+              item.logo,
+              width: 30,
+              height: 30,
             )),
-            DataCell(Text(item.description, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Text(item.name, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Text(item.earnings, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Text(item.vendorFullame, style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text(item.createdAt, style: Theme.of(context).textTheme.labelSmall)),
+            _buildStockStatus(item.status, context),
             _buildActionButtons(context),
           ],
         );
       }),
     );
+  }
+
+  static DataCell _buildStockStatus(String status, BuildContext context) {
+    Color color;
+    switch (status) {
+      case 'Rejected':
+        color = Colors.red;
+        break;
+      case 'Pending':
+        color = Colors.orange;
+        break;
+      default:
+        color = Colors.green;
+    }
+    return DataCell(Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: color.withValues(alpha: 0.2)),
+      child: SizedBox(
+          width: 94,
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 5.0),
+            child: Row(
+              children: [
+                Icon(
+                  Icons.circle,
+                  size: 10,
+                  color: color,
+                ),
+                SizedBox(width: 2),
+                Expanded(child: Text(status, style: Theme.of(context).textTheme.labelSmall)),
+              ],
+            ),
+          )),
+    ));
   }
 
   static DataCell _buildActionButtons(context) {

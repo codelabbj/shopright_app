@@ -6,17 +6,16 @@ import '../../../../widgets/card_list_widget.dart';
 import '../../../../widgets/custom_search_widget.dart';
 import '../../../../widgets/drawer_widget.dart';
 import '../../pages-section/widgets/filter_widget.dart';
+import '../widgets/market_stores_widget.dart';
 
-import '../widets/product_group_widget.dart';
-
-class ProductGroupScreen extends StatefulWidget {
-  const ProductGroupScreen({super.key});
+class MarketStoresScreen extends StatefulWidget {
+  const MarketStoresScreen({super.key});
 
   @override
-  State<ProductGroupScreen> createState() => _ProductGroupScreenState();
+  State<MarketStoresScreen> createState() => _MarketStoresScreenState();
 }
 
-class _ProductGroupScreenState extends State<ProductGroupScreen> {
+class _MarketStoresScreenState extends State<MarketStoresScreen> {
   bool isFilterVisible = false;
   final TextEditingController newFilter = TextEditingController();
   String selectedStatus = "Status";
@@ -268,7 +267,7 @@ class _ProductGroupScreenState extends State<ProductGroupScreen> {
                                   constraints: BoxConstraints(
                                     minWidth: MediaQuery.of(context).size.width,
                                   ),
-                                  child: ProductGroupWidget(),
+                                  child: MarketStoresWidget(),
                                 ),
                               ),
                             ),

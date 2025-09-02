@@ -129,13 +129,14 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                             //           // Décalage horizontal et vertical de l'ombre
                             //           )
                             // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 3.1
+                                ? Theme.of(context).colorScheme.primary
+                                : Colors.transparent,
                           ),
                           child: TextButton(
                             onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(4);
-                              context.go('/promote');
+                              context.read<SwitchPageCubit>().switchPage(3.1);
+                              context.go('/marketplace/reports');
                             },
                             style: ButtonStyle(
                               overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -153,13 +154,13 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                   "assets/images/business-report.png",
                                   width: 20,
                                   height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3.1 ? Colors.white : Colors.grey[500],
                                 ),
                                 SizedBox(width: 5),
                                 Text(
                                   'Reports',
                                   style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3.1 ? Colors.white : Colors.grey[500],
                                       ),
                                 ),
                               ],
@@ -186,13 +187,14 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                             //           // Décalage horizontal et vertical de l'ombre
                             //           )
                             // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 3.2
+                                ? Theme.of(context).colorScheme.primary
+                                : Colors.transparent,
                           ),
                           child: TextButton(
                             onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
+                              context.read<SwitchPageCubit>().switchPage(3.2);
+                              context.go('/marketplace/stores');
                             },
                             style: ButtonStyle(
                               overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -209,13 +211,13 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                 Image.asset(
                                   "assets/images/marketplace1.png",
                                   height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
+                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3.2 ? Colors.white : Colors.grey[500],
                                 ),
                                 SizedBox(width: 5),
                                 Text(
                                   'Stores',
                                   style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
+                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3.2 ? Colors.white : Colors.grey[500],
                                       ),
                                 ),
                               ],
