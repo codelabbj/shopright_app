@@ -1,5 +1,6 @@
 import 'package:e_com_app/pages/web/annoncement/screens/annoncement_screen.dart';
 import 'package:e_com_app/pages/web/marketplace/screens/market_stores_screen.dart';
+import 'package:e_com_app/pages/web/marketplace/screens/market_vendors_screen.dart';
 import 'package:e_com_app/pages/web/product-specification/screens/product_attributes_screen.dart';
 import 'package:e_com_app/pages/web/product-specification/screens/product_group_screen.dart';
 import 'package:e_com_app/pages/web/product-specification/screens/product_table_screen.dart';
@@ -12,6 +13,8 @@ import '../cubits/switch_page/switch_page_cubit.dart';
 import '../pages/web/authentification/login_screen.dart';
 import '../pages/web/dasboard/screen/dashboard_screen.dart';
 import '../pages/web/galleries/screens/galleries_sceen.dart';
+import '../pages/web/marketplace/screens/market_unverified_vendor_screen.dart';
+import '../pages/web/marketplace/screens/market_withdrawal_screen.dart';
 import '../pages/web/orders/screens/list_orders_screen.dart';
 import '../pages/web/pages-section/screens/pages_screen.dart';
 import '../pages/web/product/screen/add_product_screen.dart';
@@ -105,11 +108,33 @@ class AppRouter {
           return ProductTableScreen();
         },
       ),
+
       GoRoute(
         path: '/marketplace/stores',
         builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(3.1);
+          context.read<SwitchPageCubit>().switchPage(3.2);
           return MarketStoresScreen();
+        },
+      ),
+      GoRoute(
+        path: '/marketplace/withdrawals',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(3.3);
+          return MarketWithdrawalScreen();
+        },
+      ),
+      GoRoute(
+        path: '/marketplace/vendors',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(3.4);
+          return MarketVendorsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/marketplace/unverified-vendors',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(3.5);
+          return MarketUnverifiedVendorScreen();
         },
       ),
       GoRoute(

@@ -16,7 +16,7 @@ class MarketPlaceWidget extends StatefulWidget {
 }
 
 class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
-  bool isExpanded = false;
+  // bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SwitchPageCubit, SwitchPageState>(
@@ -56,15 +56,11 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    if (state.selectedPage == 3 || isExpanded) {
-                      setState(() {
-                        isExpanded = false;
-                      });
+                    if (state.selectedPage == 3 || state.isMaketPlaceExpanded) {
+                      context.read<SwitchPageCubit>().setMarketPlaceExpanded(false);
                     } else {
                       // context.read<SwitchPageCubit>().switchPage(23);
-                      setState(() {
-                        isExpanded = true;
-                      });
+                      context.read<SwitchPageCubit>().setSpecExpanded(true);
                     }
                   },
                   style: ButtonStyle(
@@ -81,17 +77,17 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                     children: [
                       Image.asset(
                         "assets/images/marketplace1.png",
-                        color: isExpanded == true ? Colors.white : Colors.grey[500],
+                        color: state.isMaketPlaceExpanded == true ? Colors.white : Colors.grey[500],
                       ),
                       SizedBox(width: 5),
                       Text(
                         'Marketplace',
                         style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                              color: isExpanded == true ? Colors.white : Colors.grey[500],
+                              color: state.isMaketPlaceExpanded == true ? Colors.white : Colors.grey[500],
                             ),
                       ),
                       Spacer(),
-                      isExpanded == true
+                      state.isMaketPlaceExpanded == true
                           ? InkWell(onTap: () {}, child: Icon(Icons.arrow_drop_down, color: Colors.white))
                           : Icon(
                               Icons.arrow_right,
@@ -102,358 +98,352 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                 ),
               ),
             ),
-            isExpanded
+            state.isMaketPlaceExpanded
                 // context.read<SwitchPageCubit>().state.selectedPage == 6 ||
                 // context.read<SwitchPageCubit>().state.selectedPage == 7
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Column(
-                      children: [
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color: context.read<SwitchPageCubit>().state.selectedPage == 3.1
-                                ? Theme.of(context).colorScheme.primary
-                                : Colors.transparent,
+                ? Column(
+                    children: [
+                      Container(
+                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          // boxShadow: [
+                          //   context.read<SwitchPageCubit>().state.selectedPage == 4
+                          //       ? BoxShadow(
+                          //           color: Colors.grey.withValues(alpha: 0.2),
+                          //           spreadRadius: 10,
+                          //           blurRadius: 10,
+                          //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                          //         )
+                          //       : BoxShadow(
+                          //
+                          //           // Décalage horizontal et vertical de l'ombre
+                          //           )
+                          // ],
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 3.1 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(3.1);
+                            context.go('/marketplace/reports');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3.1);
-                              context.go('/marketplace/reports');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/business-report.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 3.1 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/business-report.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3.1 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Reports',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3.1 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Reports',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3.1 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color: context.read<SwitchPageCubit>().state.selectedPage == 3.2
-                                ? Theme.of(context).colorScheme.primary
-                                : Colors.transparent,
+                      ),
+                      Container(
+                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          // borderRadius: BorderRadius.circular(6),
+                          // boxShadow: [
+                          //   context.read<SwitchPageCubit>().state.selectedPage == 3
+                          //       ? BoxShadow(
+                          //           color: Colors.grey.withValues(alpha: 0.2),
+                          //           spreadRadius: 10,
+                          //           blurRadius: 10,
+                          //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                          //         )
+                          //       : BoxShadow(
+                          //
+                          //           // Décalage horizontal et vertical de l'ombre
+                          //           )
+                          // ],
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 3.2 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(3.2);
+                            context.go('/marketplace/stores');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3.2);
-                              context.go('/marketplace/stores');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/marketplace1.png",
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 3.2 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/marketplace1.png",
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3.2 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Stores',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3.2 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Stores',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3.2 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                      ),
+                      Container(
+                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          // borderRadius: BorderRadius.circular(6),
+                          // boxShadow: [
+                          //   context.read<SwitchPageCubit>().state.selectedPage == 3
+                          //       ? BoxShadow(
+                          //           color: Colors.grey.withValues(alpha: 0.2),
+                          //           spreadRadius: 10,
+                          //           blurRadius: 10,
+                          //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                          //         )
+                          //       : BoxShadow(
+                          //
+                          //           // Décalage horizontal et vertical de l'ombre
+                          //           )
+                          // ],
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 3.3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(3.3);
+                            context.go('/marketplace/withdrawals');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/money.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 3.3 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/money.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Withdrawals',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Withdrawals',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3.3 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                      ),
+                      Container(
+                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          // borderRadius: BorderRadius.circular(6),
+                          // boxShadow: [
+                          //   context.read<SwitchPageCubit>().state.selectedPage == 3
+                          //       ? BoxShadow(
+                          //           color: Colors.grey.withValues(alpha: 0.2),
+                          //           spreadRadius: 10,
+                          //           blurRadius: 10,
+                          //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                          //         )
+                          //       : BoxShadow(
+                          //
+                          //           // Décalage horizontal et vertical de l'ombre
+                          //           )
+                          // ],
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 3.4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(3.4);
+                            context.go('/marketplace/vendors');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/customer.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 3.4 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/customer.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Vendors',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Vendors',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3.4 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                      ),
+                      Container(
+                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          // borderRadius: BorderRadius.circular(6),
+                          // boxShadow: [
+                          //   context.read<SwitchPageCubit>().state.selectedPage == 3
+                          //       ? BoxShadow(
+                          //           color: Colors.grey.withValues(alpha: 0.2),
+                          //           spreadRadius: 10,
+                          //           blurRadius: 10,
+                          //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                          //         )
+                          //       : BoxShadow(
+                          //
+                          //           // Décalage horizontal et vertical de l'ombre
+                          //           )
+                          // ],
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 3.5 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(3.5);
+                            context.go('/marketplace/unverified-vendors');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/information.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 3.5 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/information.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Unverified vendors',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Unverified vendors',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3.5 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                      ),
+                      Container(
+                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          // borderRadius: BorderRadius.circular(6),
+                          // boxShadow: [
+                          //   context.read<SwitchPageCubit>().state.selectedPage == 3
+                          //       ? BoxShadow(
+                          //           color: Colors.grey.withValues(alpha: 0.2),
+                          //           spreadRadius: 10,
+                          //           blurRadius: 10,
+                          //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                          //         )
+                          //       : BoxShadow(
+                          //
+                          //           // Décalage horizontal et vertical de l'ombre
+                          //           )
+                          // ],
+                          color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(3);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/messenger1.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/messenger1.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Messages',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Messages',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   )
                 : SizedBox()
           ],

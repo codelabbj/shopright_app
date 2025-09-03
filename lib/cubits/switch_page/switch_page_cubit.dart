@@ -19,7 +19,7 @@ class SwitchPageCubit extends Cubit<SwitchPageState> {
     emit(state.copyWith(isSpecExpanded: isExpanded));
   }
 
-  void setCategoryExpanded(bool isExpanded) {
+  void setMarketPlaceExpanded(bool isExpanded) {
     emit(state.copyWith(isMaketPlaceExpanded: isExpanded));
   }
 

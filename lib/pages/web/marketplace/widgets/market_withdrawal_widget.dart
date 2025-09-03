@@ -1,67 +1,58 @@
 import 'package:e_com_app/models/market_store_model.dart';
 import 'package:e_com_app/models/page_item_model.dart';
+import 'package:e_com_app/models/withdrawal_%20model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../models/gallerie_model.dart';
 import '../../../../utils/utils.dart';
 
-class MarketStoresWidget extends StatefulWidget {
-  const MarketStoresWidget({Key? key}) : super(key: key);
+class MarketWithdrawalWidget extends StatefulWidget {
+  const MarketWithdrawalWidget({Key? key}) : super(key: key);
 
   @override
-  State<MarketStoresWidget> createState() => _MarketStoresWidgetState();
+  State<MarketWithdrawalWidget> createState() => _MarketWithdrawalWidgetState();
 }
 
-class _MarketStoresWidgetState extends State<MarketStoresWidget> {
-  List<MarketStoreModel> items = [
-    MarketStoreModel(
+class _MarketWithdrawalWidgetState extends State<MarketWithdrawalWidget> {
+  List<WithdrawalModel> items = [
+    WithdrawalModel(
       id: 1,
-      name: "Old El Paso",
-      status: "Approved",
-      logo: 'assets/images/winter_cap.webp',
-      earnings: "2300.00\$",
-      productsCount: "3",
-      vendorFullame: "Elliott Durgan",
+      vendor: "Elliott Durgan",
+      status: "Completed",
+      amount: "2300.00\$",
+      fee: "\$0.00",
       createdAt: '2025-08-08',
     ),
-    MarketStoreModel(
+    WithdrawalModel(
       id: 2,
-      name: "StarKist",
-      status: "Approved",
-      logo: 'assets/images/winter_cap.webp',
-      earnings: "2300.00\$",
-      productsCount: "5",
-      vendorFullame: "Mr. Dane Tromp",
-      createdAt: '2025-08-08',
-    ),
-    MarketStoreModel(
-      id: 3,
-      name: "Robert’s Store",
-      status: "Rejected",
-      logo: 'assets/images/winter_cap.webp',
-      earnings: "28.80\$",
-      productsCount: "6",
-      vendorFullame: "Dr. Gonzalo Kertzmann",
-      createdAt: '2025-08-08',
-    ),
-    MarketStoreModel(
-      id: 4,
-      name: "Stouffer",
+      vendor: "Elliott Durgan",
       status: "Pending",
-      logo: 'assets/images/winter_cap.webp',
-      earnings: "456.80\$",
-      productsCount: "9",
-      vendorFullame: "Prof. Cleta Mueller",
+      amount: "670.00\$",
+      fee: "\$0.00",
       createdAt: '2025-08-08',
     ),
-    MarketStoreModel(
+    WithdrawalModel(
+      id: 3,
+      vendor: "Prof. Cleta Mueller",
+      status: "Completed",
+      amount: "2300.00\$",
+      fee: "\$0.00",
+      createdAt: '2025-08-08',
+    ),
+    WithdrawalModel(
+      id: 4,
+      vendor: "Elliott Durgan",
+      status: "Processing",
+      amount: "2300.00\$",
+      fee: "\$0.00",
+      createdAt: '2025-08-08',
+    ),
+    WithdrawalModel(
       id: 5,
-      name: "Young Shop",
-      status: "Rejected",
-      logo: 'assets/images/winter_cap.webp',
-      earnings: "74.40\$",
-      productsCount: "9",
-      vendorFullame: "Ms. Marisa Block Jr.",
+      vendor: "Dr. Gonzalo Kertzmann",
+      status: "Processing",
+      amount: "2300.00\$",
+      fee: "\$0.00",
       createdAt: '2025-08-08',
     ),
   ];
@@ -103,10 +94,9 @@ class _MarketStoresWidgetState extends State<MarketStoresWidget> {
             label: Text(
           "ID",
         )),
-        DataColumn(label: Text("Images")),
-        DataColumn(label: Text("Name")),
-        DataColumn(label: Text("Earnings")),
         DataColumn(label: Text("Vendor")),
+        DataColumn(label: Text("Amount")),
+        DataColumn(label: Text("Fee")),
         DataColumn(label: Text("Created at")),
         DataColumn(label: Text("Status")),
         DataColumn(label: Text("Actions")),
@@ -140,14 +130,9 @@ class _MarketStoresWidgetState extends State<MarketStoresWidget> {
               item.id.toString(),
               style: Theme.of(context).textTheme.labelSmall,
             )),
-            DataCell(Image.asset(
-              item.logo,
-              width: 30,
-              height: 30,
-            )),
-            DataCell(Text(item.name, style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(Text(item.earnings, style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(Text(item.vendorFullame, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Text(item.vendor, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Text(item.amount, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Text(item.fee, style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text(item.createdAt, style: Theme.of(context).textTheme.labelSmall)),
             _buildStockStatus(item.status, context),
             _buildActionButtons(context),
@@ -160,8 +145,8 @@ class _MarketStoresWidgetState extends State<MarketStoresWidget> {
   static DataCell _buildStockStatus(String status, BuildContext context) {
     Color color;
     switch (status) {
-      case 'Rejected':
-        color = Colors.red;
+      case 'Processing':
+        color = Colors.blue;
         break;
       case 'Pending':
         color = Colors.orange;

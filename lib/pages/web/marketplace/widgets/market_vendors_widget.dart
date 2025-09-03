@@ -3,66 +3,83 @@ import 'package:e_com_app/models/page_item_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../models/gallerie_model.dart';
+import '../../../../models/vendor_model.dart';
+import '../../../../theme/app_colors.dart';
 import '../../../../utils/utils.dart';
 
-class MarketStoresWidget extends StatefulWidget {
-  const MarketStoresWidget({Key? key}) : super(key: key);
+class MarketVendorsWidget extends StatefulWidget {
+  const MarketVendorsWidget({Key? key}) : super(key: key);
 
   @override
-  State<MarketStoresWidget> createState() => _MarketStoresWidgetState();
+  State<MarketVendorsWidget> createState() => _MarketVendorsWidgetState();
 }
 
-class _MarketStoresWidgetState extends State<MarketStoresWidget> {
-  List<MarketStoreModel> items = [
-    MarketStoreModel(
+class _MarketVendorsWidgetState extends State<MarketVendorsWidget> {
+  List<VendorModel> items = [
+    VendorModel(
       id: 1,
-      name: "Old El Paso",
-      status: "Approved",
-      logo: 'assets/images/winter_cap.webp',
-      earnings: "2300.00\$",
-      productsCount: "3",
-      vendorFullame: "Elliott Durgan",
+      name: "Prof. Cleta Mueller",
+      status: "Yes",
       createdAt: '2025-08-08',
+      avatar: 'assets/images/winter_cap.webp',
+      balance: 4.697,
+      storeName: 'Young Shop',
+      storePhone: '+19316144763',
+      product: '9',
+      totalRevenue: '\$6,935.00',
+      email: 'paucek.blake@example.com',
     ),
-    MarketStoreModel(
+    VendorModel(
       id: 2,
-      name: "StarKist",
-      status: "Approved",
-      logo: 'assets/images/winter_cap.webp',
-      earnings: "2300.00\$",
-      productsCount: "5",
-      vendorFullame: "Mr. Dane Tromp",
+      name: "Dameon Zboncak DVM	Dameon Zboncak DVM",
+      status: "Yes",
       createdAt: '2025-08-08',
+      avatar: 'assets/images/winter_cap.webp',
+      balance: 0.00,
+      storeName: '__',
+      storePhone: '__',
+      product: '3',
+      totalRevenue: '\$0.00',
+      email: 'meaghan56@example.org',
     ),
-    MarketStoreModel(
+    VendorModel(
       id: 3,
-      name: "Robert’s Store",
-      status: "Rejected",
-      logo: 'assets/images/winter_cap.webp',
-      earnings: "28.80\$",
-      productsCount: "6",
-      vendorFullame: "Dr. Gonzalo Kertzmann",
+      name: "Mr. Dane Tromp",
+      status: "Yes",
       createdAt: '2025-08-08',
+      avatar: 'assets/images/winter_cap.webp',
+      balance: 26007.00,
+      storeName: 'Global Office',
+      storePhone: '+15677176983',
+      product: '10',
+      totalRevenue: '\$38,428.00',
+      email: 'erna.white@example.org',
     ),
-    MarketStoreModel(
+    VendorModel(
       id: 4,
-      name: "Stouffer",
-      status: "Pending",
-      logo: 'assets/images/winter_cap.webp',
-      earnings: "456.80\$",
-      productsCount: "9",
-      vendorFullame: "Prof. Cleta Mueller",
+      name: "Mr. Dane Tromp",
+      status: "Yes",
       createdAt: '2025-08-08',
+      avatar: 'assets/images/winter_cap.webp',
+      balance: 0.00,
+      storeName: '__',
+      storePhone: '__',
+      product: '0',
+      totalRevenue: '\$0.00',
+      email: 'vrowe@example.org',
     ),
-    MarketStoreModel(
+    VendorModel(
       id: 5,
-      name: "Young Shop",
-      status: "Rejected",
-      logo: 'assets/images/winter_cap.webp',
-      earnings: "74.40\$",
-      productsCount: "9",
-      vendorFullame: "Ms. Marisa Block Jr.",
+      name: "	Dr. Gonzalo Kertzmann",
+      status: "Yes",
       createdAt: '2025-08-08',
+      avatar: 'assets/images/winter_cap.webp',
+      balance: 45900.00,
+      storeName: 'GoPro',
+      storePhone: '+17546651096',
+      product: '17',
+      totalRevenue: '\$70,000.00',
+      email: 'vendor@botble.com',
     ),
   ];
 
@@ -103,12 +120,15 @@ class _MarketStoresWidgetState extends State<MarketStoresWidget> {
             label: Text(
           "ID",
         )),
-        DataColumn(label: Text("Images")),
+        DataColumn(label: Text("Avatar")),
         DataColumn(label: Text("Name")),
-        DataColumn(label: Text("Earnings")),
-        DataColumn(label: Text("Vendor")),
-        DataColumn(label: Text("Created at")),
-        DataColumn(label: Text("Status")),
+        DataColumn(label: Text("Email")),
+        DataColumn(label: Text("Store Name")),
+        DataColumn(label: Text("Store Phone")),
+        DataColumn(label: Text("Products")),
+        DataColumn(label: Text("Total Revenue")),
+        DataColumn(label: Text("Balance")),
+        DataColumn(label: Text("Verified")),
         DataColumn(label: Text("Actions")),
       ],
       rows: List.generate(items.length, (index) {
@@ -141,14 +161,21 @@ class _MarketStoresWidgetState extends State<MarketStoresWidget> {
               style: Theme.of(context).textTheme.labelSmall,
             )),
             DataCell(Image.asset(
-              item.logo,
+              item.avatar,
               width: 30,
               height: 30,
             )),
             DataCell(Text(item.name, style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(Text(item.earnings, style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(Text(item.vendorFullame, style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(Text(item.createdAt, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Text(item.email, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Text(item.storeName, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Text(item.storePhone, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Container(
+                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                decoration: BoxDecoration(color: AppColors.PRIMARY_BLUE_COLOR, borderRadius: BorderRadius.circular(6)),
+                child:
+                    Text(item.product, style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold)))),
+            DataCell(Text(item.totalRevenue, style: Theme.of(context).textTheme.labelSmall)),
+            _buildStockBalance(item.balance, context),
             _buildStockStatus(item.status, context),
             _buildActionButtons(context),
           ],
@@ -160,7 +187,7 @@ class _MarketStoresWidgetState extends State<MarketStoresWidget> {
   static DataCell _buildStockStatus(String status, BuildContext context) {
     Color color;
     switch (status) {
-      case 'Rejected':
+      case 'No':
         color = Colors.red;
         break;
       case 'Pending':
@@ -187,6 +214,34 @@ class _MarketStoresWidgetState extends State<MarketStoresWidget> {
               ],
             ),
           )),
+    ));
+  }
+
+  static DataCell _buildStockBalance(double balance, BuildContext context) {
+    Color color;
+    switch (balance) {
+      case 0.00:
+        color = Colors.blue;
+        break;
+      default:
+        color = Colors.green;
+    }
+    return DataCell(Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: color.withValues(alpha: 0.2)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          children: [
+            // Icon(
+            //   Icons.circle,
+            //   size: 10,
+            //   color: color,
+            // ),
+            SizedBox(width: 2),
+            Expanded(child: Text("\$${balance}.00", style: Theme.of(context).textTheme.labelSmall)),
+          ],
+        ),
+      ),
     ));
   }
 
