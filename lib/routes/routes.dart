@@ -1,4 +1,5 @@
 import 'package:e_com_app/pages/web/annoncement/screens/annoncement_screen.dart';
+import 'package:e_com_app/pages/web/marketplace/screens/market_messaes_screen.dart';
 import 'package:e_com_app/pages/web/marketplace/screens/market_stores_screen.dart';
 import 'package:e_com_app/pages/web/marketplace/screens/market_vendors_screen.dart';
 import 'package:e_com_app/pages/web/product-specification/screens/product_attributes_screen.dart';
@@ -135,6 +136,13 @@ class AppRouter {
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(3.5);
           return MarketUnverifiedVendorScreen();
+        },
+      ),
+      GoRoute(
+        path: '/marketplace/messages',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(3.6);
+          return MarketMessaesScreen();
         },
       ),
       GoRoute(

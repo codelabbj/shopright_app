@@ -56,11 +56,17 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                 ),
                 child: TextButton(
                   onPressed: () {
-                    if (state.selectedPage == 3 || state.isMaketPlaceExpanded) {
-                      context.read<SwitchPageCubit>().setMarketPlaceExpanded(false);
+                    if (state.isMaketPlaceExpanded == true) {
+                      log('pourquoi 11?');
+                      context
+                          .read<SwitchPageCubit>()
+                          .setMarketPlaceExpanded(false);
                     } else {
                       // context.read<SwitchPageCubit>().switchPage(23);
-                      context.read<SwitchPageCubit>().setSpecExpanded(true);
+                      log('pourquoi 1111?');
+                      context
+                          .read<SwitchPageCubit>()
+                          .setMarketPlaceExpanded(true);
                     }
                   },
                   style: ButtonStyle(
@@ -77,18 +83,26 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                     children: [
                       Image.asset(
                         "assets/images/marketplace1.png",
-                        color: state.isMaketPlaceExpanded == true ? Colors.white : Colors.grey[500],
+                        color: state.isMaketPlaceExpanded == true
+                            ? Colors.white
+                            : Colors.grey[500],
                       ),
                       SizedBox(width: 5),
                       Text(
                         'Marketplace',
-                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                              color: state.isMaketPlaceExpanded == true ? Colors.white : Colors.grey[500],
-                            ),
+                        style:
+                            Theme.of(context).textTheme.displaySmall?.copyWith(
+                                  color: state.isMaketPlaceExpanded == true
+                                      ? Colors.white
+                                      : Colors.grey[500],
+                                ),
                       ),
                       Spacer(),
                       state.isMaketPlaceExpanded == true
-                          ? InkWell(onTap: () {}, child: Icon(Icons.arrow_drop_down, color: Colors.white))
+                          ? InkWell(
+                              onTap: () {},
+                              child: Icon(Icons.arrow_drop_down,
+                                  color: Colors.white))
                           : Icon(
                               Icons.arrow_right,
                               color: Colors.grey[500],
@@ -105,7 +119,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                     children: [
                       Container(
                         // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 14),
                         width: Const.screenWidth(context) * 0.19,
                         height: 35,
                         decoration: BoxDecoration(
@@ -123,8 +138,13 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                           //           // Décalage horizontal et vertical de l'ombre
                           //           )
                           // ],
-                          color:
-                              context.read<SwitchPageCubit>().state.selectedPage == 3.1 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                          color: context
+                                      .read<SwitchPageCubit>()
+                                      .state
+                                      .selectedPage ==
+                                  3.1
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.transparent,
                         ),
                         child: TextButton(
                           onPressed: () {
@@ -132,10 +152,12 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                             context.go('/marketplace/reports');
                           },
                           style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            overlayColor:
+                                MaterialStateProperty.resolveWith<Color?>(
                               (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
+                                  return Colors
+                                      .transparent; // Pas d'effet au survol
                                 }
                                 return null; // Laisser les autres états par défaut
                               },
@@ -147,13 +169,28 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                 "assets/images/business-report.png",
                                 width: 20,
                                 height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 3.1 ? Colors.white : Colors.grey[500],
+                                color: context
+                                            .read<SwitchPageCubit>()
+                                            .state
+                                            .selectedPage ==
+                                        3.1
+                                    ? Colors.white
+                                    : Colors.grey[500],
                               ),
                               SizedBox(width: 5),
                               Text(
                                 'Reports',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3.1 ? Colors.white : Colors.grey[500],
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall
+                                    ?.copyWith(
+                                      color: context
+                                                  .read<SwitchPageCubit>()
+                                                  .state
+                                                  .selectedPage ==
+                                              3.1
+                                          ? Colors.white
+                                          : Colors.grey[500],
                                     ),
                               ),
                             ],
@@ -162,7 +199,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                       ),
                       Container(
                         // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 14),
                         width: Const.screenWidth(context) * 0.19,
                         height: 35,
                         decoration: BoxDecoration(
@@ -180,8 +218,13 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                           //           // Décalage horizontal et vertical de l'ombre
                           //           )
                           // ],
-                          color:
-                              context.read<SwitchPageCubit>().state.selectedPage == 3.2 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                          color: context
+                                      .read<SwitchPageCubit>()
+                                      .state
+                                      .selectedPage ==
+                                  3.2
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.transparent,
                         ),
                         child: TextButton(
                           onPressed: () {
@@ -189,10 +232,12 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                             context.go('/marketplace/stores');
                           },
                           style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            overlayColor:
+                                MaterialStateProperty.resolveWith<Color?>(
                               (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
+                                  return Colors
+                                      .transparent; // Pas d'effet au survol
                                 }
                                 return null; // Laisser les autres états par défaut
                               },
@@ -203,13 +248,28 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                               Image.asset(
                                 "assets/images/marketplace1.png",
                                 height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 3.2 ? Colors.white : Colors.grey[500],
+                                color: context
+                                            .read<SwitchPageCubit>()
+                                            .state
+                                            .selectedPage ==
+                                        3.2
+                                    ? Colors.white
+                                    : Colors.grey[500],
                               ),
                               SizedBox(width: 5),
                               Text(
                                 'Stores',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3.2 ? Colors.white : Colors.grey[500],
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall
+                                    ?.copyWith(
+                                      color: context
+                                                  .read<SwitchPageCubit>()
+                                                  .state
+                                                  .selectedPage ==
+                                              3.2
+                                          ? Colors.white
+                                          : Colors.grey[500],
                                     ),
                               ),
                             ],
@@ -218,7 +278,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                       ),
                       Container(
                         // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 14),
                         width: Const.screenWidth(context) * 0.19,
                         height: 35,
                         decoration: BoxDecoration(
@@ -236,8 +297,13 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                           //           // Décalage horizontal et vertical de l'ombre
                           //           )
                           // ],
-                          color:
-                              context.read<SwitchPageCubit>().state.selectedPage == 3.3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                          color: context
+                                      .read<SwitchPageCubit>()
+                                      .state
+                                      .selectedPage ==
+                                  3.3
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.transparent,
                         ),
                         child: TextButton(
                           onPressed: () {
@@ -245,10 +311,12 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                             context.go('/marketplace/withdrawals');
                           },
                           style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            overlayColor:
+                                MaterialStateProperty.resolveWith<Color?>(
                               (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
+                                  return Colors
+                                      .transparent; // Pas d'effet au survol
                                 }
                                 return null; // Laisser les autres états par défaut
                               },
@@ -260,13 +328,28 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                 "assets/images/money.png",
                                 width: 20,
                                 height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 3.3 ? Colors.white : Colors.grey[500],
+                                color: context
+                                            .read<SwitchPageCubit>()
+                                            .state
+                                            .selectedPage ==
+                                        3.3
+                                    ? Colors.white
+                                    : Colors.grey[500],
                               ),
                               SizedBox(width: 5),
                               Text(
                                 'Withdrawals',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3.3 ? Colors.white : Colors.grey[500],
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall
+                                    ?.copyWith(
+                                      color: context
+                                                  .read<SwitchPageCubit>()
+                                                  .state
+                                                  .selectedPage ==
+                                              3.3
+                                          ? Colors.white
+                                          : Colors.grey[500],
                                     ),
                               ),
                             ],
@@ -275,7 +358,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                       ),
                       Container(
                         // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 14),
                         width: Const.screenWidth(context) * 0.19,
                         height: 35,
                         decoration: BoxDecoration(
@@ -293,8 +377,13 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                           //           // Décalage horizontal et vertical de l'ombre
                           //           )
                           // ],
-                          color:
-                              context.read<SwitchPageCubit>().state.selectedPage == 3.4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                          color: context
+                                      .read<SwitchPageCubit>()
+                                      .state
+                                      .selectedPage ==
+                                  3.4
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.transparent,
                         ),
                         child: TextButton(
                           onPressed: () {
@@ -302,10 +391,12 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                             context.go('/marketplace/vendors');
                           },
                           style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            overlayColor:
+                                MaterialStateProperty.resolveWith<Color?>(
                               (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
+                                  return Colors
+                                      .transparent; // Pas d'effet au survol
                                 }
                                 return null; // Laisser les autres états par défaut
                               },
@@ -317,13 +408,28 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                 "assets/images/customer.png",
                                 width: 20,
                                 height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 3.4 ? Colors.white : Colors.grey[500],
+                                color: context
+                                            .read<SwitchPageCubit>()
+                                            .state
+                                            .selectedPage ==
+                                        3.4
+                                    ? Colors.white
+                                    : Colors.grey[500],
                               ),
                               SizedBox(width: 5),
                               Text(
                                 'Vendors',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3.4 ? Colors.white : Colors.grey[500],
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall
+                                    ?.copyWith(
+                                      color: context
+                                                  .read<SwitchPageCubit>()
+                                                  .state
+                                                  .selectedPage ==
+                                              3.4
+                                          ? Colors.white
+                                          : Colors.grey[500],
                                     ),
                               ),
                             ],
@@ -332,7 +438,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                       ),
                       Container(
                         // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 14),
                         width: Const.screenWidth(context) * 0.19,
                         height: 35,
                         decoration: BoxDecoration(
@@ -350,8 +457,13 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                           //           // Décalage horizontal et vertical de l'ombre
                           //           )
                           // ],
-                          color:
-                              context.read<SwitchPageCubit>().state.selectedPage == 3.5 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                          color: context
+                                      .read<SwitchPageCubit>()
+                                      .state
+                                      .selectedPage ==
+                                  3.5
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.transparent,
                         ),
                         child: TextButton(
                           onPressed: () {
@@ -359,10 +471,12 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                             context.go('/marketplace/unverified-vendors');
                           },
                           style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            overlayColor:
+                                MaterialStateProperty.resolveWith<Color?>(
                               (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
+                                  return Colors
+                                      .transparent; // Pas d'effet au survol
                                 }
                                 return null; // Laisser les autres états par défaut
                               },
@@ -374,13 +488,28 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                 "assets/images/information.png",
                                 width: 20,
                                 height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 3.5 ? Colors.white : Colors.grey[500],
+                                color: context
+                                            .read<SwitchPageCubit>()
+                                            .state
+                                            .selectedPage ==
+                                        3.5
+                                    ? Colors.white
+                                    : Colors.grey[500],
                               ),
                               SizedBox(width: 5),
                               Text(
                                 'Unverified vendors',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3.5 ? Colors.white : Colors.grey[500],
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall
+                                    ?.copyWith(
+                                      color: context
+                                                  .read<SwitchPageCubit>()
+                                                  .state
+                                                  .selectedPage ==
+                                              3.5
+                                          ? Colors.white
+                                          : Colors.grey[500],
                                     ),
                               ),
                             ],
@@ -389,7 +518,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                       ),
                       Container(
                         // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        padding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 14),
                         width: Const.screenWidth(context) * 0.19,
                         height: 35,
                         decoration: BoxDecoration(
@@ -407,18 +537,26 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                           //           // Décalage horizontal et vertical de l'ombre
                           //           )
                           // ],
-                          color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                          color: context
+                                      .read<SwitchPageCubit>()
+                                      .state
+                                      .selectedPage ==
+                                  3.6
+                              ? Theme.of(context).colorScheme.primary
+                              : Colors.transparent,
                         ),
                         child: TextButton(
                           onPressed: () {
-                            context.read<SwitchPageCubit>().switchPage(3);
-                            context.go('/orders');
+                            context.read<SwitchPageCubit>().switchPage(3.6);
+                            context.go('/marketplace/messages');
                           },
                           style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                            overlayColor:
+                                MaterialStateProperty.resolveWith<Color?>(
                               (Set<MaterialState> states) {
                                 if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
+                                  return Colors
+                                      .transparent; // Pas d'effet au survol
                                 }
                                 return null; // Laisser les autres états par défaut
                               },
@@ -430,13 +568,28 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                                 "assets/images/messenger1.png",
                                 width: 20,
                                 height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
+                                color: context
+                                            .read<SwitchPageCubit>()
+                                            .state
+                                            .selectedPage ==
+                                        3.6
+                                    ? Colors.white
+                                    : Colors.grey[500],
                               ),
                               SizedBox(width: 5),
                               Text(
                                 'Messages',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
+                                style: Theme.of(context)
+                                    .textTheme
+                                    .displaySmall
+                                    ?.copyWith(
+                                      color: context
+                                                  .read<SwitchPageCubit>()
+                                                  .state
+                                                  .selectedPage ==
+                                              3.6
+                                          ? Colors.white
+                                          : Colors.grey[500],
                                     ),
                               ),
                             ],
