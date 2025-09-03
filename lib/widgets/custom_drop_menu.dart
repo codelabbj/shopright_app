@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
 class CustomDropdownField extends StatelessWidget {
-  final String label;
+  final String? label;
   final String value;
   final List<String> items;
   final ValueChanged<String?> onChanged;
 
   const CustomDropdownField({
     Key? key,
-    required this.label,
+    this.label,
     required this.value,
     required this.items,
     required this.onChanged,
@@ -21,12 +21,14 @@ class CustomDropdownField extends StatelessWidget {
       borderSide: BorderSide(color: Colors.grey[300]!),
     );
     return Padding(
-      padding: const EdgeInsets.only(bottom: 12),
+      padding: const EdgeInsets.only(top: 5, bottom: 12),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(label, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold, fontSize: 12)),
-          const SizedBox(height: 4),
+          label == null
+              ? SizedBox()
+              : Text(label ?? "", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold, fontSize: 12)),
+          // const SizedBox(height: 4),
           DropdownButtonFormField<String>(
             value: value,
             onChanged: onChanged,

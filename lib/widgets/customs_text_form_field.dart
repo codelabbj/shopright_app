@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
 class CustomTextFormField extends StatelessWidget {
-  final String label;
-  final String hintText;
+  final String? label;
+  final String? hintText;
   final TextEditingController controller;
   final bool obscureText;
   final Widget? suffixIcon;
@@ -11,8 +11,8 @@ class CustomTextFormField extends StatelessWidget {
 
   const CustomTextFormField({
     Key? key,
-    required this.label,
-    required this.hintText,
+    this.label,
+    this.hintText,
     required this.controller,
     this.obscureText = false,
     this.suffixIcon,
@@ -29,8 +29,9 @@ class CustomTextFormField extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(label, style: Theme.of(context).textTheme.labelSmall),
-        const SizedBox(height: 8),
+        // label == null ?? SizedBox():
+        // Text(label ?? "", style: Theme.of(context).textTheme.labelSmall),
+        // const SizedBox(height: 8),
         TextFormField(
           controller: controller,
           obscureText: obscureText,

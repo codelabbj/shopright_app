@@ -221,9 +221,6 @@ class _GalleriesSceenState extends State<GalleriesSceen> {
                                   width: 10,
                                 ),
 
-                                SizedBox(
-                                  width: 10,
-                                ),
                                 // InkWell(
                                 //   onTap: () {
                                 //     formList = "list-ui";

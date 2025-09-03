@@ -16,7 +16,7 @@ class EcomDrawerWidget extends StatefulWidget {
 }
 
 class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
-  bool isExpanded = false;
+  // bool isExpanded = false;
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<SwitchPageCubit, SwitchPageState>(
@@ -30,63 +30,14 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                 padding: EdgeInsets.symmetric(vertical: 10),
                 width: Const.screenWidth(context) * 0.19,
                 height: 35,
-                decoration: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(6),
-                  boxShadow: [
-                    // context.read<SwitchPageCubit>().state.selectedPage == 1
-                    //     ? BoxShadow(
-                    //         color: Colors.grey.withValues(alpha: 0.2),
-                    //         spreadRadius: 10,
-                    //         blurRadius: 10,
-                    //         offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                    //       )
-                    //     : context.read<SwitchPageCubit>().state.selectedPage == 6
-                    //         ? BoxShadow()
-                    //         : context.read<SwitchPageCubit>().state.selectedPage == 7
-                    //             ? BoxShadow()
-                    //             : context.read<SwitchPageCubit>().state.selectedPage == 7
-                    //                 ? BoxShadow(
-                    //                     color: Colors.grey.withValues(alpha: 0.2),
-                    //                     spreadRadius: 10,
-                    //                     blurRadius: 10,
-                    //                     offset: Offset(0, 3),
-                    //                   )
-                    //                 : BoxShadow(),
-                  ],
-                  color: context.read<SwitchPageCubit>().state.selectedPage == 1
-                      ? Colors.transparent
-                      : context.read<SwitchPageCubit>().state.selectedPage == 24
-                          ? Colors.transparent
-                          : context.read<SwitchPageCubit>().state.selectedPage == 25
-                              ? Colors.transparent
-                              : context.read<SwitchPageCubit>().state.selectedPage == 26
-                                  ? Colors.transparent
-                                  : context.read<SwitchPageCubit>().state.selectedPage == 27
-                                      ? Colors.transparent
-                                      : context.read<SwitchPageCubit>().state.selectedPage == 28
-                                          ? Colors.transparent
-                                          : context.read<SwitchPageCubit>().state.selectedPage == 29
-                                              ? Colors.transparent
-                                              : context.read<SwitchPageCubit>().state.selectedPage == 30
-                                                  ? Colors.transparent
-                                                  : context.read<SwitchPageCubit>().state.selectedPage == 31
-                                                      ? Colors.transparent
-                                                      : context.read<SwitchPageCubit>().state.selectedPage == 31
-                                                          ? Theme.of(context).colorScheme.primary
-                                                          : Colors.transparent,
-                ),
+
                 child: TextButton(
                   onPressed: () {
                     log("Je suis dedans");
-                    if (state.selectedPage == 23 || isExpanded) {
-                      setState(() {
-                        isExpanded = false;
-                      });
+                    if (state.isEcomExpanded == true) {
+                      context.read<SwitchPageCubit>().setEcomExpanded(false);
                     } else {
-                      // context.read<SwitchPageCubit>().switchPage(23);
-                      setState(() {
-                        isExpanded = true;
-                      });
+                      context.read<SwitchPageCubit>().setEcomExpanded(true);
                     }
                   },
                   style: ButtonStyle(
@@ -103,7 +54,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                     children: [
                       Image.asset(
                         "assets/images/purchase.png",
-                        color: isExpanded == true ? Colors.white : Colors.grey[500],
+                        color: state.isEcomExpanded == true ? Colors.white : Colors.grey[500],
                       ),
                       SizedBox(width: 5),
                       SizedBox(
@@ -111,12 +62,12 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                         child: Text(
                           'Ecommerce',
                           style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                color: isExpanded == true ? Colors.white : Colors.grey[500],
+                                color: state.isEcomExpanded == true ? Colors.white : Colors.grey[500],
                               ),
                         ),
                       ),
                       Spacer(),
-                      isExpanded == true
+                      state.isEcomExpanded == true
                           ? InkWell(onTap: () {}, child: Icon(Icons.arrow_drop_down, color: Colors.white))
                           : Icon(
                               Icons.arrow_right,
@@ -127,1107 +78,817 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                 ),
               ),
             ),
-            isExpanded
-                // context.read<SwitchPageCubit>().state.selectedPage == 6 ||
-                // context.read<SwitchPageCubit>().state.selectedPage == 7
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Column(
-                      children: [
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(4);
-                              context.go('/promote');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
+            state.isEcomExpanded
+                ? Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.1 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(4);
+                            context.go('/ecommerce/reports');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
                             ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/business-report.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Report',
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/business-report.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.1 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Report',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.1 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.2 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.2);
+                            context.go('/ecommerce/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/shopping-bag.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.2 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Orders',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.2 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.3);
+                            context.go('/ecommerce/order-incomplete');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/incomplete_order.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.3 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Incomplete Orders',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.3 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.4);
+                            context.go('/ecommerce/order-returns');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/order_return.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.4 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Orders Returns',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.4 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.5 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.5);
+                            context.go('/ecommerce/shipments');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/fast-delivery.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.5 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              SizedBox(
+                                width: Const.screenWidth(context) * 0.1,
+                                child: Text(
+                                  'Shipments',
                                   style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                                        color: context.read<SwitchPageCubit>().state.selectedPage == 1.5 ? Colors.white : Colors.grey[500],
                                       ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.6 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.6);
+                            context.go('/ecommerce/invoices');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
                             ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/shopping-bag.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Orders',
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/invoice.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.6 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              SizedBox(
+                                width: Const.screenWidth(context) * 0.1,
+                                child: Text(
+                                  'Invoices',
                                   style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
+                                        color: context.read<SwitchPageCubit>().state.selectedPage == 1.6 ? Colors.white : Colors.grey[500],
                                       ),
                                 ),
-                              ],
-                            ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.7 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.7);
+                            context.go('/ecommerce/product-prices');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
                             ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/incomplete_order.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Incomplete Orders',
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/product.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.7 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Products',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.7 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.8 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.8);
+                            context.go('/ecommerce/product-inventory');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/inventory.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.8 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Products Inventory',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.8 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.9 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.9);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/categorization.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.9 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Product Categories',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.9 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.10 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.10);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/labeling_1.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.10 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Product Tags ',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.10 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.11 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.11);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/shopping-cart.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.11 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Product Attributes',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.11 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.12 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.12);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/product_option.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.12 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Product Option',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.12 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.13 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.13);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/product_collection.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.13 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Product Collections',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.13 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.14 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.14);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/labeling_1.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.14 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Product Labels',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.14 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.14 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.14);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/brand.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.14 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Brands',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.14 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.15 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.15);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/feedback.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.15 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Reviews',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.15 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
+                          ),
+                        ),
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.16 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.16);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
+                          ),
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/flash.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.16 ? Colors.white : Colors.grey[500],
+                              ),
+                              SizedBox(width: 5),
+                              SizedBox(
+                                width: Const.screenWidth(context) * 0.1,
+                                child: Text(
+                                  'Flash Sales',
                                   style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
+                                        color: context.read<SwitchPageCubit>().state.selectedPage == 1.16 ? Colors.white : Colors.grey[500],
                                       ),
                                 ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/order_return.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Orders Returns',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.17 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.17);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/discount_1.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.17 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/fast-delivery.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                SizedBox(
-                                  width: Const.screenWidth(context) * 0.1,
-                                  child: Text(
-                                    'Shipments',
-                                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                          color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                              SizedBox(width: 5),
+                              Text(
+                                'Discounts',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.17 ? Colors.white : Colors.grey[500],
+                                    ),
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/invoice.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                SizedBox(
-                                  width: Const.screenWidth(context) * 0.1,
-                                  child: Text(
-                                    'Invoices',
-                                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                          color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                      ),
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 1.18 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(1.18);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/community.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.18 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/product.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Products',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                              SizedBox(width: 5),
+                              Text(
+                                'Customers',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.18 ? Colors.white : Colors.grey[500],
+                                    ),
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/inventory.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Products Inventory',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/categorization.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Product Categories',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/labeling_1.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Product Tags ',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/shopping-cart.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Product Attributes',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/product_option.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Product Option',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/product_collection.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Product Collections',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/labeling_1.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Product Labels',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/brand.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Brands',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/feedback.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Reviews',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/flash.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                SizedBox(
-                                  width: Const.screenWidth(context) * 0.1,
-                                  child: Text(
-                                    'Flash Sales',
-                                    style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                          color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                        ),
-                                  ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/discount_1.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Discounts',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                          ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
-                              ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/community.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Customers',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ),
-                      ],
-                    ),
+                      ),
+                    ],
                   )
                 : SizedBox()
           ],

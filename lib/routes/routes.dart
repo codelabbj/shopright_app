@@ -1,11 +1,24 @@
 import 'package:e_com_app/pages/web/annoncement/screens/annoncement_screen.dart';
+import 'package:e_com_app/pages/web/blog/screens/blog_posts_screen.dart';
+import 'package:e_com_app/pages/web/blog/screens/blog_tags_screen.dart';
+import 'package:e_com_app/pages/web/contact/screens/contact_custom_fields_screen.dart';
+import 'package:e_com_app/pages/web/contact/screens/contacts_screen.dart';
+import 'package:e_com_app/pages/web/faqs/screens/faq_categories_screen.dart';
+import 'package:e_com_app/pages/web/faqs/screens/faqs_screen.dart';
+import 'package:e_com_app/pages/web/newsletters/screens/newsletters_screen.dart';
+import 'package:e_com_app/pages/web/ads/screens/ads_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/screens/invoices_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/screens/orders_returns_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/screens/product_inventory_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/screens/product_prices_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/screens/shipments_screen.dart';
 import 'package:e_com_app/pages/web/marketplace/screens/market_messaes_screen.dart';
 import 'package:e_com_app/pages/web/marketplace/screens/market_stores_screen.dart';
 import 'package:e_com_app/pages/web/marketplace/screens/market_vendors_screen.dart';
 import 'package:e_com_app/pages/web/product-specification/screens/product_attributes_screen.dart';
 import 'package:e_com_app/pages/web/product-specification/screens/product_group_screen.dart';
 import 'package:e_com_app/pages/web/product-specification/screens/product_table_screen.dart';
-import 'package:e_com_app/pages/web/testimonials/widgets/testimonials_widget.dart';
+// import 'package:e_com_app/pages/web/testimonials/widgets/testimonials_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:go_router/go_router.dart';
@@ -18,7 +31,7 @@ import '../pages/web/marketplace/screens/market_unverified_vendor_screen.dart';
 import '../pages/web/marketplace/screens/market_withdrawal_screen.dart';
 import '../pages/web/orders/screens/list_orders_screen.dart';
 import '../pages/web/pages-section/screens/pages_screen.dart';
-import '../pages/web/product/screen/add_product_screen.dart';
+// import '../pages/web/product/screen/add_product_screen.dart';
 import '../pages/web/product/screen/product_web_screen.dart';
 import '../pages/web/testimonials/screens/testimonals_screen.dart';
 
@@ -79,6 +92,119 @@ class AppRouter {
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(10);
           return const AnnoncementScreen();
+        },
+      ),
+      GoRoute(
+        path: '/ads',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(9.1);
+          return const AdsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/ecommerce/reports',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.1);
+          return const OrdersReturnsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/ecommerce/orders',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.2);
+          return const OrdersReturnsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/ecommerce/order-incomplete',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.3);
+          return const InvoicesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/ecommerce/order-returns',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.4);
+          return const OrdersReturnsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/ecommerce/shipments',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.5);
+          return const ShipmentsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/ecommerce/invoices',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.6);
+          return const InvoicesScreen();
+        },
+      ),
+
+      GoRoute(
+        path: '/ecommerce/product-prices',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.7);
+          return const ProductPricesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/ecommerce/product-inventory',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.8);
+          return const ProductInventoryScreen();
+        },
+      ),
+      GoRoute(
+        path: '/contacts',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(6.1);
+          return const ContactsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/contacts/custom-fields',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(6.2);
+          return const ContactCustomFieldsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/newsletters',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(12);
+          return const NewslettersScreen();
+        },
+      ),
+      GoRoute(
+        path: '/blog/posts',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(5.1);
+          return const BlogPostsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/blog/tags',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(5.3);
+          return const BlogTagsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/faqs',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(11.1);
+          return const FaqsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/faqs/categories',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(11.2);
+          return const FaqCategoriesScreen();
         },
       ),
       GoRoute(

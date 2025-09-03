@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:e_com_app/widgets/market_place_widget.dart';
 import 'package:e_com_app/widgets/plugins_drawer_widget.dart';
 import 'package:e_com_app/widgets/product_specification_widget.dart';
@@ -344,62 +342,62 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 ),
               ),
               ContactDrawerWidget(),
-              Container(
-                // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
-                height: 35,
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  // boxShadow: [
-                  //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                  //       ? BoxShadow(
-                  //           color: Colors.grey.withValues(alpha: 0.2),
-                  //           spreadRadius: 10,
-                  //           blurRadius: 10,
-                  //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                  //         )
-                  //       : BoxShadow(
-                  //
-                  //           // Décalage horizontal et vertical de l'ombre
-                  //           )
-                  // ],
-                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                ),
-                child: TextButton(
-                  onPressed: () {
-                    context.read<SwitchPageCubit>().switchPage(4);
-                    context.go('/promote');
-                  },
-                  style: ButtonStyle(
-                    overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                      (Set<MaterialState> states) {
-                        if (states.contains(MaterialState.hovered)) {
-                          return Colors.transparent; // Pas d'effet au survol
-                        }
-                        return null; // Laisser les autres états par défaut
-                      },
-                    ),
-                  ),
-                  child: Row(
-                    children: [
-                      Image.asset(
-                        "assets/images/gallery.png",
-                        width: 20,
-                        height: 20,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
-                      ),
-                      SizedBox(width: 5),
-                      Text(
-                        'Simple Sliders',
-                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                              color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
-                            ),
-                      ),
-                    ],
-                  ),
-                ),
-              ),
+              // Container(
+              //   // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+              //   padding: EdgeInsets.symmetric(vertical: 10),
+              //   width: Const.screenWidth(context) * 0.19,
+              //   height: 35,
+              //   decoration: BoxDecoration(
+              //     borderRadius: BorderRadius.circular(6),
+              //     // boxShadow: [
+              //     //   context.read<SwitchPageCubit>().state.selectedPage == 4
+              //     //       ? BoxShadow(
+              //     //           color: Colors.grey.withValues(alpha: 0.2),
+              //     //           spreadRadius: 10,
+              //     //           blurRadius: 10,
+              //     //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+              //     //         )
+              //     //       : BoxShadow(
+              //     //
+              //     //           // Décalage horizontal et vertical de l'ombre
+              //     //           )
+              //     // ],
+              //     color: context.read<SwitchPageCubit>().state.selectedPage == 12 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+              //   ),
+              //   child: TextButton(
+              //     onPressed: () {
+              //       context.read<SwitchPageCubit>().switchPage(12);
+              //       context.go('/newsletters');
+              //     },
+              //     style: ButtonStyle(
+              //       overlayColor: MaterialStateProperty.resolveWith<Color?>(
+              //         (Set<MaterialState> states) {
+              //           if (states.contains(MaterialState.hovered)) {
+              //             return Colors.transparent; // Pas d'effet au survol
+              //           }
+              //           return null; // Laisser les autres états par défaut
+              //         },
+              //       ),
+              //     ),
+              //     child: Row(
+              //       children: [
+              //         Image.asset(
+              //           "assets/images/gallery.png",
+              //           width: 20,
+              //           height: 20,
+              //           color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+              //         ),
+              //         SizedBox(width: 5),
+              //         Text(
+              //           'Simple Sliders',
+              //           style: Theme.of(context).textTheme.displaySmall?.copyWith(
+              //                 color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+              //               ),
+              //         ),
+              //       ],
+              //     ),
+              //   ),
+              // ),
               FaqsDrawerWidget(),
               Container(
                 // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
@@ -421,12 +419,12 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                   //           // Décalage horizontal et vertical de l'ombre
                   //           )
                   // ],
-                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                  color: context.read<SwitchPageCubit>().state.selectedPage == 12 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                 ),
                 child: TextButton(
                   onPressed: () {
                     context.read<SwitchPageCubit>().switchPage(4);
-                    context.go('/promote');
+                    context.go('/newsletters');
                   },
                   style: ButtonStyle(
                     overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -444,13 +442,13 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                         "assets/images/newsletter.png",
                         width: 20,
                         height: 20,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 12 ? Colors.white : Colors.grey[500],
                       ),
                       SizedBox(width: 5),
                       Text(
                         'Newsletters',
                         style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                              color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                              color: context.read<SwitchPageCubit>().state.selectedPage == 12 ? Colors.white : Colors.grey[500],
                             ),
                       ),
                     ],
