@@ -16,7 +16,18 @@ class SwitchPageCubit extends Cubit<SwitchPageState> {
           pageIndex == 1.6 ||
           pageIndex == 1.7 ||
           pageIndex == 1.8 ||
-          pageIndex == 1.9),
+          pageIndex == 1.9 ||
+          pageIndex == 1.2 ||
+          pageIndex == 1.10 ||
+          pageIndex == 1.11 ||
+          pageIndex == 1.12 ||
+          pageIndex == 1.13 ||
+          pageIndex == 1.14 ||
+          pageIndex == 1.15 ||
+          pageIndex == 1.12 ||
+          pageIndex == 1.16 ||
+          pageIndex == 1.17 ||
+          pageIndex == 1.18),
       isSpecExpanded: (pageIndex == 2.1 || pageIndex == 2.2 || pageIndex == 2.3),
       isMaketPlaceExpanded: (pageIndex == 3.1 || pageIndex == 3.2 || pageIndex == 3.3 || pageIndex == 3.4 || pageIndex == 3.5 || pageIndex == 3.6),
       isSettingsExpanded: (pageIndex == 4.1 || pageIndex == 4.2),

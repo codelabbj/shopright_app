@@ -91,7 +91,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                         ),
                         child: TextButton(
                           onPressed: () {
-                            context.read<SwitchPageCubit>().switchPage(4);
+                            context.read<SwitchPageCubit>().switchPage(1.1);
                             context.go('/ecommerce/reports');
                           },
                           style: ButtonStyle(
@@ -339,90 +339,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                           ),
                         ),
                       ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          color:
-                              context.read<SwitchPageCubit>().state.selectedPage == 1.7 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                        ),
-                        child: TextButton(
-                          onPressed: () {
-                            context.read<SwitchPageCubit>().switchPage(1.7);
-                            context.go('/ecommerce/product-prices');
-                          },
-                          style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                              (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
-                                }
-                                return null; // Laisser les autres états par défaut
-                              },
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                "assets/images/product.png",
-                                width: 20,
-                                height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.7 ? Colors.white : Colors.grey[500],
-                              ),
-                              SizedBox(width: 5),
-                              Text(
-                                'Products',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.7 ? Colors.white : Colors.grey[500],
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          color:
-                              context.read<SwitchPageCubit>().state.selectedPage == 1.8 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                        ),
-                        child: TextButton(
-                          onPressed: () {
-                            context.read<SwitchPageCubit>().switchPage(1.8);
-                            context.go('/ecommerce/product-inventory');
-                          },
-                          style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                              (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
-                                }
-                                return null; // Laisser les autres états par défaut
-                              },
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                "assets/images/inventory.png",
-                                width: 20,
-                                height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.8 ? Colors.white : Colors.grey[500],
-                              ),
-                              SizedBox(width: 5),
-                              Text(
-                                'Products Inventory',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.8 ? Colors.white : Colors.grey[500],
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
+
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
                         width: Const.screenWidth(context) * 0.19,
@@ -476,7 +393,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                         child: TextButton(
                           onPressed: () {
                             context.read<SwitchPageCubit>().switchPage(1.10);
-                            context.go('/orders');
+                            context.go('/ecommerce/product-tags');
                           },
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -513,180 +430,12 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                         height: 35,
                         decoration: BoxDecoration(
                           color:
-                              context.read<SwitchPageCubit>().state.selectedPage == 1.11 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                        ),
-                        child: TextButton(
-                          onPressed: () {
-                            context.read<SwitchPageCubit>().switchPage(1.11);
-                            context.go('/orders');
-                          },
-                          style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                              (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
-                                }
-                                return null; // Laisser les autres états par défaut
-                              },
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                "assets/images/shopping-cart.png",
-                                width: 20,
-                                height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.11 ? Colors.white : Colors.grey[500],
-                              ),
-                              SizedBox(width: 5),
-                              Text(
-                                'Product Attributes',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.11 ? Colors.white : Colors.grey[500],
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          color:
-                              context.read<SwitchPageCubit>().state.selectedPage == 1.12 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                        ),
-                        child: TextButton(
-                          onPressed: () {
-                            context.read<SwitchPageCubit>().switchPage(1.12);
-                            context.go('/orders');
-                          },
-                          style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                              (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
-                                }
-                                return null; // Laisser les autres états par défaut
-                              },
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                "assets/images/product_option.png",
-                                width: 20,
-                                height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.12 ? Colors.white : Colors.grey[500],
-                              ),
-                              SizedBox(width: 5),
-                              Text(
-                                'Product Option',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.12 ? Colors.white : Colors.grey[500],
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          color:
-                              context.read<SwitchPageCubit>().state.selectedPage == 1.13 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                        ),
-                        child: TextButton(
-                          onPressed: () {
-                            context.read<SwitchPageCubit>().switchPage(1.13);
-                            context.go('/orders');
-                          },
-                          style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                              (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
-                                }
-                                return null; // Laisser les autres états par défaut
-                              },
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                "assets/images/product_collection.png",
-                                width: 20,
-                                height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.13 ? Colors.white : Colors.grey[500],
-                              ),
-                              SizedBox(width: 5),
-                              Text(
-                                'Product Collections',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.13 ? Colors.white : Colors.grey[500],
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          color:
                               context.read<SwitchPageCubit>().state.selectedPage == 1.14 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                         ),
                         child: TextButton(
                           onPressed: () {
                             context.read<SwitchPageCubit>().switchPage(1.14);
-                            context.go('/orders');
-                          },
-                          style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                              (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
-                                }
-                                return null; // Laisser les autres états par défaut
-                              },
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                "assets/images/labeling_1.png",
-                                width: 20,
-                                height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.14 ? Colors.white : Colors.grey[500],
-                              ),
-                              SizedBox(width: 5),
-                              Text(
-                                'Product Labels',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.14 ? Colors.white : Colors.grey[500],
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          color:
-                              context.read<SwitchPageCubit>().state.selectedPage == 1.14 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                        ),
-                        child: TextButton(
-                          onPressed: () {
-                            context.read<SwitchPageCubit>().switchPage(1.14);
-                            context.go('/orders');
+                            context.go('/ecommerce/brands');
                           },
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -728,7 +477,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                         child: TextButton(
                           onPressed: () {
                             context.read<SwitchPageCubit>().switchPage(1.15);
-                            context.go('/orders');
+                            context.go('/ecommerce/reviews');
                           },
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -770,7 +519,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                         child: TextButton(
                           onPressed: () {
                             context.read<SwitchPageCubit>().switchPage(1.16);
-                            context.go('/orders');
+                            context.go('/ecommerce/flash-sales');
                           },
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -804,50 +553,50 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                           ),
                         ),
                       ),
+                      // Container(
+                      //   padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
+                      //   width: Const.screenWidth(context) * 0.19,
+                      //   height: 35,
+                      //   decoration: BoxDecoration(
+                      //     color:
+                      //         context.read<SwitchPageCubit>().state.selectedPage == 1.17 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                      //   ),
+                      //   child: TextButton(
+                      //     onPressed: () {
+                      //       context.read<SwitchPageCubit>().switchPage(1.17);
+                      //       context.go('/orders');
+                      //     },
+                      //     style: ButtonStyle(
+                      //       overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                      //         (Set<MaterialState> states) {
+                      //           if (states.contains(MaterialState.hovered)) {
+                      //             return Colors.transparent; // Pas d'effet au survol
+                      //           }
+                      //           return null; // Laisser les autres états par défaut
+                      //         },
+                      //       ),
+                      //     ),
+                      //     child: Row(
+                      //       children: [
+                      //         Image.asset(
+                      //           "assets/images/discount_1.png",
+                      //           width: 20,
+                      //           height: 20,
+                      //           color: context.read<SwitchPageCubit>().state.selectedPage == 1.17 ? Colors.white : Colors.grey[500],
+                      //         ),
+                      //         SizedBox(width: 5),
+                      //         Text(
+                      //           'Discounts',
+                      //           style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                      //                 color: context.read<SwitchPageCubit>().state.selectedPage == 1.17 ? Colors.white : Colors.grey[500],
+                      //               ),
+                      //         ),
+                      //       ],
+                      //     ),
+                      //   ),
+                      // ),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
-                        height: 35,
-                        decoration: BoxDecoration(
-                          color:
-                              context.read<SwitchPageCubit>().state.selectedPage == 1.17 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-                        ),
-                        child: TextButton(
-                          onPressed: () {
-                            context.read<SwitchPageCubit>().switchPage(1.17);
-                            context.go('/orders');
-                          },
-                          style: ButtonStyle(
-                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                              (Set<MaterialState> states) {
-                                if (states.contains(MaterialState.hovered)) {
-                                  return Colors.transparent; // Pas d'effet au survol
-                                }
-                                return null; // Laisser les autres états par défaut
-                              },
-                            ),
-                          ),
-                          child: Row(
-                            children: [
-                              Image.asset(
-                                "assets/images/discount_1.png",
-                                width: 20,
-                                height: 20,
-                                color: context.read<SwitchPageCubit>().state.selectedPage == 1.17 ? Colors.white : Colors.grey[500],
-                              ),
-                              SizedBox(width: 5),
-                              Text(
-                                'Discounts',
-                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.17 ? Colors.white : Colors.grey[500],
-                                    ),
-                              ),
-                            ],
-                          ),
-                        ),
-                      ),
-                      Container(
-                        padding: EdgeInsets.symmetric(vertical: 10),
                         width: Const.screenWidth(context) * 0.19,
                         height: 35,
                         decoration: BoxDecoration(
@@ -857,7 +606,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                         child: TextButton(
                           onPressed: () {
                             context.read<SwitchPageCubit>().switchPage(1.18);
-                            context.go('/orders');
+                            context.go('/ecommerce/customers');
                           },
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.resolveWith<Color?>(

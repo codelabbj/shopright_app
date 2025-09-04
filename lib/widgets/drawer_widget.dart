@@ -405,20 +405,6 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 width: Const.screenWidth(context) * 0.19,
                 height: 35,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  // boxShadow: [
-                  //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                  //       ? BoxShadow(
-                  //           color: Colors.grey.withValues(alpha: 0.2),
-                  //           spreadRadius: 10,
-                  //           blurRadius: 10,
-                  //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                  //         )
-                  //       : BoxShadow(
-                  //
-                  //           // Décalage horizontal et vertical de l'ombre
-                  //           )
-                  // ],
                   color: context.read<SwitchPageCubit>().state.selectedPage == 12 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                 ),
                 child: TextButton(

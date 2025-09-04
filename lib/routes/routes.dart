@@ -8,10 +8,15 @@ import 'package:e_com_app/pages/web/faqs/screens/faqs_screen.dart';
 import 'package:e_com_app/pages/web/newsletters/screens/newsletters_screen.dart';
 import 'package:e_com_app/pages/web/ads/screens/ads_screen.dart';
 import 'package:e_com_app/pages/web/ecommerce/screens/invoices_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/screens/flash_sales_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/screens/customers_screen.dart';
 import 'package:e_com_app/pages/web/ecommerce/screens/orders_returns_screen.dart';
-import 'package:e_com_app/pages/web/ecommerce/screens/product_inventory_screen.dart';
-import 'package:e_com_app/pages/web/ecommerce/screens/product_prices_screen.dart';
+// import 'package:e_com_app/pages/web/ecommerce/screens/product_inventory_screen.dart';
+// import 'package:e_com_app/pages/web/ecommerce/screens/product_prices_screen.dart';
 import 'package:e_com_app/pages/web/ecommerce/screens/shipments_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/screens/product_tags_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/screens/brands_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/screens/product_reviews_screen.dart';
 import 'package:e_com_app/pages/web/marketplace/screens/market_messaes_screen.dart';
 import 'package:e_com_app/pages/web/marketplace/screens/market_stores_screen.dart';
 import 'package:e_com_app/pages/web/marketplace/screens/market_vendors_screen.dart';
@@ -30,6 +35,7 @@ import '../pages/web/galleries/screens/galleries_sceen.dart';
 import '../pages/web/marketplace/screens/market_unverified_vendor_screen.dart';
 import '../pages/web/marketplace/screens/market_withdrawal_screen.dart';
 import '../pages/web/orders/screens/list_orders_screen.dart';
+import '../pages/web/ecommerce/screens/orders_screen.dart';
 import '../pages/web/pages-section/screens/pages_screen.dart';
 // import '../pages/web/product/screen/add_product_screen.dart';
 import '../pages/web/product/screen/product_web_screen.dart';
@@ -112,7 +118,7 @@ class AppRouter {
         path: '/ecommerce/orders',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(1.2);
-          return const OrdersReturnsScreen();
+          return const OrdersScreen();
         },
       ),
       GoRoute(
@@ -145,17 +151,38 @@ class AppRouter {
       ),
 
       GoRoute(
-        path: '/ecommerce/product-prices',
+        path: '/ecommerce/product-tags',
         builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(1.7);
-          return const ProductPricesScreen();
+          context.read<SwitchPageCubit>().switchPage(1.10);
+          return const ProductTagsScreen();
         },
       ),
       GoRoute(
-        path: '/ecommerce/product-inventory',
+        path: '/ecommerce/brands',
         builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(1.8);
-          return const ProductInventoryScreen();
+          context.read<SwitchPageCubit>().switchPage(1.14);
+          return const BrandsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/ecommerce/reviews',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.15);
+          return const ProductReviewsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/ecommerce/flash-sales',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.16);
+          return const FlashSalesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/ecommerce/customers',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.18);
+          return const CustomersScreen();
         },
       ),
       GoRoute(

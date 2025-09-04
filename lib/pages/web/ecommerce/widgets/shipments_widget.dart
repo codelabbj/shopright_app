@@ -85,11 +85,10 @@ class _ShipmentsWidgetState extends State<ShipmentsWidget> {
                       Center(
                         child: Text(
                           'No data to display',
-                          style:
-                              Theme.of(context).textTheme.labelMedium?.copyWith(
-                                    color: Colors.grey[600],
-                                    fontStyle: FontStyle.italic,
-                                  ),
+                          style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                                color: Colors.grey[600],
+                                fontStyle: FontStyle.italic,
+                              ),
                         ),
                       ),
                     );
@@ -104,12 +103,6 @@ class _ShipmentsWidgetState extends State<ShipmentsWidget> {
               final isSelected = selected[index];
               return DataRow(
                 selected: selected[index],
-                onSelectChanged: (bool? value) {
-                  setState(() {
-                    selected[index] = value ?? false;
-                    selectAll = selected.every((v) => v);
-                  });
-                },
                 cells: [
                   DataCell(
                     Transform.scale(
@@ -126,28 +119,21 @@ class _ShipmentsWidgetState extends State<ShipmentsWidget> {
                       ),
                     ),
                   ),
-                  DataCell(Text(item.id.toString(),
-                      style: Theme.of(context).textTheme.labelSmall)),
-                  DataCell(Text(item.orderCode,
-                      style: const TextStyle(color: Colors.blue))),
+                  DataCell(Text(item.id.toString(), style: Theme.of(context).textTheme.labelSmall)),
+                  DataCell(Text(item.orderCode, style: const TextStyle(color: Colors.blue))),
                   DataCell(Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(item.customerName,
-                          style: Theme.of(context).textTheme.labelSmall!),
-                      Text(item.customerEmail,
-                          style: Theme.of(context).textTheme.labelSmall!),
-                      Text(item.phone,
-                          style: Theme.of(context).textTheme.labelSmall!),
+                      Text(item.customerName, style: Theme.of(context).textTheme.labelSmall!),
+                      Text(item.customerEmail, style: Theme.of(context).textTheme.labelSmall!),
+                      Text(item.phone, style: Theme.of(context).textTheme.labelSmall!),
                     ],
                   )),
-                  DataCell(Text(item.shippingAmount,
-                      style: Theme.of(context).textTheme.labelSmall)),
+                  DataCell(Text(item.shippingAmount, style: Theme.of(context).textTheme.labelSmall)),
                   _chip(item.status, context),
                   _blueChip(item.codStatus, context),
-                  DataCell(Text(item.createdAt,
-                      style: Theme.of(context).textTheme.labelSmall)),
+                  DataCell(Text(item.createdAt, style: Theme.of(context).textTheme.labelSmall)),
                   _buildActionButtons(context),
                 ],
               );
@@ -158,14 +144,10 @@ class _ShipmentsWidgetState extends State<ShipmentsWidget> {
   static DataCell _chip(String status, BuildContext context) {
     Color color = status == 'Delivered' ? Colors.green : Colors.orange;
     return DataCell(Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: color.withOpacity(0.2)),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: color.withOpacity(0.2)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-        child: Text(status,
-            style:
-                Theme.of(context).textTheme.labelSmall?.copyWith(color: color)),
+        child: Text(status, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: color)),
       ),
     ));
   }
@@ -173,14 +155,10 @@ class _ShipmentsWidgetState extends State<ShipmentsWidget> {
   static DataCell _blueChip(String text, BuildContext context) {
     final color = Colors.blue;
     return DataCell(Container(
-      decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(5),
-          color: color.withOpacity(0.2)),
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: color.withOpacity(0.2)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-        child: Text(text,
-            style:
-                Theme.of(context).textTheme.labelSmall?.copyWith(color: color)),
+        child: Text(text, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: color)),
       ),
     ));
   }
@@ -206,14 +184,9 @@ class _ShipmentsWidgetState extends State<ShipmentsWidget> {
             },
             child: Row(
               children: [
-                Image.asset("assets/images/supprimer.png",
-                    width: 15, height: 15, color: Colors.red),
+                Image.asset("assets/images/supprimer.png", width: 15, height: 15, color: Colors.red),
                 const SizedBox(width: 5),
-                Text("Delete",
-                    style: Theme.of(context)
-                        .textTheme
-                        .displaySmall
-                        ?.copyWith(color: Colors.red)),
+                Text("Delete", style: Theme.of(context).textTheme.displaySmall?.copyWith(color: Colors.red)),
               ],
             ),
           ),
