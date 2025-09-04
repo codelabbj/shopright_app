@@ -10,10 +10,14 @@ class InvoicesWidget extends StatefulWidget {
   static DataCell _statusChip(String status, BuildContext context) {
     Color color = status == 'Completed' ? Colors.green : Colors.orange;
     return DataCell(Container(
-      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: color.withValues(alpha: 0.2)),
+      decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(5),
+          color: color.withValues(alpha: 0.2)),
       child: Padding(
         padding: const EdgeInsets.symmetric(horizontal: 8, vertical: 2),
-        child: Text(status, style: Theme.of(context).textTheme.labelSmall?.copyWith(color: color)),
+        child: Text(status,
+            style:
+                Theme.of(context).textTheme.labelSmall?.copyWith(color: color)),
       ),
     ));
   }
@@ -61,8 +65,24 @@ class _InvoicesWidgetState extends State<InvoicesWidget> {
     return DataTable(
       columnSpacing: 12,
       headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
-      columns: const [
-        DataColumn(label: Text('')),
+      columns: [
+        DataColumn(
+          label: Transform.scale(
+            scale: 0.7,
+            child: Checkbox(
+              value: selectAll,
+              side: BorderSide(color: Colors.grey[500]!),
+              onChanged: (value) {
+                setState(() {
+                  selectAll = value!;
+                  for (int i = 0; i < selected.length; i++) {
+                    selected[i] = selectAll;
+                  }
+                });
+              },
+            ),
+          ),
+        ),
         DataColumn(label: Text('ID')),
         DataColumn(label: Text('Name')),
         DataColumn(label: Text('Order')),
@@ -75,31 +95,44 @@ class _InvoicesWidgetState extends State<InvoicesWidget> {
       rows: List.generate(items.length, (index) {
         final item = items[index];
         final isSelected = selected[index];
-        return DataRow(cells: [
-          DataCell(
-            Transform.scale(
-              scale: 0.7,
-              child: Checkbox(
-                value: isSelected,
-                side: BorderSide(color: Colors.grey[500]!),
-                onChanged: (val) {
-                  setState(() {
-                    selected[index] = val ?? false;
-                    selectAll = selected.every((s) => s);
-                  });
-                },
+        return DataRow(
+            selected: isSelected,
+            color: MaterialStateProperty.resolveWith<Color?>(
+                (Set<MaterialState> states) {
+              if (isSelected) return Colors.blue[100];
+              return null;
+            }),
+            cells: [
+              DataCell(
+                Transform.scale(
+                  scale: 0.7,
+                  child: Checkbox(
+                    value: isSelected,
+                    side: BorderSide(color: Colors.grey[500]!),
+                    onChanged: (val) {
+                      setState(() {
+                        selected[index] = val!;
+                        selectAll = selected.every((s) => s);
+                      });
+                    },
+                  ),
+                ),
               ),
-            ),
-          ),
-          DataCell(Text(item.id.toString(), style: Theme.of(context).textTheme.labelSmall)),
-          DataCell(Text(item.name, style: Theme.of(context).textTheme.labelSmall)),
-          DataCell(Text(item.orderCode, style: const TextStyle(color: Colors.blue))),
-          DataCell(Text(item.invoiceCode, style: Theme.of(context).textTheme.labelSmall)),
-          DataCell(Text(item.amount, style: Theme.of(context).textTheme.labelSmall)),
-          DataCell(Text(item.createdAt, style: Theme.of(context).textTheme.labelSmall)),
-          InvoicesWidget._statusChip(item.status, context),
-          const DataCell(SizedBox()),
-        ]);
+              DataCell(Text(item.id.toString(),
+                  style: Theme.of(context).textTheme.labelSmall)),
+              DataCell(Text(item.name,
+                  style: Theme.of(context).textTheme.labelSmall)),
+              DataCell(Text(item.orderCode,
+                  style: const TextStyle(color: Colors.blue))),
+              DataCell(Text(item.invoiceCode,
+                  style: Theme.of(context).textTheme.labelSmall)),
+              DataCell(Text(item.amount,
+                  style: Theme.of(context).textTheme.labelSmall)),
+              DataCell(Text(item.createdAt,
+                  style: Theme.of(context).textTheme.labelSmall)),
+              InvoicesWidget._statusChip(item.status, context),
+              const DataCell(SizedBox()),
+            ]);
       }),
     );
   }
