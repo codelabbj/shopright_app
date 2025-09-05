@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../../../models/order_return_model.dart';
+import '../../../../../models/order_return_model.dart';
 
 class OrdersReturnsWidget extends StatefulWidget {
   const OrdersReturnsWidget({super.key});
@@ -74,11 +74,10 @@ class _OrdersReturnsWidgetState extends State<OrdersReturnsWidget> {
                         alignment: Alignment.center,
                         child: Text(
                           'No data to display',
-                          style:
-                              Theme.of(context).textTheme.labelMedium?.copyWith(
-                                    color: Colors.grey[600],
-                                    fontStyle: FontStyle.italic,
-                                  ),
+                          style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                                color: Colors.grey[600],
+                                fontStyle: FontStyle.italic,
+                              ),
                         ),
                       ),
                     );
@@ -94,8 +93,7 @@ class _OrdersReturnsWidgetState extends State<OrdersReturnsWidget> {
 
               return DataRow(
                 selected: isSelected,
-                color: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
+                color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                   if (isSelected) return Colors.blue[100];
                   return null;
                 }),
@@ -115,28 +113,20 @@ class _OrdersReturnsWidgetState extends State<OrdersReturnsWidget> {
                       ),
                     ),
                   ),
-                  DataCell(Text(item.id.toString(),
-                      style: Theme.of(context).textTheme.labelSmall)),
-                  DataCell(Text(item.orderId,
-                      style: const TextStyle(color: Colors.blue))),
+                  DataCell(Text(item.id.toString(), style: Theme.of(context).textTheme.labelSmall)),
+                  DataCell(Text(item.orderId, style: const TextStyle(color: Colors.blue))),
                   DataCell(Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-                      Text(item.customerName,
-                          style: Theme.of(context).textTheme.labelSmall!),
-                      Text(item.customerEmail,
-                          style: Theme.of(context).textTheme.labelSmall!),
+                      Text(item.customerName, style: Theme.of(context).textTheme.labelSmall!),
+                      Text(item.customerEmail, style: Theme.of(context).textTheme.labelSmall!),
                     ],
                   )),
-                  DataCell(Text(item.productItems,
-                      style: Theme.of(context).textTheme.labelSmall)),
-                  DataCell(Text(item.reason,
-                      style: Theme.of(context).textTheme.labelSmall)),
-                  DataCell(Text(item.status,
-                      style: Theme.of(context).textTheme.labelSmall)),
-                  DataCell(Text(item.createdAt,
-                      style: Theme.of(context).textTheme.labelSmall)),
+                  DataCell(Text(item.productItems, style: Theme.of(context).textTheme.labelSmall)),
+                  DataCell(Text(item.reason, style: Theme.of(context).textTheme.labelSmall)),
+                  DataCell(Text(item.status, style: Theme.of(context).textTheme.labelSmall)),
+                  DataCell(Text(item.createdAt, style: Theme.of(context).textTheme.labelSmall)),
                   _buildActionButtons(context)
                 ],
               );
@@ -174,10 +164,7 @@ class _OrdersReturnsWidgetState extends State<OrdersReturnsWidget> {
                 SizedBox(width: 5),
                 Text(
                   "Delete",
-                  style: Theme.of(context)
-                      .textTheme
-                      .displaySmall!
-                      .copyWith(color: Colors.red),
+                  style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.red),
                 ),
               ],
             ),

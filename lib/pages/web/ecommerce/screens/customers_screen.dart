@@ -7,16 +7,16 @@ import '../../../../widgets/custom_search_widget.dart';
 import '../../../../widgets/customs_text_form_field.dart';
 import '../../../../widgets/drawer_widget.dart';
 import '../../pages-section/widgets/filter_widget.dart';
-import '../widgets/orders_returns_widget.dart';
+import '../widgets/customers_widget.dart';
 
-class OrdersReturnsScreen extends StatefulWidget {
-  const OrdersReturnsScreen({super.key});
+class CustomersScreen extends StatefulWidget {
+  const CustomersScreen({super.key});
 
   @override
-  State<OrdersReturnsScreen> createState() => _OrdersReturnsScreenState();
+  State<CustomersScreen> createState() => _CustomersScreenState();
 }
 
-class _OrdersReturnsScreenState extends State<OrdersReturnsScreen> {
+class _CustomersScreenState extends State<CustomersScreen> {
   bool isFilterVisible = false;
   final TextEditingController newFilter = TextEditingController();
   String selectedStatus = "Status";
@@ -43,7 +43,7 @@ class _OrdersReturnsScreenState extends State<OrdersReturnsScreen> {
                       children: [
                         Text('Dashboard/ ',
                             style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
-                        Text('Ecommerce / Order Returns', style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
+                        Text('Ecommerce / Customers', style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -117,10 +117,75 @@ class _OrdersReturnsScreenState extends State<OrdersReturnsScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 500,
+                            height: 600,
                             child: CardListWidget(
-                              buttons: const [CustomSearchWidget()],
+                              buttons: [
+                                CustomSearchWidget(),
+                                SizedBox(width: 10),
+                                InkWell(
+                                  onTap: () {
+                                    setState(() {
+                                      isFilterVisible = !isFilterVisible; // toggle l'affichage
+                                    });
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                        border: Border.all(
+                                          color: Colors.grey[200]!,
+                                        ),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Row(
+                                      children: [
+                                        Image.asset(
+                                          "assets/images/filtre.png",
+                                          width: 18,
+                                          height: 18,
+                                          color: Colors.black,
+                                        ),
+                                        SizedBox(width: 10),
+                                        Text(
+                                          "Filter",
+                                          style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                              ],
                               actions: [
+                                InkWell(
+                                  onTap: () {
+                                    // context.go('/add-product');
+                                  },
+                                  child: Container(
+                                    padding: EdgeInsets.all(10),
+                                    decoration: BoxDecoration(
+                                        color: AppColors.PRIMARY_BLUE_COLOR,
+                                        border: Border.all(color: Colors.grey[200]!),
+                                        borderRadius: BorderRadius.circular(5)),
+                                    child: Row(
+                                      children: [
+                                        Icon(
+                                          Icons.add,
+                                          size: 20,
+                                          color: Colors.white,
+                                        ),
+                                        SizedBox(width: 10),
+                                        Text(
+                                          "Create",
+                                          style: Theme.of(context).textTheme.labelSmall!.copyWith(
+                                                fontWeight: FontWeight.bold,
+                                                color: Colors.white,
+                                              ),
+                                        ),
+                                      ],
+                                    ),
+                                  ),
+                                ),
+                                SizedBox(
+                                  width: 10,
+                                ),
                                 Container(
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
@@ -140,12 +205,15 @@ class _OrdersReturnsScreenState extends State<OrdersReturnsScreen> {
                                     ],
                                   ),
                                 ),
+                                SizedBox(
+                                  width: 10,
+                                ),
                               ],
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: ConstrainedBox(
                                   constraints: BoxConstraints(minWidth: MediaQuery.of(context).size.width),
-                                  child: const OrdersReturnsWidget(),
+                                  child: const CustomersWidget(),
                                 ),
                               ),
                             ),
@@ -153,10 +221,10 @@ class _OrdersReturnsScreenState extends State<OrdersReturnsScreen> {
                         ],
                       ),
                     ),
-                  ),
+                  )
                 ],
               ),
-            ),
+            )
           ],
         ),
       ),
