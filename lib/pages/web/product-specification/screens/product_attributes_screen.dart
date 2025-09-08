@@ -1,5 +1,6 @@
 import 'package:e_com_app/widgets/customs_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../theme/app_colors.dart';
 import '../../../../widgets/app_bar_widget.dart';
 import '../../../../widgets/card_list_widget.dart';
@@ -168,7 +169,7 @@ class _ProductAttributesScreenState extends State<ProductAttributesScreen> {
                               actions: [
                                 InkWell(
                                   onTap: () {
-                                    // context.go('/add-product');
+                                    context.go("/product/attributes/create");
                                   },
                                   child: Container(
                                     padding: EdgeInsets.all(10),

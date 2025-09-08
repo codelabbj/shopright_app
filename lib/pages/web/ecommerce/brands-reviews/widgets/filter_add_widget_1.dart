@@ -39,7 +39,6 @@ class _FilterAddWidget1State extends State<FilterAddWidget1> {
   @override
   void initState() {
     super.initState();
-    // Ajouter un attribut par défaut au démarrage
     addAttribute();
   }
 

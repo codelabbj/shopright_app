@@ -1,22 +1,22 @@
+import 'package:e_com_app/widgets/customs_text_form_field.dart';
 import 'package:flutter/material.dart';
+import '../../../../../theme/app_colors.dart';
+import '../../../../../widgets/app_bar_widget.dart';
+import '../../../../../widgets/card_list_widget.dart';
+import '../../../../../widgets/custom_search_widget.dart';
+import '../../../../../widgets/drawer_widget.dart';
+import '../../../pages-section/widgets/filter_widget.dart';
+import '../../widgets/market_stores_widget.dart';
+import '../widgets/market_withdrawal_widget.dart';
 
-import '../../../../theme/app_colors.dart';
-import '../../../../widgets/app_bar_widget.dart';
-import '../../../../widgets/card_list_widget.dart';
-import '../../../../widgets/custom_search_widget.dart';
-import '../../../../widgets/customs_text_form_field.dart';
-import '../../../../widgets/drawer_widget.dart';
-import '../../pages-section/widgets/filter_widget.dart';
-import '../widgets/customers_widget.dart';
-
-class CustomersScreen extends StatefulWidget {
-  const CustomersScreen({super.key});
+class MarketWithdrawalScreen extends StatefulWidget {
+  const MarketWithdrawalScreen({super.key});
 
   @override
-  State<CustomersScreen> createState() => _CustomersScreenState();
+  State<MarketWithdrawalScreen> createState() => _MarketWithdrawalScreenState();
 }
 
-class _CustomersScreenState extends State<CustomersScreen> {
+class _MarketWithdrawalScreenState extends State<MarketWithdrawalScreen> {
   bool isFilterVisible = false;
   final TextEditingController newFilter = TextEditingController();
   String selectedStatus = "Status";
@@ -31,19 +31,30 @@ class _CustomersScreenState extends State<CustomersScreen> {
       body: SafeArea(
         child: Row(
           children: [
-            const DrawerDashboard(),
+            DrawerDashboard(),
             Expanded(
               child: Column(
                 children: [
-                  const SizedBox(height: 60, child: AppbarDashboard()),
-                  const SizedBox(height: 12),
+                  // LayoutBuilder(
+                  //   builder: (context, constraints) {
+                  //     double width = constraints.maxWidth;
+                  //     if (width > 1024) {
+                  //       // return SizedBox(height: 60, child: AppBarWidget());
+                  //     } else {
+                  //       // return AppBarVendorWidget();
+                  //     }
+                  //   },
+                  // ),
+                  SizedBox(height: 60, child: AppbarDashboard()),
+
+                  SizedBox(height: 12),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Row(
                       children: [
-                        Text('Dashboard/ ',
+                        Text("Dashboard/",
                             style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
-                        Text('Ecommerce / Customers', style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
+                        Text("galleries", style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -51,7 +62,9 @@ class _CustomersScreenState extends State<CustomersScreen> {
                     child: SingleChildScrollView(
                       child: Column(
                         children: [
-                          const SizedBox(height: 30),
+                          SizedBox(
+                            height: 30,
+                          ),
                           Visibility(
                             visible: isFilterVisible,
                             child: FilterPanelWidget(
@@ -117,7 +130,7 @@ class _CustomersScreenState extends State<CustomersScreen> {
                             ),
                           ),
                           SizedBox(
-                            height: 600,
+                            height: 900,
                             child: CardListWidget(
                               buttons: [
                                 CustomSearchWidget(),
@@ -154,38 +167,6 @@ class _CustomersScreenState extends State<CustomersScreen> {
                                 ),
                               ],
                               actions: [
-                                InkWell(
-                                  onTap: () {
-                                    // context.go('/add-product');
-                                  },
-                                  child: Container(
-                                    padding: EdgeInsets.all(10),
-                                    decoration: BoxDecoration(
-                                        color: AppColors.PRIMARY_BLUE_COLOR,
-                                        border: Border.all(color: Colors.grey[200]!),
-                                        borderRadius: BorderRadius.circular(5)),
-                                    child: Row(
-                                      children: [
-                                        Icon(
-                                          Icons.add,
-                                          size: 20,
-                                          color: Colors.white,
-                                        ),
-                                        SizedBox(width: 10),
-                                        Text(
-                                          "Create",
-                                          style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                                                fontWeight: FontWeight.bold,
-                                                color: Colors.white,
-                                              ),
-                                        ),
-                                      ],
-                                    ),
-                                  ),
-                                ),
-                                SizedBox(
-                                  width: 10,
-                                ),
                                 Container(
                                   padding: EdgeInsets.all(10),
                                   decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
@@ -208,12 +189,54 @@ class _CustomersScreenState extends State<CustomersScreen> {
                                 SizedBox(
                                   width: 10,
                                 ),
+
+                                SizedBox(
+                                  width: 10,
+                                ),
+                                // InkWell(
+                                //   onTap: () {
+                                //     formList = "list-ui";
+                                //     context.go('/products');
+                                //   },
+                                //   child: Container(
+                                //     padding: EdgeInsets.all(5),
+                                //     decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                                //     child: Icon(Icons.picture_in_picture_alt_outlined, size: 18, color: Colors.black),
+                                //   ),
+                                // ),
+                                // SizedBox(
+                                //   width: 10,
+                                // ),
+                                // InkWell(
+                                //   onTap: () {
+                                //     formList = "grid-product";
+                                //     context.go('/grid-product');
+                                //   },
+                                //   child: Container(
+                                //     padding: EdgeInsets.all(5),
+                                //     decoration: BoxDecoration(
+                                //         border: Border.all(color: formList == "grid-product" ? Theme.of(context).colorScheme.primary : Colors.grey[200]!),
+                                //         borderRadius: BorderRadius.circular(5)),
+                                //     child: Row(
+                                //       children: [
+                                //         Icon(Icons.grid_view, size: 18, color: Colors.grey),
+                                //         Icon(
+                                //           Icons.table_rows_outlined,
+                                //           size: 18,
+                                //           color: Colors.grey,
+                                //         ),
+                                //       ],
+                                //     ),
+                                //   ),
+                                // )
                               ],
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,
                                 child: ConstrainedBox(
-                                  constraints: BoxConstraints(minWidth: MediaQuery.of(context).size.width),
-                                  child: const CustomersWidget(),
+                                  constraints: BoxConstraints(
+                                    minWidth: MediaQuery.of(context).size.width,
+                                  ),
+                                  child: MarketWithdrawalWidget(),
                                 ),
                               ),
                             ),
@@ -221,10 +244,10 @@ class _CustomersScreenState extends State<CustomersScreen> {
                         ],
                       ),
                     ),
-                  )
+                  ),
                 ],
               ),
-            )
+            ),
           ],
         ),
       ),

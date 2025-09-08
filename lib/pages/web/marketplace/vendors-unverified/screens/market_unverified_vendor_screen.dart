@@ -1,12 +1,11 @@
 import 'package:flutter/material.dart';
-import '../../../../theme/app_colors.dart';
-import '../../../../widgets/app_bar_widget.dart';
-import '../../../../widgets/card_list_widget.dart';
-import '../../../../widgets/custom_search_widget.dart';
-import '../../../../widgets/drawer_widget.dart';
+import '../../../../../theme/app_colors.dart';
+import '../../../../../widgets/app_bar_widget.dart';
+import '../../../../../widgets/card_list_widget.dart';
+import '../../../../../widgets/custom_search_widget.dart';
+import '../../../../../widgets/drawer_widget.dart';
 
 import '../widgets/market_unverified_vendor_widget.dart';
-import '../widgets/market_vendors_widget.dart';
 
 class MarketUnverifiedVendorScreen extends StatefulWidget {
   const MarketUnverifiedVendorScreen({super.key});

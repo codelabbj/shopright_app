@@ -17,10 +17,10 @@ class _CreateBrandWidgetState extends State<CreateBrandWidget> {
   final TextEditingController _nameController = TextEditingController();
   final TextEditingController _descriptionController = TextEditingController();
 
-  String _selectedStatus = 'Published';
   final List<String> categories = ['Accessories', 'Headphones', 'Speakers'];
   final List<String> discountOptions = ['No Discount', 'Percentage %', 'Bundling'];
   final List<String> statuses = ['Published', 'Draft', 'Archived'];
+  String _selectedStatus = 'Published';
 
   @override
   Widget build(BuildContext context) {

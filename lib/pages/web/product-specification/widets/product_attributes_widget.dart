@@ -17,14 +17,15 @@ class _ProductAttributesWidgetState extends State<ProductAttributesWidget> {
   List<ProductAttributesModel> items = [
     ProductAttributesModel(
       id: 1,
-      name: "Perfect",
+      name: "Resolution",
+      associatedType: "Display",
       fieldType: "Text",
       createdAt: '2025-08-08',
     ),
-    ProductAttributesModel(id: 2, name: "New Day", fieldType: "Selected", createdAt: '2025-08-08'),
-    ProductAttributesModel(id: 3, name: "Happy Day", fieldType: "Text", createdAt: '2025-08-08'),
-    ProductAttributesModel(id: 4, name: "Nature", fieldType: "Selected", createdAt: '2025-08-08'),
-    ProductAttributesModel(id: 5, name: "Morning", fieldType: "Text", createdAt: '2025-08-08'),
+    ProductAttributesModel(id: 2, name: "Battery Life", associatedType: "Battery", fieldType: "Selected", createdAt: '2025-08-08'),
+    ProductAttributesModel(id: 3, name: "Power", associatedType: "Performence", fieldType: "Text", createdAt: '2025-08-08'),
+    ProductAttributesModel(id: 4, name: "Speed", associatedType: "Performence", fieldType: "Selected", createdAt: '2025-08-08'),
+    ProductAttributesModel(id: 5, name: "Width", associatedType: "Dimensions", fieldType: "Text", createdAt: '2025-08-08'),
   ];
 
   List<bool> selected = [];
@@ -43,28 +44,29 @@ class _ProductAttributesWidgetState extends State<ProductAttributesWidget> {
       columnSpacing: 12,
       headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: [
-        DataColumn(
-          label: Transform.scale(
-            scale: 0.7,
-            child: Checkbox(
-              value: selectAll,
-              side: BorderSide(color: Colors.grey[500]!),
-              onChanged: (value) {
-                setState(() {
-                  selectAll = value!;
-                  for (int i = 0; i < selected.length; i++) {
-                    selected[i] = selectAll;
-                  }
-                });
-              },
-            ),
-          ),
-        ),
+        // DataColumn(
+        //   label: Transform.scale(
+        //     scale: 0.7,
+        //     child: Checkbox(
+        //       value: selectAll,
+        //       side: BorderSide(color: Colors.grey[500]!),
+        //       onChanged: (value) {
+        //         setState(() {
+        //           selectAll = value!;
+        //           for (int i = 0; i < selected.length; i++) {
+        //             selected[i] = selectAll;
+        //           }
+        //         });
+        //       },
+        //     ),
+        //   ),
+        // ),
         DataColumn(
             label: Text(
           "ID",
         )),
         DataColumn(label: Text("Name")),
+        DataColumn(label: Text("Associated Group")),
         DataColumn(label: Text("Field Type")),
         DataColumn(label: Text("Created at")),
         DataColumn(label: Text("Actions")),
@@ -79,21 +81,21 @@ class _ProductAttributesWidgetState extends State<ProductAttributesWidget> {
             return null;
           }),
           cells: [
-            DataCell(
-              Transform.scale(
-                scale: 0.7,
-                child: Checkbox(
-                  value: isSelected,
-                  side: BorderSide(color: Colors.grey[500]!),
-                  onChanged: (val) {
-                    setState(() {
-                      selected[index] = val!;
-                      selectAll = selected.every((s) => s);
-                    });
-                  },
-                ),
-              ),
-            ),
+            // DataCell(
+            //   Transform.scale(
+            //     scale: 0.7,
+            //     child: Checkbox(
+            //       value: isSelected,
+            //       side: BorderSide(color: Colors.grey[500]!),
+            //       onChanged: (val) {
+            //         setState(() {
+            //           selected[index] = val!;
+            //           selectAll = selected.every((s) => s);
+            //         });
+            //       },
+            //     ),
+            //   ),
+            // ),
             DataCell(Text(
               item.id.toString(),
               style: Theme.of(context).textTheme.labelSmall,
@@ -101,6 +103,10 @@ class _ProductAttributesWidgetState extends State<ProductAttributesWidget> {
             DataCell(Text(
               item.name,
               style: Theme.of(context).textTheme.labelSmall,
+            )),
+            DataCell(Text(
+              item.associatedType,
+              style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.blue),
             )),
             DataCell(Text(item.fieldType, style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Text(item.createdAt, style: Theme.of(context).textTheme.labelSmall)),

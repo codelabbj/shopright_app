@@ -20,10 +20,10 @@ class _ProductGroupWidgetState extends State<ProductGroupWidget> {
       description: "Published",
       createdAt: '2025-08-08',
     ),
-    ProductGroupModel(id: 2, name: "New Day", description: "Not Published", createdAt: '2025-08-08'),
-    ProductGroupModel(id: 3, name: "Happy Day", description: "Published", createdAt: '2025-08-08'),
-    ProductGroupModel(id: 4, name: "Nature", description: "Deleted", createdAt: '2025-08-08'),
-    ProductGroupModel(id: 5, name: "Morning", description: "Published", createdAt: '2025-08-08'),
+    ProductGroupModel(id: 2, name: "New Day", description: "__", createdAt: '2025-08-08'),
+    ProductGroupModel(id: 3, name: "Happy Day", description: "__", createdAt: '2025-08-08'),
+    ProductGroupModel(id: 4, name: "Nature", description: "__", createdAt: '2025-08-08'),
+    ProductGroupModel(id: 5, name: "Morning", description: "__", createdAt: '2025-08-08'),
   ];
 
   List<bool> selected = [];
@@ -42,23 +42,23 @@ class _ProductGroupWidgetState extends State<ProductGroupWidget> {
       columnSpacing: 12,
       headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: [
-        DataColumn(
-          label: Transform.scale(
-            scale: 0.7,
-            child: Checkbox(
-              value: selectAll,
-              side: BorderSide(color: Colors.grey[500]!),
-              onChanged: (value) {
-                setState(() {
-                  selectAll = value!;
-                  for (int i = 0; i < selected.length; i++) {
-                    selected[i] = selectAll;
-                  }
-                });
-              },
-            ),
-          ),
-        ),
+        // DataColumn(
+        //   label: Transform.scale(
+        //     scale: 0.7,
+        //     child: Checkbox(
+        //       value: selectAll,
+        //       side: BorderSide(color: Colors.grey[500]!),
+        //       onChanged: (value) {
+        //         setState(() {
+        //           selectAll = value!;
+        //           for (int i = 0; i < selected.length; i++) {
+        //             selected[i] = selectAll;
+        //           }
+        //         });
+        //       },
+        //     ),
+        //   ),
+        // ),
         DataColumn(
             label: Text(
           "ID",
@@ -78,21 +78,21 @@ class _ProductGroupWidgetState extends State<ProductGroupWidget> {
             return null;
           }),
           cells: [
-            DataCell(
-              Transform.scale(
-                scale: 0.7,
-                child: Checkbox(
-                  value: isSelected,
-                  side: BorderSide(color: Colors.grey[500]!),
-                  onChanged: (val) {
-                    setState(() {
-                      selected[index] = val!;
-                      selectAll = selected.every((s) => s);
-                    });
-                  },
-                ),
-              ),
-            ),
+            // DataCell(
+            //   Transform.scale(
+            //     scale: 0.7,
+            //     child: Checkbox(
+            //       value: isSelected,
+            //       side: BorderSide(color: Colors.grey[500]!),
+            //       onChanged: (val) {
+            //         setState(() {
+            //           selected[index] = val!;
+            //           selectAll = selected.every((s) => s);
+            //         });
+            //       },
+            //     ),
+            //   ),
+            // ),
             DataCell(Text(
               item.id.toString(),
               style: Theme.of(context).textTheme.labelSmall,

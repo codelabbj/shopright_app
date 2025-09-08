@@ -1,13 +1,12 @@
-import 'package:e_com_app/pages/web/marketplace/widgets/market_messages_widget.dart';
+import 'package:e_com_app/pages/web/marketplace/messages_widrawal/widgets/market_messages_widget.dart';
 import 'package:flutter/material.dart';
-import '../../../../theme/app_colors.dart';
-import '../../../../widgets/app_bar_widget.dart';
-import '../../../../widgets/card_list_widget.dart';
-import '../../../../widgets/custom_search_widget.dart';
-import '../../../../widgets/drawer_widget.dart';
+import '../../../../../theme/app_colors.dart';
+import '../../../../../widgets/app_bar_widget.dart';
+import '../../../../../widgets/card_list_widget.dart';
+import '../../../../../widgets/custom_search_widget.dart';
+import '../../../../../widgets/drawer_widget.dart';
 
-import '../widgets/market_unverified_vendor_widget.dart';
-import '../widgets/market_vendors_widget.dart';
+import '../../vendors-unverified/widgets/market_unverified_vendor_widget.dart';
 
 class MarketMessaesScreen extends StatefulWidget {
   const MarketMessaesScreen({super.key});
@@ -42,17 +41,8 @@ class _MarketMessaesScreenState extends State<MarketMessaesScreen> {
                     child: Row(
                       children: [
                         Text("Dashboard/Marketplace",
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelMedium!
-                                .copyWith(
-                                    fontWeight: FontWeight.bold,
-                                    color: Colors.blue)),
-                        Text("/Messages",
-                            style: Theme.of(context)
-                                .textTheme
-                                .labelMedium!
-                                .copyWith(fontWeight: FontWeight.bold)),
+                            style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
+                        Text("/Messages", style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -72,10 +62,7 @@ class _MarketMessaesScreenState extends State<MarketMessaesScreen> {
                               actions: [
                                 Container(
                                   padding: EdgeInsets.all(10),
-                                  decoration: BoxDecoration(
-                                      border:
-                                          Border.all(color: Colors.grey[200]!),
-                                      borderRadius: BorderRadius.circular(5)),
+                                  decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
                                   child: Row(
                                     children: [
                                       Image.asset(
@@ -87,11 +74,7 @@ class _MarketMessaesScreenState extends State<MarketMessaesScreen> {
                                       SizedBox(width: 10),
                                       Text(
                                         "Reload",
-                                        style: Theme.of(context)
-                                            .textTheme
-                                            .labelSmall!
-                                            .copyWith(
-                                                fontWeight: FontWeight.bold),
+                                        style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold),
                                       ),
                                     ],
                                   ),

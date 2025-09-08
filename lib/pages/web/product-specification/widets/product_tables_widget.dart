@@ -44,23 +44,23 @@ class _ProductTablesWidgetState extends State<ProductTablesWidget> {
       columnSpacing: 12,
       headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: [
-        DataColumn(
-          label: Transform.scale(
-            scale: 0.7,
-            child: Checkbox(
-              value: selectAll,
-              side: BorderSide(color: Colors.grey[500]!),
-              onChanged: (value) {
-                setState(() {
-                  selectAll = value!;
-                  for (int i = 0; i < selected.length; i++) {
-                    selected[i] = selectAll;
-                  }
-                });
-              },
-            ),
-          ),
-        ),
+        // DataColumn(
+        //   label: Transform.scale(
+        //     scale: 0.7,
+        //     child: Checkbox(
+        //       value: selectAll,
+        //       side: BorderSide(color: Colors.grey[500]!),
+        //       onChanged: (value) {
+        //         setState(() {
+        //           selectAll = value!;
+        //           for (int i = 0; i < selected.length; i++) {
+        //             selected[i] = selectAll;
+        //           }
+        //         });
+        //       },
+        //     ),
+        //   ),
+        // ),
         DataColumn(
             label: Text(
           "ID",
@@ -81,21 +81,21 @@ class _ProductTablesWidgetState extends State<ProductTablesWidget> {
             return null;
           }),
           cells: [
-            DataCell(
-              Transform.scale(
-                scale: 0.7,
-                child: Checkbox(
-                  value: isSelected,
-                  side: BorderSide(color: Colors.grey[500]!),
-                  onChanged: (val) {
-                    setState(() {
-                      selected[index] = val!;
-                      selectAll = selected.every((s) => s);
-                    });
-                  },
-                ),
-              ),
-            ),
+            // DataCell(
+            //   Transform.scale(
+            //     scale: 0.7,
+            //     child: Checkbox(
+            //       value: isSelected,
+            //       side: BorderSide(color: Colors.grey[500]!),
+            //       onChanged: (val) {
+            //         setState(() {
+            //           selected[index] = val!;
+            //           selectAll = selected.every((s) => s);
+            //         });
+            //       },
+            //     ),
+            //   ),
+            // ),
             DataCell(Text(
               item.id.toString(),
               style: Theme.of(context).textTheme.labelSmall,

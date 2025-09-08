@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../theme/app_colors.dart';
 import '../../../../../widgets/app_bar_widget.dart';
@@ -156,7 +157,7 @@ class _ProductReviewsScreenState extends State<ProductReviewsScreen> {
                               actions: [
                                 InkWell(
                                   onTap: () {
-                                    // context.go('/add-product');
+                                    context.go('/ecommerce/reviews/create');
                                   },
                                   child: Container(
                                     padding: EdgeInsets.all(10),

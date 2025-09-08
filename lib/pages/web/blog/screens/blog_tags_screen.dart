@@ -6,6 +6,7 @@ import '../../../../widgets/custom_search_widget.dart';
 import '../../../../widgets/drawer_widget.dart';
 import '../../pages-section/widgets/filter_widget.dart';
 import '../widgets/blog_tags_widget.dart';
+import 'package:go_router/go_router.dart';
 
 class BlogTagsScreen extends StatefulWidget {
   const BlogTagsScreen({super.key});
@@ -84,6 +85,19 @@ class _BlogTagsScreenState extends State<BlogTagsScreen> {
                                 ),
                               ],
                               actions: [
+                                InkWell(
+                                  onTap: () => context.go('/blog/tags/create'),
+                                  child: Container(
+                                    padding: const EdgeInsets.all(10),
+                                    decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                                    child: Row(children: [
+                                      const Icon(Icons.add, size: 20),
+                                      const SizedBox(width: 10),
+                                      Text('Create', style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
+                                    ]),
+                                  ),
+                                ),
+                                const SizedBox(width: 10),
                                 Container(
                                   padding: const EdgeInsets.all(10),
                                   decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
@@ -95,7 +109,6 @@ class _BlogTagsScreenState extends State<BlogTagsScreen> {
                                     ],
                                   ),
                                 ),
-                                const SizedBox(width: 10),
                                 const SizedBox(width: 10),
                               ],
                               child: SingleChildScrollView(

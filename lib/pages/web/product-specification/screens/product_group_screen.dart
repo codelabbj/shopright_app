@@ -1,5 +1,6 @@
 import 'package:e_com_app/widgets/customs_text_form_field.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 import '../../../../theme/app_colors.dart';
 import '../../../../widgets/app_bar_widget.dart';
 import '../../../../widgets/card_list_widget.dart';
@@ -54,7 +55,7 @@ class _ProductGroupScreenState extends State<ProductGroupScreen> {
                       children: [
                         Text("Dashboard/",
                             style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
-                        Text("galleries", style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
+                        Text(" Group", style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),
@@ -169,7 +170,7 @@ class _ProductGroupScreenState extends State<ProductGroupScreen> {
                               actions: [
                                 InkWell(
                                   onTap: () {
-                                    // context.go('/add-product');
+                                    context.go('/product/groups/create');
                                   },
                                   child: Container(
                                     padding: EdgeInsets.all(10),
@@ -221,46 +222,9 @@ class _ProductGroupScreenState extends State<ProductGroupScreen> {
                                 SizedBox(
                                   width: 10,
                                 ),
-
                                 SizedBox(
                                   width: 10,
                                 ),
-                                // InkWell(
-                                //   onTap: () {
-                                //     formList = "list-ui";
-                                //     context.go('/products');
-                                //   },
-                                //   child: Container(
-                                //     padding: EdgeInsets.all(5),
-                                //     decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-                                //     child: Icon(Icons.picture_in_picture_alt_outlined, size: 18, color: Colors.black),
-                                //   ),
-                                // ),
-                                // SizedBox(
-                                //   width: 10,
-                                // ),
-                                // InkWell(
-                                //   onTap: () {
-                                //     formList = "grid-product";
-                                //     context.go('/grid-product');
-                                //   },
-                                //   child: Container(
-                                //     padding: EdgeInsets.all(5),
-                                //     decoration: BoxDecoration(
-                                //         border: Border.all(color: formList == "grid-product" ? Theme.of(context).colorScheme.primary : Colors.grey[200]!),
-                                //         borderRadius: BorderRadius.circular(5)),
-                                //     child: Row(
-                                //       children: [
-                                //         Icon(Icons.grid_view, size: 18, color: Colors.grey),
-                                //         Icon(
-                                //           Icons.table_rows_outlined,
-                                //           size: 18,
-                                //           color: Colors.grey,
-                                //         ),
-                                //       ],
-                                //     ),
-                                //   ),
-                                // )
                               ],
                               child: SingleChildScrollView(
                                 scrollDirection: Axis.horizontal,

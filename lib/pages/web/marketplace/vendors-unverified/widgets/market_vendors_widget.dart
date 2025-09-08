@@ -2,10 +2,10 @@ import 'package:e_com_app/models/market_store_model.dart';
 import 'package:e_com_app/models/page_item_model.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../models/gallerie_model.dart';
-import '../../../../models/vendor_model.dart';
-import '../../../../theme/app_colors.dart';
-import '../../../../utils/utils.dart';
+import '../../../../../models/gallerie_model.dart';
+import '../../../../../models/vendor_model.dart';
+import '../../../../../theme/app_colors.dart';
+import '../../../../../utils/utils.dart';
 
 class MarketVendorsWidget extends StatefulWidget {
   const MarketVendorsWidget({Key? key}) : super(key: key);

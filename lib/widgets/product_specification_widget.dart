@@ -30,30 +30,7 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                 padding: EdgeInsets.symmetric(vertical: 10),
                 width: Const.screenWidth(context) * 0.19,
                 height: 35,
-                decoration: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(6),
-                  boxShadow: [
-                    // context.read<SwitchPageCubit>().state.selectedPage == 1
-                    //     ? BoxShadow(
-                    //         color: Colors.grey.withValues(alpha: 0.2),
-                    //         spreadRadius: 10,
-                    //         blurRadius: 10,
-                    //         offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                    //       )
-                    //     : context.read<SwitchPageCubit>().state.selectedPage == 6
-                    //         ? BoxShadow()
-                    //         : context.read<SwitchPageCubit>().state.selectedPage == 7
-                    //             ? BoxShadow()
-                    //             : context.read<SwitchPageCubit>().state.selectedPage == 7
-                    //                 ? BoxShadow(
-                    //                     color: Colors.grey.withValues(alpha: 0.2),
-                    //                     spreadRadius: 10,
-                    //                     blurRadius: 10,
-                    //                     offset: Offset(0, 3),
-                    //                   )
-                    //                 : BoxShadow(),
-                  ],
-                ),
+
                 child: TextButton(
                   onPressed: () {
                     if (state.selectedPage == 2 || state.isSpecExpanded == true) {
@@ -106,26 +83,13 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                     child: Column(
                       children: [
                         Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                           padding: EdgeInsets.symmetric(vertical: 10),
                           width: Const.screenWidth(context) * 0.19,
                           height: 35,
                           decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color: context.read<SwitchPageCubit>().state.selectedPage == 2.1 ? Colors.grey[850] : Colors.transparent,
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 2.1
+                                ? Theme.of(context).colorScheme.primary
+                                : Colors.transparent,
                           ),
                           child: TextButton(
                             onPressed: () {
@@ -139,7 +103,7 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                                   if (states.contains(MaterialState.hovered)) {
                                     return Colors.transparent; // Pas d'effet au survol
                                   }
-                                  return null; // Laisser les autres états par défaut
+                                  return null;
                                 },
                               ),
                             ),
@@ -149,13 +113,13 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                                   "assets/images/folder.png",
                                   width: 20,
                                   height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                                  color: context.read<SwitchPageCubit>().state.selectedPage == 2.1 ? Colors.white : Colors.grey[500],
                                 ),
                                 SizedBox(width: 5),
                                 Text(
                                   'Groups',
                                   style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                                        color: context.read<SwitchPageCubit>().state.selectedPage == 2.1 ? Colors.white : Colors.grey[500],
                                       ),
                                 ),
                               ],
@@ -168,21 +132,9 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                           width: Const.screenWidth(context) * 0.19,
                           height: 35,
                           decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color: context.read<SwitchPageCubit>().state.selectedPage == 2.2 ? Colors.grey[800] : Colors.transparent,
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 2.2
+                                ? Theme.of(context).colorScheme.primary
+                                : Colors.transparent,
                           ),
                           child: TextButton(
                             onPressed: () {
@@ -224,21 +176,9 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                           width: Const.screenWidth(context) * 0.19,
                           height: 35,
                           decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color: context.read<SwitchPageCubit>().state.selectedPage == 2.3 ? Colors.grey[800] : Colors.transparent,
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 2.3
+                                ? Theme.of(context).colorScheme.primary
+                                : Colors.transparent,
                           ),
                           child: TextButton(
                             onPressed: () {
@@ -250,9 +190,9 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
                               overlayColor: MaterialStateProperty.resolveWith<Color?>(
                                 (Set<MaterialState> states) {
                                   if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
+                                    return Colors.transparent;
                                   }
-                                  return null; // Laisser les autres états par défaut
+                                  return null;
                                 },
                               ),
                             ),

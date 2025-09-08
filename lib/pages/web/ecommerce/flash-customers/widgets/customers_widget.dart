@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../models/customer_model.dart';
+import '../../../../../models/customer_model.dart';
 
 class CustomersWidget extends StatefulWidget {
   const CustomersWidget({super.key});

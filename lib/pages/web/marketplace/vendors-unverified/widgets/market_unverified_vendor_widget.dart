@@ -1,59 +1,30 @@
-import 'package:e_com_app/models/market_store_model.dart';
-import 'package:e_com_app/models/page_item_model.dart';
-import 'package:e_com_app/models/withdrawal_%20model.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../models/gallerie_model.dart';
-import '../../../../utils/utils.dart';
+import '../../../../../models/vendor_model.dart';
+import '../../../../../theme/app_colors.dart';
+import '../../../../../utils/utils.dart';
 
-class MarketWithdrawalWidget extends StatefulWidget {
-  const MarketWithdrawalWidget({Key? key}) : super(key: key);
+class MarketUnverifiedVendorWidget extends StatefulWidget {
+  const MarketUnverifiedVendorWidget({Key? key}) : super(key: key);
 
   @override
-  State<MarketWithdrawalWidget> createState() => _MarketWithdrawalWidgetState();
+  State<MarketUnverifiedVendorWidget> createState() => _MarketUnverifiedVendorWidgetState();
 }
 
-class _MarketWithdrawalWidgetState extends State<MarketWithdrawalWidget> {
-  List<WithdrawalModel> items = [
-    WithdrawalModel(
-      id: 1,
-      vendor: "Elliott Durgan",
-      status: "Completed",
-      amount: "2300.00\$",
-      fee: "\$0.00",
-      createdAt: '2025-08-08',
-    ),
-    WithdrawalModel(
+class _MarketUnverifiedVendorWidgetState extends State<MarketUnverifiedVendorWidget> {
+  List<VendorModel> items = [
+    VendorModel(
       id: 2,
-      vendor: "Elliott Durgan",
-      status: "Pending",
-      amount: "670.00\$",
-      fee: "\$0.00",
+      name: "Dameon Zboncak DVM	Dameon Zboncak DVM",
+      status: "No",
       createdAt: '2025-08-08',
-    ),
-    WithdrawalModel(
-      id: 3,
-      vendor: "Prof. Cleta Mueller",
-      status: "Completed",
-      amount: "2300.00\$",
-      fee: "\$0.00",
-      createdAt: '2025-08-08',
-    ),
-    WithdrawalModel(
-      id: 4,
-      vendor: "Elliott Durgan",
-      status: "Processing",
-      amount: "2300.00\$",
-      fee: "\$0.00",
-      createdAt: '2025-08-08',
-    ),
-    WithdrawalModel(
-      id: 5,
-      vendor: "Dr. Gonzalo Kertzmann",
-      status: "Processing",
-      amount: "2300.00\$",
-      fee: "\$0.00",
-      createdAt: '2025-08-08',
+      avatar: 'assets/images/winter_cap.webp',
+      balance: 0.00,
+      storeName: '__',
+      storePhone: '__',
+      product: '3',
+      totalRevenue: '\$0.00',
+      email: 'meaghan56@example.org',
     ),
   ];
 
@@ -94,11 +65,15 @@ class _MarketWithdrawalWidgetState extends State<MarketWithdrawalWidget> {
             label: Text(
           "ID",
         )),
-        DataColumn(label: Text("Vendor")),
-        DataColumn(label: Text("Amount")),
-        DataColumn(label: Text("Fee")),
-        DataColumn(label: Text("Created at")),
-        DataColumn(label: Text("Status")),
+        DataColumn(label: Text("Avatar")),
+        DataColumn(label: Text("Name")),
+        DataColumn(label: Text("Email")),
+        DataColumn(label: Text("Store Name")),
+        DataColumn(label: Text("Store Phone")),
+        DataColumn(label: Text("Products")),
+        DataColumn(label: Text("Total Revenue")),
+        DataColumn(label: Text("Balance")),
+        DataColumn(label: Text("Verified")),
         DataColumn(label: Text("Actions")),
       ],
       rows: List.generate(items.length, (index) {
@@ -130,10 +105,22 @@ class _MarketWithdrawalWidgetState extends State<MarketWithdrawalWidget> {
               item.id.toString(),
               style: Theme.of(context).textTheme.labelSmall,
             )),
-            DataCell(Text(item.vendor, style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(Text(item.amount, style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(Text(item.fee, style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(Text(item.createdAt, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Image.asset(
+              item.avatar,
+              width: 30,
+              height: 30,
+            )),
+            DataCell(Text(item.name, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Text(item.email, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Text(item.storeName, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Text(item.storePhone, style: Theme.of(context).textTheme.labelSmall)),
+            DataCell(Container(
+                padding: EdgeInsets.symmetric(horizontal: 5, vertical: 2),
+                decoration: BoxDecoration(color: AppColors.PRIMARY_BLUE_COLOR, borderRadius: BorderRadius.circular(6)),
+                child:
+                    Text(item.product, style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold)))),
+            DataCell(Text(item.totalRevenue, style: Theme.of(context).textTheme.labelSmall)),
+            _buildStockBalance(item.balance, context),
             _buildStockStatus(item.status, context),
             _buildActionButtons(context),
           ],
@@ -145,8 +132,8 @@ class _MarketWithdrawalWidgetState extends State<MarketWithdrawalWidget> {
   static DataCell _buildStockStatus(String status, BuildContext context) {
     Color color;
     switch (status) {
-      case 'Processing':
-        color = Colors.blue;
+      case 'No':
+        color = Colors.red;
         break;
       case 'Pending':
         color = Colors.orange;
@@ -172,6 +159,34 @@ class _MarketWithdrawalWidgetState extends State<MarketWithdrawalWidget> {
               ],
             ),
           )),
+    ));
+  }
+
+  static DataCell _buildStockBalance(double balance, BuildContext context) {
+    Color color;
+    switch (balance) {
+      case 0.00:
+        color = Colors.blue;
+        break;
+      default:
+        color = Colors.green;
+    }
+    return DataCell(Container(
+      decoration: BoxDecoration(borderRadius: BorderRadius.circular(5), color: color.withValues(alpha: 0.2)),
+      child: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: 8.0),
+        child: Row(
+          children: [
+            // Icon(
+            //   Icons.circle,
+            //   size: 10,
+            //   color: color,
+            // ),
+            SizedBox(width: 2),
+            Expanded(child: Text("\$${balance}.00", style: Theme.of(context).textTheme.labelSmall)),
+          ],
+        ),
+      ),
     ));
   }
 

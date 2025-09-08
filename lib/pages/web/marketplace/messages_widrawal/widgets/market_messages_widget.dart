@@ -4,8 +4,8 @@ import 'package:e_com_app/models/page_item_model.dart';
 import 'package:e_com_app/models/withdrawal_%20model.dart';
 import 'package:flutter/material.dart';
 
-import '../../../../models/gallerie_model.dart';
-import '../../../../utils/utils.dart';
+import '../../../../../models/gallerie_model.dart';
+import '../../../../../utils/utils.dart';
 
 class MarketMessagesWidget extends StatefulWidget {
   const MarketMessagesWidget({Key? key}) : super(key: key);
@@ -73,11 +73,10 @@ class _MarketMessagesWidgetState extends State<MarketMessagesWidget> {
                       child: Center(
                         child: Text(
                           'No data to display',
-                          style:
-                              Theme.of(context).textTheme.labelMedium?.copyWith(
-                                    color: Colors.grey[600],
-                                    fontStyle: FontStyle.italic,
-                                  ),
+                          style: Theme.of(context).textTheme.labelMedium?.copyWith(
+                                color: Colors.grey[600],
+                                fontStyle: FontStyle.italic,
+                              ),
                         ),
                       ),
                     ),
@@ -92,8 +91,7 @@ class _MarketMessagesWidgetState extends State<MarketMessagesWidget> {
               final isSelected = selected[index];
               return DataRow(
                 selected: isSelected,
-                color: MaterialStateProperty.resolveWith<Color?>(
-                    (Set<MaterialState> states) {
+                color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
                   if (isSelected) return Colors.blue[100];
                   return null;
                 }),
@@ -117,14 +115,10 @@ class _MarketMessagesWidgetState extends State<MarketMessagesWidget> {
                     item.id.toString(),
                     style: Theme.of(context).textTheme.labelSmall,
                   )),
-                  DataCell(Text(item.name,
-                      style: Theme.of(context).textTheme.labelSmall)),
-                  DataCell(Text(item.email,
-                      style: Theme.of(context).textTheme.labelSmall)),
-                  DataCell(Text(item.content,
-                      style: Theme.of(context).textTheme.labelSmall)),
-                  DataCell(Text(item.createdAt,
-                      style: Theme.of(context).textTheme.labelSmall)),
+                  DataCell(Text(item.name, style: Theme.of(context).textTheme.labelSmall)),
+                  DataCell(Text(item.email, style: Theme.of(context).textTheme.labelSmall)),
+                  DataCell(Text(item.content, style: Theme.of(context).textTheme.labelSmall)),
+                  DataCell(Text(item.createdAt, style: Theme.of(context).textTheme.labelSmall)),
                   _buildActionButtons(context),
                 ],
               );
@@ -146,10 +140,7 @@ class _MarketMessagesWidgetState extends State<MarketMessagesWidget> {
             SizedBox(width: 5),
             Text(
               "Delete",
-              style: Theme.of(context)
-                  .textTheme
-                  .displaySmall!
-                  .copyWith(color: Colors.red),
+              style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.red),
             ),
           ],
         ),

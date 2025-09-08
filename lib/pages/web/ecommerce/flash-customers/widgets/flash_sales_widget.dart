@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../../../../models/flash_sale_model.dart';
+import '../../../../../models/flash_sale_model.dart';
 
 class FlashSalesWidget extends StatefulWidget {
   const FlashSalesWidget({super.key});
@@ -99,5 +99,3 @@ class _FlashSalesWidgetState extends State<FlashSalesWidget> {
     );
   }
 }
-
-

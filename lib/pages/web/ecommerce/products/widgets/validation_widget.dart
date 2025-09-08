@@ -8,8 +8,8 @@ class ValidationWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 15),
-      padding: const EdgeInsets.all(20),
+      margin: EdgeInsets.only(bottom: 15),
+      padding: const EdgeInsets.all(10),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(10),
@@ -23,6 +23,7 @@ class ValidationWidget extends StatelessWidget {
         ],
       ),
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           Text(
             "Publish",
@@ -30,11 +31,11 @@ class ValidationWidget extends StatelessWidget {
           ),
           SizedBox(height: 12),
           Wrap(
-            spacing: 10, // espace horizontal
+            spacing: 5, // espace horizontal
             runSpacing: 10, // espace vertical si retour à la ligne
             children: [
-              SizedBox(
-                width: 150,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.PRIMARY_BLUE_COLOR,
@@ -50,8 +51,8 @@ class ValidationWidget extends StatelessWidget {
                   ),
                 ),
               ),
-              SizedBox(
-                width: 150,
+              Padding(
+                padding: const EdgeInsets.all(8.0),
                 child: ElevatedButton(
                   style: ElevatedButton.styleFrom(
                     backgroundColor: AppColors.PRIMARY_WHITE_LIGHT,

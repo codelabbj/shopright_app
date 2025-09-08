@@ -1,30 +1,41 @@
 import 'package:e_com_app/pages/web/annoncement/screens/annoncement_screen.dart';
 import 'package:e_com_app/pages/web/blog/screens/blog_posts_screen.dart';
 import 'package:e_com_app/pages/web/blog/screens/blog_tags_screen.dart';
+import 'package:e_com_app/pages/web/blog/screens/create_blog_tag_screen.dart';
+import 'package:e_com_app/pages/web/blog/screens/create_blog_post_screen.dart';
 import 'package:e_com_app/pages/web/contact/screens/contact_custom_fields_screen.dart';
 import 'package:e_com_app/pages/web/contact/screens/contacts_screen.dart';
+import 'package:e_com_app/pages/web/contact/screens/create_contact_custom_field_screen.dart';
 import 'package:e_com_app/pages/web/ecommerce/brands-reviews/screens/create_brand_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/brands-reviews/screens/create_review_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/flash-customers/screens/create_customer_screen.dart';
+import 'package:e_com_app/pages/web/ecommerce/flash-customers/screens/create_flash_screen.dart';
 import 'package:e_com_app/pages/web/ecommerce/products/sceens/add_product_screen.dart';
 import 'package:e_com_app/pages/web/ecommerce/products/sceens/product_categorie_screen.dart';
-import 'package:e_com_app/pages/web/ecommerce/products/widgets/add_product_tag_widget.dart';
 import 'package:e_com_app/pages/web/faqs/screens/faq_categories_screen.dart';
 import 'package:e_com_app/pages/web/faqs/screens/faqs_screen.dart';
+import 'package:e_com_app/pages/web/faqs/screens/create_faq_category_screen.dart';
+import 'package:e_com_app/pages/web/faqs/screens/create_faq_screen.dart';
 import 'package:e_com_app/pages/web/newsletters/screens/newsletters_screen.dart';
 import 'package:e_com_app/pages/web/ads/screens/ads_screen.dart';
 import 'package:e_com_app/pages/web/ecommerce/screens/invoices_screen.dart';
-import 'package:e_com_app/pages/web/ecommerce/screens/flash_sales_screen.dart';
-import 'package:e_com_app/pages/web/ecommerce/screens/customers_screen.dart';
+
+import 'package:e_com_app/pages/web/ecommerce/flash-customers/screens/customers_screen.dart';
 
 import 'package:e_com_app/pages/web/ecommerce/screens/shipments_screen.dart';
 import 'package:e_com_app/pages/web/ecommerce/screens/product_tags_screen.dart';
 import 'package:e_com_app/pages/web/ecommerce/brands-reviews/screens/brands_screen.dart';
 import 'package:e_com_app/pages/web/ecommerce/brands-reviews/screens/product_reviews_screen.dart';
-import 'package:e_com_app/pages/web/marketplace/screens/market_messaes_screen.dart';
+import 'package:e_com_app/pages/web/marketplace/messages_widrawal/screens/market_messaes_screen.dart';
 import 'package:e_com_app/pages/web/marketplace/screens/market_stores_screen.dart';
-import 'package:e_com_app/pages/web/marketplace/screens/market_vendors_screen.dart';
+import 'package:e_com_app/pages/web/marketplace/screens/create_store_screen.dart';
+
 import 'package:e_com_app/pages/web/product-specification/screens/product_attributes_screen.dart';
 import 'package:e_com_app/pages/web/product-specification/screens/product_group_screen.dart';
 import 'package:e_com_app/pages/web/product-specification/screens/product_table_screen.dart';
+import 'package:e_com_app/pages/web/product-specification/screens/create_product_group_screen.dart';
+import 'package:e_com_app/pages/web/product-specification/screens/create_product_attribute_screen.dart';
+import 'package:e_com_app/pages/web/product-specification/screens/create_product_table_screen.dart';
 // import 'package:e_com_app/pages/web/testimonials/widgets/testimonials_widget.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -33,6 +44,7 @@ import 'package:go_router/go_router.dart';
 import '../cubits/switch_page/switch_page_cubit.dart';
 import '../pages/web/authentification/login_screen.dart';
 import '../pages/web/dasboard/screen/dashboard_screen.dart';
+import '../pages/web/ecommerce/flash-customers/screens/flash_sales_screen.dart';
 import '../pages/web/ecommerce/orders/screens/orders_returns_screen.dart';
 import '../pages/web/ecommerce/orders/screens/orders_screen.dart';
 import '../pages/web/ecommerce/orders/screens/create_order_screen.dart';
@@ -40,8 +52,9 @@ import '../pages/web/ecommerce/orders/screens/create_order_screen.dart';
 import '../pages/web/ecommerce/products/sceens/add_product_tag_screen.dart';
 import '../pages/web/ecommerce/products/sceens/products_screen.dart';
 import '../pages/web/galleries/screens/galleries_sceen.dart';
-import '../pages/web/marketplace/screens/market_unverified_vendor_screen.dart';
-import '../pages/web/marketplace/screens/market_withdrawal_screen.dart';
+import '../pages/web/marketplace/vendors-unverified/screens/market_unverified_vendor_screen.dart';
+import '../pages/web/marketplace/messages_widrawal/screens/market_withdrawal_screen.dart';
+import '../pages/web/marketplace/vendors-unverified/screens/market_vendors_screen.dart';
 import '../pages/web/orders/screens/list_orders_screen.dart';
 
 import '../pages/web/pages-section/screens/pages_screen.dart';
@@ -221,6 +234,13 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: '/ecommerce/reviews/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.15);
+          return const CreateReviewScreen();
+        },
+      ),
+      GoRoute(
         path: '/ecommerce/flash-sales',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(1.16);
@@ -228,10 +248,24 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: '/ecommerce/flash-sales/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.16);
+          return const CreateFlashScreen();
+        },
+      ),
+      GoRoute(
         path: '/ecommerce/customers',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(1.18);
           return const CustomersScreen();
+        },
+      ),
+      GoRoute(
+        path: '/ecommerce/customers/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.18);
+          return const CreateCustomerScreen();
         },
       ),
       GoRoute(
@@ -249,6 +283,13 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: '/contacts/custom-fields/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(6.2);
+          return const CreateContactCustomFieldScreen();
+        },
+      ),
+      GoRoute(
         path: '/newsletters',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(12);
@@ -263,10 +304,24 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: '/blog/posts/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(5.1);
+          return const CreateBlogPostScreen();
+        },
+      ),
+      GoRoute(
         path: '/blog/tags',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(5.3);
           return const BlogTagsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/blog/tags/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(5.3);
+          return const CreateBlogTagScreen();
         },
       ),
       GoRoute(
@@ -277,10 +332,24 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: '/faqs/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(11.1);
+          return const CreateFaqScreen();
+        },
+      ),
+      GoRoute(
         path: '/faqs/categories',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(11.2);
           return const FaqCategoriesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/faqs/categories/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(11.2);
+          return const CreateFaqCategoryScreen();
         },
       ),
       GoRoute(
@@ -298,10 +367,24 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: '/product/groups/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(2.1);
+          return const CreateProductGroupScreen();
+        },
+      ),
+      GoRoute(
         path: '/product/attributes',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(2.2);
           return ProductAttributesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/product/attributes/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(2.2);
+          return const CreateProductAttributeScreen();
         },
       ),
       GoRoute(
@@ -311,12 +394,26 @@ class AppRouter {
           return ProductTableScreen();
         },
       ),
+      GoRoute(
+        path: '/product/tables/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(2.3);
+          return const CreateProductTableScreen();
+        },
+      ),
 
       GoRoute(
         path: '/marketplace/stores',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(3.2);
           return MarketStoresScreen();
+        },
+      ),
+      GoRoute(
+        path: '/marketplace/stores/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(3.2);
+          return const CreateStoreScreen();
         },
       ),
       GoRoute(
