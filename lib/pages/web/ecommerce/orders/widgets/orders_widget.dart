@@ -53,9 +53,11 @@ class _OrdersWidgetState extends State<OrdersWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+      headingRowColor: MaterialStateProperty.all(isLight ? const Color(0xFFF5F7FA) : null),
+      dividerThickness: 0,
       dataRowMaxHeight: 80,
       columns: [
         DataColumn(
@@ -92,7 +94,11 @@ class _OrdersWidgetState extends State<OrdersWidget> {
         final isSelected = selected[index];
         return DataRow(
           selected: isSelected,
-          color: MaterialStateProperty.resolveWith<Color?>((states) => isSelected ? Colors.blue[100] : null),
+          color: MaterialStateProperty.resolveWith<Color?>((states) {
+            if (isSelected) return Colors.blue[100];
+            if (isLight && index % 2 == 0) return const Color(0xFFF8FAFC); // alternance très légère en clair
+            return null;
+          }),
           cells: [
             DataCell(Transform.scale(
               scale: 0.7,

@@ -18,20 +18,25 @@ class CardListWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isLight = theme.brightness == Brightness.light;
     return Container(
       padding: EdgeInsets.all(15),
       margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 20),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: theme.cardColor,
         borderRadius: BorderRadius.circular(10),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.grey.withValues(alpha: 0.2),
-            spreadRadius: 10,
-            blurRadius: 10,
-            offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-          ),
-        ],
+        border: Border.all(color: theme.dividerColor),
+        boxShadow: isLight
+            ? [
+                BoxShadow(
+                  color: Colors.grey.withValues(alpha: 0.2),
+                  spreadRadius: 10,
+                  blurRadius: 10,
+                  offset: Offset(0, 3),
+                ),
+              ]
+            : [],
       ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -51,10 +56,7 @@ class CardListWidget extends StatelessWidget {
                     ),
                   if (subtitle != null) ...[
                     const SizedBox(height: 4),
-                    Text(
-                      subtitle!,
-                      style: Theme.of(context).textTheme.displaySmall!.copyWith(color: Colors.grey[300]),
-                    ),
+                    Text(subtitle!, style: Theme.of(context).textTheme.displaySmall),
                   ],
                 ],
               ),
@@ -74,7 +76,7 @@ class CardListWidget extends StatelessWidget {
             children: [
               Container(
                 padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                decoration: BoxDecoration(border: Border.all(color: theme.dividerColor), borderRadius: BorderRadius.circular(5)),
                 child: Row(
                   children: [
                     Text(
@@ -91,7 +93,7 @@ class CardListWidget extends StatelessWidget {
               Spacer(),
               Container(
                 padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                decoration: BoxDecoration(border: Border.all(color: theme.dividerColor), borderRadius: BorderRadius.circular(5)),
                 child: Icon(
                   Icons.arrow_back,
                   size: 18,
@@ -102,7 +104,7 @@ class CardListWidget extends StatelessWidget {
               ),
               Container(
                 padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                decoration: BoxDecoration(border: Border.all(color: theme.dividerColor), borderRadius: BorderRadius.circular(5)),
                 child: Icon(
                   Icons.more_horiz_outlined,
                   size: 18,
@@ -113,17 +115,17 @@ class CardListWidget extends StatelessWidget {
               ),
               Container(
                   padding: EdgeInsets.all(5),
-                  decoration: BoxDecoration(color: Colors.black, borderRadius: BorderRadius.circular(5)),
+                  decoration: BoxDecoration(color: theme.colorScheme.primary, borderRadius: BorderRadius.circular(5)),
                   child: Text(
                     "12",
-                    style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.white),
+                    style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: theme.colorScheme.onPrimary),
                   )),
               SizedBox(
                 width: 10,
               ),
               Container(
                 padding: EdgeInsets.all(5),
-                decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
+                decoration: BoxDecoration(border: Border.all(color: theme.dividerColor), borderRadius: BorderRadius.circular(5)),
                 child: Icon(
                   Icons.arrow_forward,
                   size: 18,

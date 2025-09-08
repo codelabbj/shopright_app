@@ -7,13 +7,14 @@ class CustomSearchWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      margin: EdgeInsets.symmetric(horizontal: 7),
+      // margin: EdgeInsets.symmetric(horizontal: 7),
       width: 210,
-      padding: EdgeInsets.symmetric(horizontal: 15),
+      // padding: EdgeInsets.symmetric(horizontal: 15),
       decoration: BoxDecoration(
-          color: Colors.white, // Fond gris clair
-          borderRadius: BorderRadius.circular(8),
-          border: Border.all(color: Colors.grey[200]!)),
+        // color: Colors.white, // Fond gris clair
+        borderRadius: BorderRadius.circular(8),
+        // border: Border.all(color: Colors.grey[200]!)
+      ),
       child: TextField(
         textAlignVertical: TextAlignVertical.center,
         style: Theme.of(context).textTheme.labelSmall,

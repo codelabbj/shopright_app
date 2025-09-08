@@ -1,6 +1,7 @@
 import 'package:e_com_app/theme/app_colors.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import '../cubit/theme_cubit.dart';
 import 'package:flutter/material.dart';
-import 'package:go_router/go_router.dart';
 
 import '../constantes/const.dart';
 
@@ -17,15 +18,15 @@ class AppbarDashboard extends StatelessWidget {
         children: [
           Container(
             width: Const.screenWidth(context) * 0.23,
-            height: 38,
-            decoration: BoxDecoration(
-              color: Colors.white,
-              borderRadius: BorderRadius.circular(30),
-            ),
-            padding: const EdgeInsets.symmetric(horizontal: 15),
+            // height: 38,
+            // decoration: BoxDecoration(
+            //   color: Colors.white,
+            //   borderRadius: BorderRadius.circular(30),
+            // ),
+            // padding: const EdgeInsets.symmetric(horizontal: 15),
             child: Row(
               children: [
-                Icon(Icons.search, size: 20, color: Colors.grey),
+                // Icon(Icons.search, size: 20, color: Colors.grey),
                 SizedBox(width: 10),
                 Expanded(
                   child: TextField(
@@ -71,7 +72,10 @@ class AppbarDashboard extends StatelessWidget {
           ),
 
           const SizedBox(width: 10),
-          _iconCircle("assets/images/day-mode.png"),
+          InkWell(
+            onTap: () => context.read<ThemeCubit>().toggleTheme(),
+            child: _themeIcon(context),
+          ),
 
           const SizedBox(width: 3),
           // 🔔 Notification
@@ -116,5 +120,10 @@ class AppbarDashboard extends StatelessWidget {
         fit: BoxFit.contain, // ajuste l'image à la taille disponible
       ),
     );
+  }
+
+  Widget _themeIcon(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+    return _iconCircle(isDark ? "assets/images/night-mode (1).png" : "assets/images/day-mode.png");
   }
 }
