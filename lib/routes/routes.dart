@@ -3,6 +3,7 @@ import 'package:e_com_app/pages/web/blog/screens/blog_posts_screen.dart';
 import 'package:e_com_app/pages/web/blog/screens/blog_tags_screen.dart';
 import 'package:e_com_app/pages/web/blog/screens/create_blog_tag_screen.dart';
 import 'package:e_com_app/pages/web/blog/screens/create_blog_post_screen.dart';
+import 'package:e_com_app/pages/web/blog/screens/create_blog_category_screen.dart';
 import 'package:e_com_app/pages/web/contact/screens/contact_custom_fields_screen.dart';
 import 'package:e_com_app/pages/web/contact/screens/contacts_screen.dart';
 import 'package:e_com_app/pages/web/contact/screens/create_contact_custom_field_screen.dart';
@@ -28,6 +29,7 @@ import 'package:e_com_app/pages/web/ecommerce/brands-reviews/screens/brands_scre
 import 'package:e_com_app/pages/web/ecommerce/brands-reviews/screens/product_reviews_screen.dart';
 import 'package:e_com_app/pages/web/marketplace/messages_widrawal/screens/market_messaes_screen.dart';
 import 'package:e_com_app/pages/web/marketplace/screens/market_stores_screen.dart';
+
 import 'package:e_com_app/pages/web/marketplace/screens/create_store_screen.dart';
 
 import 'package:e_com_app/pages/web/product-specification/screens/product_attributes_screen.dart';
@@ -59,8 +61,14 @@ import '../pages/web/orders/screens/list_orders_screen.dart';
 
 import '../pages/web/pages-section/screens/pages_screen.dart';
 // import '../pages/web/product/screen/add_product_screen.dart';
+import '../pages/web/pages-section/screens/create_page_screen.dart';
+import '../pages/web/paiements/screens/payment_logs_screen.dart';
+import '../pages/web/paiements/screens/payments_screen.dart';
 import '../pages/web/product/screen/product_web_screen.dart';
 import '../pages/web/testimonials/screens/testimonals_screen.dart';
+import '../pages/web/locations/screens/countries_screen.dart';
+import '../pages/web/locations/screens/states_screen.dart';
+import '../pages/web/locations/screens/cities_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -84,6 +92,13 @@ class AppRouter {
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(4);
           return const PagesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/pages/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(4);
+          return const CreatePageScreen();
         },
       ),
       GoRoute(
@@ -325,6 +340,13 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: '/blog/categories/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(5.2);
+          return const CreateBlogCategoryScreen();
+        },
+      ),
+      GoRoute(
         path: '/faqs',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(11.1);
@@ -449,6 +471,41 @@ class AppRouter {
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(4);
           return ListOrdersScreen();
+        },
+      ),
+      GoRoute(
+        path: '/locations/countries',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(8.1);
+          return const CountriesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/locations/states',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(8.2);
+          return const StatesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/locations/cities',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(8.3);
+          return const CitiesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/payments/transactions',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(7.1);
+          return const PaymentsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/payments/payment-logs',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(7.2);
+          return const PaymentLogsScreen();
         },
       ),
     ],

@@ -31,7 +31,7 @@ class _MarketMessagesWidgetState extends State<MarketMessagesWidget> {
   Widget build(BuildContext context) {
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+      // headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: [
         DataColumn(
           label: Transform.scale(

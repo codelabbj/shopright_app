@@ -16,7 +16,6 @@ class ProductInventoryWidget extends StatelessWidget {
     return DataTable(
       columnSpacing: 12,
       dataRowMaxHeight: 70,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: const [
         // DataColumn(label: Text('')),
         DataColumn(label: Text('ID')),

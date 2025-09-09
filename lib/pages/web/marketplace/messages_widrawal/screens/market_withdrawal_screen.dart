@@ -52,9 +52,9 @@ class _MarketWithdrawalScreenState extends State<MarketWithdrawalScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Row(
                       children: [
-                        Text("Dashboard/",
+                        Text('Dashboard/ ',
                             style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
-                        Text("galleries", style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
+                        Text('Marketplace / Withdrawals', style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),

@@ -168,26 +168,13 @@ class _BlogDrawerWidgetState extends State<BlogDrawerWidget> {
                         width: Const.screenWidth(context) * 0.19,
                         height: 35,
                         decoration: BoxDecoration(
-                          // borderRadius: BorderRadius.circular(6),
-                          // boxShadow: [
-                          //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                          //       ? BoxShadow(
-                          //           color: Colors.grey.withValues(alpha: 0.2),
-                          //           spreadRadius: 10,
-                          //           blurRadius: 10,
-                          //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                          //         )
-                          //       : BoxShadow(
-                          //
-                          //           // Décalage horizontal et vertical de l'ombre
-                          //           )
-                          // ],
-                          color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 5.2 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                         ),
                         child: TextButton(
                           onPressed: () {
+                            context.go('/blog/categories/create');
                             context.read<SwitchPageCubit>().switchPage(5.2);
-                            // TODO: implement categories route when ready
                           },
                           style: ButtonStyle(
                             overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -222,20 +209,6 @@ class _BlogDrawerWidgetState extends State<BlogDrawerWidget> {
                         width: Const.screenWidth(context) * 0.19,
                         height: 35,
                         decoration: BoxDecoration(
-                          // borderRadius: BorderRadius.circular(6),
-                          // boxShadow: [
-                          //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                          //       ? BoxShadow(
-                          //           color: Colors.grey.withValues(alpha: 0.2),
-                          //           spreadRadius: 10,
-                          //           blurRadius: 10,
-                          //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                          //         )
-                          //       : BoxShadow(
-                          //
-                          //           // Décalage horizontal et vertical de l'ombre
-                          //           )
-                          // ],
                           color:
                               context.read<SwitchPageCubit>().state.selectedPage == 5.3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                         ),

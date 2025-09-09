@@ -24,11 +24,9 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
         InkWell(
           onTap: () {},
           child: Container(
-            // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
             padding: EdgeInsets.symmetric(vertical: 10),
             width: Const.screenWidth(context) * 0.19,
             height: 35,
-
             child: TextButton(
               onPressed: () {
                 log("Je suis dedans");

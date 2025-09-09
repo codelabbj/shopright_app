@@ -51,9 +51,8 @@ class _MarketVendorsScreenState extends State<MarketVendorsScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Row(
                       children: [
-                        Text("Dashboard/Marketplace",
-                            style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
-                        Text("/Vendors", style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold)),
+                        Text("Dashboard/", style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
+                        Text(" Marketplace /Vendors", style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),

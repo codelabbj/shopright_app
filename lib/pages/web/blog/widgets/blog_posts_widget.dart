@@ -54,7 +54,7 @@ class _BlogPostsWidgetState extends State<BlogPostsWidget> {
   Widget build(BuildContext context) {
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+      // headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: [
         DataColumn(
           label: Transform.scale(
@@ -164,5 +164,3 @@ class _BlogPostsWidgetState extends State<BlogPostsWidget> {
     );
   }
 }
-
-

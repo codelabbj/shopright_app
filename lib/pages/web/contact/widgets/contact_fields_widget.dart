@@ -8,7 +8,7 @@ class ContactFieldsWidget extends StatelessWidget {
     // Mimic market_messages empty state table
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+      // headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: const [
         DataColumn(label: Text('')), // checkbox column placeholder
         DataColumn(label: Text('ID')),
@@ -47,5 +47,3 @@ class ContactFieldsWidget extends StatelessWidget {
     );
   }
 }
-
-

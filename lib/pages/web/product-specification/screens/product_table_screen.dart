@@ -35,18 +35,7 @@ class _ProductTableScreenState extends State<ProductTableScreen> {
             Expanded(
               child: Column(
                 children: [
-                  // LayoutBuilder(
-                  //   builder: (context, constraints) {
-                  //     double width = constraints.maxWidth;
-                  //     if (width > 1024) {
-                  //       // return SizedBox(height: 60, child: AppBarWidget());
-                  //     } else {
-                  //       // return AppBarVendorWidget();
-                  //     }
-                  //   },
-                  // ),
                   SizedBox(height: 60, child: AppbarDashboard()),
-
                   SizedBox(height: 12),
                   Padding(
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
@@ -54,7 +43,8 @@ class _ProductTableScreenState extends State<ProductTableScreen> {
                       children: [
                         Text("Dashboard/",
                             style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
-                        Text("galleries", style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
+                        Text(" Product Specification / Tables",
+                            style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),

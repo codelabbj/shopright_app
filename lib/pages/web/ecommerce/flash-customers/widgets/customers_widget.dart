@@ -78,7 +78,7 @@ class _CustomersWidgetState extends State<CustomersWidget> {
         final isSelected = selected[index];
         return DataRow(
           selected: isSelected,
-          color: MaterialStateProperty.resolveWith<Color?>((states) => isSelected ? Colors.blue[100] : null),
+          // color: MaterialStateProperty.resolveWith<Color?>((states) => isSelected ? Colors.blue[100] : null),
           cells: [
             DataCell(Transform.scale(
               scale: 0.7,

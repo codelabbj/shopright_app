@@ -42,7 +42,7 @@ class _MarketUnverifiedVendorWidgetState extends State<MarketUnverifiedVendorWid
   Widget build(BuildContext context) {
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+      // headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: [
         DataColumn(
           label: Transform.scale(

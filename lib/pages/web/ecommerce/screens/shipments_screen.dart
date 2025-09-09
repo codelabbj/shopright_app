@@ -101,12 +101,6 @@ class _ShipmentsScreenState extends State<ShipmentsScreen> {
                                               ),
                                             ),
                                           ),
-                                          // IconButton(
-                                          //   icon: const Icon(Icons.delete, color: Colors.red),
-                                          //   onPressed: () {
-                                          //
-                                          //   },
-                                          // ),
                                         ],
                                       ),
                                     ),

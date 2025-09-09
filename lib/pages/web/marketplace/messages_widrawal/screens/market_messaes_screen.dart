@@ -40,9 +40,9 @@ class _MarketMessaesScreenState extends State<MarketMessaesScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Row(
                       children: [
-                        Text("Dashboard/Marketplace",
+                        Text("Dashboard/ ",
                             style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
-                        Text("/Messages", style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold)),
+                        Text("Marketplace / Messages", style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),

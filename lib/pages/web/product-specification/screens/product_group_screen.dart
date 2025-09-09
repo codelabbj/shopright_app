@@ -55,7 +55,8 @@ class _ProductGroupScreenState extends State<ProductGroupScreen> {
                       children: [
                         Text("Dashboard/",
                             style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
-                        Text(" Group", style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
+                        Text(" Product Specification / Group",
+                            style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),

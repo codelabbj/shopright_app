@@ -33,16 +33,18 @@ class FilterPanelWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isDark = Theme.of(context).brightness == Brightness.dark;
+
     return Container(
       height: 330 + (additionalFilters.length * 80),
       padding: const EdgeInsets.all(10),
       margin: const EdgeInsets.all(10),
       decoration: BoxDecoration(
-        color: Colors.white,
+        color: isDark ? Color(0xFF1A2532) : Colors.white, // ✅ fond adaptatif
         borderRadius: BorderRadius.circular(10),
         boxShadow: [
           BoxShadow(
-            color: Colors.grey.withOpacity(0.2),
+            color: isDark ? Colors.black.withOpacity(0.3) : Colors.grey.withOpacity(0.2),
             spreadRadius: 10,
             blurRadius: 10,
             offset: const Offset(0, 3),
@@ -54,9 +56,21 @@ class FilterPanelWidget extends StatelessWidget {
         children: [
           Row(
             children: [
-              const Text("Filters", style: TextStyle(fontSize: 18, fontWeight: FontWeight.bold)),
+              Text(
+                "Filters",
+                style: Theme.of(context).textTheme.titleMedium!.copyWith(
+                      fontWeight: FontWeight.bold,
+                      color: isDark ? Colors.white : Colors.black,
+                    ),
+              ),
               const Spacer(),
-              InkWell(onTap: onClose, child: const Icon(Icons.close)),
+              InkWell(
+                onTap: onClose,
+                child: Icon(
+                  Icons.close,
+                  color: isDark ? Colors.white70 : Colors.black87, // ✅ couleur adaptative
+                ),
+              ),
             ],
           ),
           const SizedBox(height: 8),
@@ -105,7 +119,10 @@ class FilterPanelWidget extends StatelessWidget {
                 ),
                 child: Text(
                   "Add Additional Filter",
-                  style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
               ),
               const SizedBox(width: 20),
@@ -121,24 +138,12 @@ class FilterPanelWidget extends StatelessWidget {
                 ),
                 child: Text(
                   "Apply",
-                  style: Theme.of(context).textTheme.labelMedium!.copyWith(color: Colors.white, fontWeight: FontWeight.bold),
+                  style: Theme.of(context).textTheme.labelMedium!.copyWith(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+                      ),
                 ),
               ),
-
-              // Container(
-              //   padding: EdgeInsets.all(5),
-              //   decoration: BoxDecoration(border: Border.all(color: Colors.grey[200]!), borderRadius: BorderRadius.circular(5)),
-              //   child: Row(
-              //     children: [
-              //       Image.asset(
-              //         "assets/images/reload.png",
-              //         width: 18,
-              //         height: 18,
-              //         color: Colors.black,
-              //       ),
-              //     ],
-              //   ),
-              // ),
             ],
           ),
         ],

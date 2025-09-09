@@ -76,147 +76,139 @@ class _ProductSpecificationWidgetState extends State<ProductSpecificationWidget>
               ),
             ),
             state.isSpecExpanded
-                // context.read<SwitchPageCubit>().state.selectedPage == 6 ||
-                // context.read<SwitchPageCubit>().state.selectedPage == 7
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Column(
-                      children: [
-                        Container(
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            color: context.read<SwitchPageCubit>().state.selectedPage == 2.1
-                                ? Theme.of(context).colorScheme.primary
-                                : Colors.transparent,
+                ? Column(
+                    children: [
+                      Container(
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 2.1 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(2.1);
+                            context.go('/product/groups');
+                            context.read<SwitchPageCubit>().setSpecExpanded(true);
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null;
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(2.1);
-                              context.go('/product/groups');
-                              context.read<SwitchPageCubit>().setSpecExpanded(true);
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null;
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/folder.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 2.1 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/folder.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 2.1 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Groups',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 2.1 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Groups',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 2.1 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            color: context.read<SwitchPageCubit>().state.selectedPage == 2.2
-                                ? Theme.of(context).colorScheme.primary
-                                : Colors.transparent,
+                      ),
+                      Container(
+                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 2.2 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(2.2);
+                            context.go('/product/attributes');
+                            context.read<SwitchPageCubit>().setSpecExpanded(true);
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(2.2);
-                              context.go('/product/attributes');
-                              context.read<SwitchPageCubit>().setSpecExpanded(true);
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/groups.png",
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 2.2 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/groups.png",
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 2.2 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Attributes',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 2.2 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Attributes',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 2.2 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            color: context.read<SwitchPageCubit>().state.selectedPage == 2.3
-                                ? Theme.of(context).colorScheme.primary
-                                : Colors.transparent,
+                      ),
+                      Container(
+                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          color:
+                              context.read<SwitchPageCubit>().state.selectedPage == 2.3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(2.3);
+                            context.go('/product/tables');
+                            context.read<SwitchPageCubit>().setSpecExpanded(true);
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent;
+                                }
+                                return null;
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(2.3);
-                              context.go('/product/tables');
-                              context.read<SwitchPageCubit>().setSpecExpanded(true);
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent;
-                                  }
-                                  return null;
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/database-table.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 2.3 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/database-table.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 2.3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Tables',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 2.3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Tables',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 2.3 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   )
                 : SizedBox()
           ],

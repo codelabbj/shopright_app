@@ -3,6 +3,7 @@ import 'package:e_com_app/models/page_item_model.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../models/gallerie_model.dart';
+import '../../../../theme/app_colors.dart';
 import '../../../../utils/utils.dart';
 
 class AnnoncementWidget extends StatefulWidget {
@@ -39,7 +40,7 @@ class _AnnoncementWidgetState extends State<AnnoncementWidget> {
   Widget build(BuildContext context) {
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+      // headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: [
         DataColumn(
           label: Transform.scale(
@@ -74,7 +75,7 @@ class _AnnoncementWidgetState extends State<AnnoncementWidget> {
         return DataRow(
           selected: isSelected,
           color: MaterialStateProperty.resolveWith<Color?>((Set<MaterialState> states) {
-            if (isSelected) return Colors.blue[100];
+            if (isSelected) return Colors.blue;
             return null;
           }),
           cells: [

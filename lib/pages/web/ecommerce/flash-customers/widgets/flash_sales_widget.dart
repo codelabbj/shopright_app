@@ -27,9 +27,25 @@ class _FlashSalesWidgetState extends State<FlashSalesWidget> {
   Widget build(BuildContext context) {
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
-      columns: const [
-        DataColumn(label: SizedBox()),
+      // headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+      columns: [
+        DataColumn(
+          label: Transform.scale(
+            scale: 0.7,
+            child: Checkbox(
+              value: selectAll,
+              side: BorderSide(color: Colors.grey[500]!),
+              onChanged: (value) {
+                setState(() {
+                  selectAll = value!;
+                  for (int i = 0; i < selected.length; i++) {
+                    selected[i] = selectAll;
+                  }
+                });
+              },
+            ),
+          ),
+        ),
         DataColumn(label: Text('ID')),
         DataColumn(label: Text('Name')),
         DataColumn(label: Text('End Date')),

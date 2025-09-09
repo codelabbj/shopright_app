@@ -26,7 +26,7 @@ class CardListWidget extends StatelessWidget {
       decoration: BoxDecoration(
         color: theme.cardColor,
         borderRadius: BorderRadius.circular(10),
-        border: Border.all(color: theme.dividerColor),
+        // border: Border.all(color: theme.dividerColor),
         boxShadow: isLight
             ? [
                 BoxShadow(

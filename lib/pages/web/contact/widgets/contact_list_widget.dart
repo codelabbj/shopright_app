@@ -13,7 +13,8 @@ class ContactListWidget extends StatefulWidget {
 class _ContactListWidgetState extends State<ContactListWidget> {
   final List<ContactModel> items = const [
     ContactModel(id: 10, name: 'Jace Muller', email: 'bcormier@example.org', phone: '1-832-590-8071', createdAt: '2025-08-08', status: 'Read'),
-    ContactModel(id: 9, name: 'Alvina Walter III', email: 'christine87@example.com', phone: '+1.870.818.1676', createdAt: '2025-08-08', status: 'Unread'),
+    ContactModel(
+        id: 9, name: 'Alvina Walter III', email: 'christine87@example.com', phone: '+1.870.818.1676', createdAt: '2025-08-08', status: 'Unread'),
     ContactModel(id: 8, name: 'Gayle Koelpin', email: 'sabbott@example.net', phone: '(574) 824-8670', createdAt: '2025-08-08', status: 'Unread'),
     ContactModel(id: 7, name: 'Clemmie Kuhlman', email: 'kyle49@example.net', phone: '+1-626-683-4114', createdAt: '2025-08-08', status: 'Read'),
   ];
@@ -31,7 +32,7 @@ class _ContactListWidgetState extends State<ContactListWidget> {
   Widget build(BuildContext context) {
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+      // headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: const [
         DataColumn(label: SizedBox.shrink()),
         DataColumn(label: Text('ID')),
@@ -111,5 +112,3 @@ class _ContactListWidgetState extends State<ContactListWidget> {
     );
   }
 }
-
-

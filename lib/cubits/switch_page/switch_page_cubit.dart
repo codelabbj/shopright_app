@@ -33,6 +33,7 @@ class SwitchPageCubit extends Cubit<SwitchPageState> {
       isSettingsExpanded: (pageIndex == 4.1 || pageIndex == 4.2),
       isBlogExpanded: (pageIndex == 5.1 || pageIndex == 5.2 || pageIndex == 5.3),
       isContactExpanded: (pageIndex == 6.1 || pageIndex == 6.2),
+      isTransactionExpanded: (pageIndex == 7.1 || pageIndex == 7.2),
       isFaqExpanded: (pageIndex == 11.1 || pageIndex == 11.2),
       isAdsExpanded: (pageIndex == 9.1 || pageIndex == 9.2),
     ));
@@ -41,6 +42,10 @@ class SwitchPageCubit extends Cubit<SwitchPageState> {
 
   void setEcomExpanded(bool isExpanded) {
     emit(state.copyWith(isEcomExpanded: isExpanded));
+  }
+
+  void setTransExpanded(bool isExpanded) {
+    emit(state.copyWith(isTransactionExpanded: isExpanded));
   }
 
   void setSpecExpanded(bool isExpanded) {

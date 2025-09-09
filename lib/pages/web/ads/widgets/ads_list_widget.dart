@@ -12,13 +12,43 @@ class AdsListWidget extends StatefulWidget {
 
 class _AdsListWidgetState extends State<AdsListWidget> {
   final List<AdModel> items = const [
-    AdModel(id: 7, name: 'Ads 7', imageAsset: 'assets/images/mobile-shopping-app.png', shortcode: '[ads key="IHPZ2WBSYJUK"][/ads]', clicked: 0, expiredAt: '2030-08-08', status: 'Published'),
-    AdModel(id: 6, name: 'Ads 6', imageAsset: 'assets/images/mobile-shopping-app.jpg', shortcode: '[ads key="F1LTQS976YPY"][/ads]', clicked: 0, expiredAt: '2030-08-08', status: 'Published'),
-    AdModel(id: 5, name: 'Ads 5', imageAsset: 'assets/images/mobile-shopping-app.png', shortcode: '[ads key="B5ZA76ZWMMAE"][/ads]', clicked: 0, expiredAt: '2030-08-08', status: 'Published'),
-    AdModel(id: 4, name: 'Ads 4', imageAsset: 'assets/images/mobile-shopping-app.jpg', shortcode: '[ads key="QGPRRJ2MPZYA"][/ads]', clicked: 0, expiredAt: '2030-08-08', status: 'Published'),
+    AdModel(
+        id: 7,
+        name: 'Ads 7',
+        imageAsset: 'assets/images/mobile-shopping-app.png',
+        shortcode: '[ads key="IHPZ2WBSYJUK"][/ads]',
+        clicked: 0,
+        expiredAt: '2030-08-08',
+        status: 'Published'),
+    AdModel(
+        id: 6,
+        name: 'Ads 6',
+        imageAsset: 'assets/images/mobile-shopping-app.jpg',
+        shortcode: '[ads key="F1LTQS976YPY"][/ads]',
+        clicked: 0,
+        expiredAt: '2030-08-08',
+        status: 'Published'),
+    AdModel(
+        id: 5,
+        name: 'Ads 5',
+        imageAsset: 'assets/images/mobile-shopping-app.png',
+        shortcode: '[ads key="B5ZA76ZWMMAE"][/ads]',
+        clicked: 0,
+        expiredAt: '2030-08-08',
+        status: 'Published'),
+    AdModel(
+        id: 4,
+        name: 'Ads 4',
+        imageAsset: 'assets/images/mobile-shopping-app.jpg',
+        shortcode: '[ads key="QGPRRJ2MPZYA"][/ads]',
+        clicked: 0,
+        expiredAt: '2030-08-08',
+        status: 'Published'),
   ];
 
-  late List<bool> selected;
+  List<bool> selected = [];
+
+  bool selectAll = false;
 
   @override
   void initState() {
@@ -30,9 +60,24 @@ class _AdsListWidgetState extends State<AdsListWidget> {
   Widget build(BuildContext context) {
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
-      columns: const [
-        DataColumn(label: SizedBox.shrink()),
+      columns: [
+        DataColumn(
+          label: Transform.scale(
+            scale: 0.7,
+            child: Checkbox(
+              value: selectAll,
+              side: BorderSide(color: Colors.grey[500]!),
+              onChanged: (value) {
+                setState(() {
+                  selectAll = value!;
+                  for (int i = 0; i < selected.length; i++) {
+                    selected[i] = selectAll;
+                  }
+                });
+              },
+            ),
+          ),
+        ),
         DataColumn(label: Text('ID')),
         DataColumn(label: Text('Image')),
         DataColumn(label: Text('Name')),
@@ -60,7 +105,8 @@ class _AdsListWidgetState extends State<AdsListWidget> {
               ),
             ),
             DataCell(Text(item.id.toString(), style: Theme.of(context).textTheme.labelSmall)),
-            DataCell(ClipRRect(borderRadius: BorderRadius.circular(6), child: Image.asset(item.imageAsset, width: 46, height: 46, fit: BoxFit.cover))),
+            DataCell(
+                ClipRRect(borderRadius: BorderRadius.circular(6), child: Image.asset(item.imageAsset, width: 46, height: 46, fit: BoxFit.cover))),
             DataCell(Text(item.name, style: Theme.of(context).textTheme.labelSmall)),
             DataCell(Row(children: [
               Expanded(child: Text(item.shortcode, style: Theme.of(context).textTheme.labelSmall)),
@@ -112,5 +158,3 @@ class _AdsListWidgetState extends State<AdsListWidget> {
     );
   }
 }
-
-

@@ -52,9 +52,9 @@ class _MarketStoresScreenState extends State<MarketStoresScreen> {
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Row(
                       children: [
-                        Text("Dashboard/",
+                        Text('Dashboard/ ',
                             style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
-                        Text("galleries", style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
+                        Text('Marketplace / Stores ', style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),

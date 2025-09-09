@@ -39,9 +39,10 @@ class _MarketUnverifiedVendorScreenState extends State<MarketUnverifiedVendorScr
                     padding: const EdgeInsets.symmetric(horizontal: 12.0),
                     child: Row(
                       children: [
-                        Text("Dashboard/Marketplace",
+                        Text("Dashboard/ ",
                             style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
-                        Text("/Unverified Vendors", style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold)),
+                        Text("Marketplace /Unverified Vendors",
+                            style: Theme.of(context).textTheme.labelMedium!.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),

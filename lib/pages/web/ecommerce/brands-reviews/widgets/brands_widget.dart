@@ -30,7 +30,6 @@ class _BrandsWidgetState extends State<BrandsWidget> {
   Widget build(BuildContext context) {
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: const [
         DataColumn(label: SizedBox()),
         DataColumn(label: Text('ID')),
@@ -99,5 +98,3 @@ class _BrandsWidgetState extends State<BrandsWidget> {
     );
   }
 }
-
-

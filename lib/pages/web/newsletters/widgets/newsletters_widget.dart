@@ -7,7 +7,7 @@ class NewslettersWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+      // headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: const [
         DataColumn(label: Text('')),
         DataColumn(label: Text('ID')),
@@ -48,5 +48,3 @@ class NewslettersWidget extends StatelessWidget {
     );
   }
 }
-
-

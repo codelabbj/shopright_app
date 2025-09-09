@@ -54,7 +54,8 @@ class _ProductAttributesScreenState extends State<ProductAttributesScreen> {
                       children: [
                         Text("Dashboard/",
                             style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
-                        Text("galleries", style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
+                        Text(" Product Specification / Attributes",
+                            style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
                       ],
                     ),
                   ),

@@ -56,7 +56,7 @@ class _OrdersWidgetState extends State<OrdersWidget> {
     final isLight = Theme.of(context).brightness == Brightness.light;
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(isLight ? const Color(0xFFF5F7FA) : null),
+      // headingRowColor: MaterialStateProperty.all(isLight ? const Color(0xFFF5F7FA) : null),
       dividerThickness: 0,
       dataRowMaxHeight: 80,
       columns: [

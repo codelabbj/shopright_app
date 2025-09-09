@@ -11,6 +11,7 @@ class SwitchPageState extends Equatable {
   final bool isAdsExpanded;
   final bool isConctatExpanded;
   final bool isFaqExpanded;
+  final bool isTransactionExpanded;
 
   const SwitchPageState({
     required this.selectedPage,
@@ -23,6 +24,7 @@ class SwitchPageState extends Equatable {
     this.isAdsExpanded = false,
     this.isConctatExpanded = false,
     this.isFaqExpanded = false,
+    this.isTransactionExpanded = false,
   });
 
   factory SwitchPageState.initial() {
@@ -41,18 +43,19 @@ class SwitchPageState extends Equatable {
     bool? isContactExpanded,
     bool? isAdsExpanded,
     bool? isFaqExpanded,
+    bool? isTransactionExpanded,
   }) {
     return SwitchPageState(
-      selectedPage: selectedPage ?? this.selectedPage,
-      isEcomExpanded: isEcomExpanded ?? this.isEcomExpanded,
-      isSpecExpanded: isSpecExpanded ?? this.isSpecExpanded,
-      isMaketPlaceExpanded: isMaketPlaceExpanded ?? this.isMaketPlaceExpanded,
-      isSettingsExpanded: isSettingsExpanded ?? this.isSettingsExpanded,
-      isBlogExpanded: isBlogExpanded ?? this.isBlogExpanded,
-      isContactExpanded: isContactExpanded ?? this.isContactExpanded,
-      isAdsExpanded: isAdsExpanded ?? this.isAdsExpanded,
-      isFaqExpanded: isFaqExpanded ?? this.isFaqExpanded,
-    );
+        selectedPage: selectedPage ?? this.selectedPage,
+        isEcomExpanded: isEcomExpanded ?? this.isEcomExpanded,
+        isSpecExpanded: isSpecExpanded ?? this.isSpecExpanded,
+        isMaketPlaceExpanded: isMaketPlaceExpanded ?? this.isMaketPlaceExpanded,
+        isSettingsExpanded: isSettingsExpanded ?? this.isSettingsExpanded,
+        isBlogExpanded: isBlogExpanded ?? this.isBlogExpanded,
+        isContactExpanded: isContactExpanded ?? this.isContactExpanded,
+        isAdsExpanded: isAdsExpanded ?? this.isAdsExpanded,
+        isFaqExpanded: isFaqExpanded ?? this.isFaqExpanded,
+        isTransactionExpanded: isTransactionExpanded ?? this.isTransactionExpanded);
   }
 
   @override
@@ -65,6 +68,7 @@ class SwitchPageState extends Equatable {
         isContactExpanded,
         isBlogExpanded,
         isAdsExpanded,
-        isFaqExpanded
+        isFaqExpanded,
+        isTransactionExpanded
       ];
 }

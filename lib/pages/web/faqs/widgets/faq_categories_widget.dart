@@ -29,7 +29,7 @@ class _FaqCategoriesWidgetState extends State<FaqCategoriesWidget> {
   Widget build(BuildContext context) {
     return DataTable(
       columnSpacing: 12,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
+      // headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: const [
         DataColumn(label: SizedBox.shrink()),
         DataColumn(label: Text('ID')),

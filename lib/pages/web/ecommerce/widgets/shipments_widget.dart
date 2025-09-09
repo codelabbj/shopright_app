@@ -48,7 +48,6 @@ class _ShipmentsWidgetState extends State<ShipmentsWidget> {
     return DataTable(
       columnSpacing: 12,
       dataRowMaxHeight: 80,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: [
         DataColumn(
           label: Transform.scale(
@@ -102,7 +101,12 @@ class _ShipmentsWidgetState extends State<ShipmentsWidget> {
               final item = items[index];
               final isSelected = selected[index];
               return DataRow(
-                selected: selected[index],
+                selected: isSelected,
+                color: MaterialStateProperty.resolveWith<Color?>((states) {
+                  if (isSelected) return Colors.blue[100];
+                  // if (isLight && index % 2 == 0) return const Color(0xFFF8FAFC); // alternance très légère en clair
+                  return null;
+                }),
                 cells: [
                   DataCell(
                     Transform.scale(
