@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
 import '../../../../models/visit_model.dart';
-import 'visit_page_row.dart';
 
 class TopVisitPagesWidget extends StatefulWidget {
   final List<VisitPageStat> data;
@@ -19,43 +18,59 @@ class _TopVisitPagesWidgetState extends State<TopVisitPagesWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isLight = theme.brightness == Brightness.light;
     return Card(
-      margin: EdgeInsets.all(16),
+      color: theme.cardColor,
+      margin: const EdgeInsets.all(16),
       child: Column(
         children: [
+          // Header with title and filter
           ListTile(
-            title: Text("Top Most Visit Pages"),
+            dense: true,
+            title: Text("Top Most Visit Pages", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
             trailing: DropdownButton<String>(
               value: selectedFilter,
-              underline: SizedBox(),
+              underline: const SizedBox(),
               items: filters.map((e) => DropdownMenuItem(value: e, child: Text(e))).toList(),
-              onChanged: (value) {
-                setState(() {
-                  selectedFilter = value!;
-                });
-              },
+              onChanged: (value) => setState(() => selectedFilter = value!),
             ),
           ),
-          Divider(),
-          DataTable(
-            columnSpacing: 12,
-            headingRowHeight: 0,
-            columns: const [
-              DataColumn(label: SizedBox()),
-              DataColumn(label: Text("URL")),
-              DataColumn(label: Text("")),
-            ],
-            rows: List.generate(widget.data.length, (index) {
-              final stat = widget.data[index];
-              return DataRow(
-                cells: [
-                  DataCell(Text('${index + 1}')),
-                  DataCell(Text(stat.title, overflow: TextOverflow.ellipsis)),
-                  DataCell(Text(stat.views?.toString() ?? '')),
-                ],
-              );
-            }),
+          // Column headers strip
+          Container(
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: isLight ? const Color(0xFFF5F7FA) : theme.colorScheme.surface,
+              border: Border.all(color: theme.dividerColor),
+            ),
+            child: Row(children: [
+              Expanded(flex: 1, child: Text('#', style: theme.textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold))),
+              Expanded(flex: 9, child: Text('URL', style: theme.textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold))),
+              Expanded(flex: 2, child: Text('Views', style: theme.textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold))),
+            ]),
           ),
+          // Rows
+          ...List.generate(widget.data.length, (index) {
+            final stat = widget.data[index];
+            return Container(
+              padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 10),
+              decoration: BoxDecoration(
+                border: Border(bottom: BorderSide(color: theme.dividerColor, width: 0.6)),
+              ),
+              child: Row(children: [
+                Expanded(flex: 1, child: Text('${index + 1}', style: theme.textTheme.labelSmall)),
+                Expanded(
+                  flex: 9,
+                  child: Text(
+                    stat.title,
+                    style: theme.textTheme.labelSmall,
+                    overflow: TextOverflow.ellipsis,
+                  ),
+                ),
+                Expanded(flex: 2, child: Text((stat.views ?? 0).toString(), style: theme.textTheme.labelSmall)),
+              ]),
+            );
+          }),
         ],
       ),
     );

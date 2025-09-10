@@ -501,88 +501,60 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
               AppearenceWidget(),
               PluginsDrawerWidget(),
               ToolsDrawerWidget(),
-              // Container(
-              //   // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-              //   padding: EdgeInsets.symmetric(vertical: 10),
-              //   width: Const.screenWidth(context) * 0.19,
-              //   height: 35,
-              //   decoration: BoxDecoration(
-              //     borderRadius: BorderRadius.circular(6),
-              //     // boxShadow: [
-              //     //   context.read<SwitchPageCubit>().state.selectedPage == 4
-              //     //       ? BoxShadow(
-              //     //           color: Colors.grey.withValues(alpha: 0.2),
-              //     //           spreadRadius: 10,
-              //     //           blurRadius: 10,
-              //     //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-              //     //         )
-              //     //       : BoxShadow(
-              //     //
-              //     //           // Décalage horizontal et vertical de l'ombre
-              //     //           )
-              //     // ],
-              //     color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
-              //   ),
-              //   child: TextButton(
-              //     onPressed: () {
-              //       context.read<SwitchPageCubit>().switchPage(4);
-              //       context.go('/promote');
-              //     },
-              //     style: ButtonStyle(
-              //       overlayColor: MaterialStateProperty.resolveWith<Color?>(
-              //         (Set<MaterialState> states) {
-              //           if (states.contains(MaterialState.hovered)) {
-              //             return Colors.transparent; // Pas d'effet au survol
-              //           }
-              //           return null; // Laisser les autres états par défaut
-              //         },
-              //       ),
-              //     ),
-              //     child: Row(
-              //       children: [
-              //         Image.asset(
-              //           "assets/images/settings.png",
-              //           width: 20,
-              //           height: 20,
-              //           color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
-              //         ),
-              //         SizedBox(width: 5),
-              //         Text(
-              //           'Settings',
-              //           style: Theme.of(context).textTheme.displaySmall?.copyWith(
-              //                 color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
-              //               ),
-              //         ),
-              //       ],
-              //     ),
-              //   ),
-              // ),
               Container(
-                // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(6),
-                  // boxShadow: [
-                  //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                  //       ? BoxShadow(
-                  //           color: Colors.grey.withValues(alpha: 0.2),
-                  //           spreadRadius: 10,
-                  //           blurRadius: 10,
-                  //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                  //         )
-                  //       : BoxShadow(
-                  //
-                  //           // Décalage horizontal et vertical de l'ombre
-                  //           )
-                  // ],
-                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                  color: context.read<SwitchPageCubit>().state.selectedPage == 9.8 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                 ),
                 child: TextButton(
                   onPressed: () {
-                    context.read<SwitchPageCubit>().switchPage(4);
-                    context.go('/promote');
+                    context.read<SwitchPageCubit>().switchPage(9.8);
+                    context.go('/settings');
+                  },
+                  style: ButtonStyle(
+                    overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                      (Set<MaterialState> states) {
+                        if (states.contains(MaterialState.hovered)) {
+                          return Colors.transparent; // Pas d'effet au survol
+                        }
+                        return null; // Laisser les autres états par défaut
+                      },
+                    ),
+                  ),
+                  child: Row(
+                    children: [
+                      Image.asset(
+                        "assets/images/settings.png",
+                        width: 20,
+                        height: 20,
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 9.8 ? Colors.white : Colors.grey[500],
+                      ),
+                      SizedBox(width: 5),
+                      Text(
+                        'Settings',
+                        style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                              color: context.read<SwitchPageCubit>().state.selectedPage == 9.8 ? Colors.white : Colors.grey[500],
+                            ),
+                      ),
+                    ],
+                  ),
+                ),
+              ),
+              Container(
+                // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                padding: EdgeInsets.symmetric(vertical: 10),
+
+                width: Const.screenWidth(context),
+                height: 35,
+                decoration: BoxDecoration(
+                  color: context.read<SwitchPageCubit>().state.selectedPage == 9.9 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                ),
+                child: TextButton(
+                  onPressed: () {
+                    context.read<SwitchPageCubit>().switchPage(9.9);
+                    context.go('/system');
                   },
                   style: ButtonStyle(
                     overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -600,13 +572,13 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                         "assets/images/administrator.png",
                         width: 20,
                         height: 20,
-                        color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                        color: context.read<SwitchPageCubit>().state.selectedPage == 9.9 ? Colors.white : Colors.grey[500],
                       ),
                       SizedBox(width: 5),
                       Text(
                         'Plateform Administration',
                         style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                              color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                              color: context.read<SwitchPageCubit>().state.selectedPage == 9.9 ? Colors.white : Colors.grey[500],
                             ),
                       ),
                     ],

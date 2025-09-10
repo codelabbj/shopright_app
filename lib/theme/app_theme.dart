@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
+import 'app_colors.dart';
+
 // Base colors extracted from the provided dark-mode screenshot
 const Color _darkScaffold = Color(0xFF0F1824); // deep blue/black background
 const Color _darkCard = Color(0xFF1A2532); // table/card rows background
@@ -31,7 +33,7 @@ final ThemeData lightTheme = ThemeData(
   scaffoldBackgroundColor: const Color(0xFFFCFCFC),
   appBarTheme: const AppBarTheme(backgroundColor: Color(0xFFFCFCFC), elevation: 0),
   cardColor: Colors.white,
-  dividerColor: Colors.transparent,
+  dividerColor: Colors.grey[300],
   inputDecorationTheme: InputDecorationTheme(
     filled: true,
     fillColor: Colors.white,
@@ -46,6 +48,13 @@ final ThemeData lightTheme = ThemeData(
     dividerThickness: 0,
     headingTextStyle: GoogleFonts.montserrat(color: Colors.grey, fontSize: 11),
     dataTextStyle: GoogleFonts.montserrat(color: Colors.black87, fontSize: 13),
+  ),
+  elevatedButtonTheme: ElevatedButtonThemeData(
+    style: ElevatedButton.styleFrom(
+      backgroundColor: AppColors.PRIMARY_BLUE_COLOR,
+      foregroundColor: Colors.white,
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
+    ),
   ),
 );
 
@@ -99,7 +108,7 @@ final ThemeData darkTheme = ThemeData(
     style: ElevatedButton.styleFrom(
       backgroundColor: _accentBlue,
       foregroundColor: Colors.white,
-      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(8)),
+      shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(5)),
     ),
   ),
   extensions: <ThemeExtension<dynamic>>[

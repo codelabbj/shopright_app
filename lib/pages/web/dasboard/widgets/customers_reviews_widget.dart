@@ -49,18 +49,19 @@ class CustomerReviewsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Card(
-      color: Colors.white,
-      margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 15),
+      color: theme.cardColor,
+      margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 15),
       child: Column(
         children: [
           ListTile(
-            leading: Icon(Icons.star, color: Colors.orange),
+            leading: const Icon(Icons.star, color: Colors.orange),
             title: Text("Customer Reviews", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
           ),
-          Divider(),
+          const Divider(),
           ...reviews.map((review) => ReviewItem(review: review)).toList(),
-          Divider(),
+          const Divider(),
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(

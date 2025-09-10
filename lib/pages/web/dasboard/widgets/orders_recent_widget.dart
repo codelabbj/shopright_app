@@ -16,8 +16,10 @@ class RecentOrdersWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isLight = theme.brightness == Brightness.light;
     return Card(
-      color: Colors.white,
+      color: theme.cardColor,
       margin: const EdgeInsets.all(12),
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Column(
@@ -34,8 +36,11 @@ class RecentOrdersWidget extends StatelessWidget {
           ),
 
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(color: Colors.grey[200], border: Border.all(color: Colors.grey[300]!)),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: isLight ? const Color(0xFFF5F7FA) : theme.colorScheme.surface,
+              border: Border.all(color: theme.dividerColor),
+            ),
             child: Row(
               children: [
                 Expanded(flex: 3, child: Text("Order", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold))),

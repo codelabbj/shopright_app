@@ -12,20 +12,23 @@ class SwitchPageState extends Equatable {
   final bool isConctatExpanded;
   final bool isFaqExpanded;
   final bool isTransactionExpanded;
+  final bool isToolExpanded;
+  final bool isLocationExpanded;
 
-  const SwitchPageState({
-    required this.selectedPage,
-    this.isEcomExpanded = false,
-    this.isSpecExpanded = false,
-    this.isMaketPlaceExpanded = false,
-    this.isSettingsExpanded = false,
-    this.isContactExpanded = false,
-    this.isBlogExpanded = false,
-    this.isAdsExpanded = false,
-    this.isConctatExpanded = false,
-    this.isFaqExpanded = false,
-    this.isTransactionExpanded = false,
-  });
+  const SwitchPageState(
+      {required this.selectedPage,
+      this.isEcomExpanded = false,
+      this.isSpecExpanded = false,
+      this.isMaketPlaceExpanded = false,
+      this.isSettingsExpanded = false,
+      this.isContactExpanded = false,
+      this.isBlogExpanded = false,
+      this.isAdsExpanded = false,
+      this.isConctatExpanded = false,
+      this.isFaqExpanded = false,
+      this.isTransactionExpanded = false,
+      this.isToolExpanded = false,
+      this.isLocationExpanded = false});
 
   factory SwitchPageState.initial() {
     return const SwitchPageState(
@@ -33,18 +36,19 @@ class SwitchPageState extends Equatable {
     );
   }
 
-  SwitchPageState copyWith({
-    double? selectedPage,
-    bool? isEcomExpanded,
-    bool? isSpecExpanded,
-    bool? isMaketPlaceExpanded,
-    bool? isSettingsExpanded,
-    bool? isBlogExpanded,
-    bool? isContactExpanded,
-    bool? isAdsExpanded,
-    bool? isFaqExpanded,
-    bool? isTransactionExpanded,
-  }) {
+  SwitchPageState copyWith(
+      {double? selectedPage,
+      bool? isEcomExpanded,
+      bool? isSpecExpanded,
+      bool? isMaketPlaceExpanded,
+      bool? isSettingsExpanded,
+      bool? isBlogExpanded,
+      bool? isContactExpanded,
+      bool? isAdsExpanded,
+      bool? isFaqExpanded,
+      bool? isTransactionExpanded,
+      bool? isLocationExpanded,
+      bool? isToolExpanded}) {
     return SwitchPageState(
         selectedPage: selectedPage ?? this.selectedPage,
         isEcomExpanded: isEcomExpanded ?? this.isEcomExpanded,
@@ -55,6 +59,8 @@ class SwitchPageState extends Equatable {
         isContactExpanded: isContactExpanded ?? this.isContactExpanded,
         isAdsExpanded: isAdsExpanded ?? this.isAdsExpanded,
         isFaqExpanded: isFaqExpanded ?? this.isFaqExpanded,
+        isToolExpanded: isToolExpanded ?? this.isToolExpanded,
+        isLocationExpanded: isLocationExpanded ?? this.isLocationExpanded,
         isTransactionExpanded: isTransactionExpanded ?? this.isTransactionExpanded);
   }
 
@@ -69,6 +75,8 @@ class SwitchPageState extends Equatable {
         isBlogExpanded,
         isAdsExpanded,
         isFaqExpanded,
+        isToolExpanded,
+        isLocationExpanded,
         isTransactionExpanded
       ];
 }

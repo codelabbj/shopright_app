@@ -1,7 +1,5 @@
 import 'package:e_com_app/pages/web/dasboard/widgets/stat_card_widget.dart';
-import 'package:e_com_app/pages/web/orders/widgets/orders_tab_widget.dart' show OrdersTabWidget;
 import 'package:e_com_app/widgets/app_bar_widget.dart';
-import 'package:e_com_app/widgets/card_list_widget.dart' show CardListWidget;
 import 'package:e_com_app/widgets/drawer_widget.dart' show DrawerDashboard;
 import 'package:flutter/material.dart';
 
@@ -14,6 +12,9 @@ import '../widgets/sales_chart_widget.dart';
 import '../widgets/top_broswer_widget.dart';
 import '../widgets/top_selling_list_widget.dart';
 import '../widgets/visit_page_widget.dart';
+import '../widgets/ecommerce_overview_widget.dart';
+import '../widgets/top_referrers_widget.dart';
+import '../widgets/activities_logs_widget.dart';
 
 class DashboardScreen extends StatefulWidget {
   const DashboardScreen({super.key});
@@ -25,8 +26,10 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isLight = theme.brightness == Brightness.light;
     return Scaffold(
-      backgroundColor: AppColors.PRIMARY_WHITE_LIGHT,
+      backgroundColor: theme.scaffoldBackgroundColor,
       body: SafeArea(
         child: Row(
           children: [
@@ -48,75 +51,124 @@ class _DashboardScreenState extends State<DashboardScreen> {
                               // ✅ Desktop layout (comme tu l’avais fait)
                               return Column(
                                 children: [
-                                  SizedBox(height: 30),
-                                  // Stat cards row
+                                  const SizedBox(height: 20),
+                                  // Site Analytics (chart)
+                                  const SalesChartWidget(),
+                                  const SizedBox(height: 16),
+                                  // KPI Cards row
                                   Row(
                                     children: [
                                       Expanded(
                                         child: StatCardWidget(
-                                          title: "Orders",
-                                          value: "45",
-                                          color: Colors.orangeAccent,
+                                          title: "Sessions",
+                                          value: "661",
+                                          color: isLight ? Colors.orangeAccent : theme.colorScheme.primary,
                                           imageUrl: "assets/images/shopping-bag.png",
                                         ),
                                       ),
-                                      SizedBox(width: 12),
+                                      const SizedBox(width: 12),
                                       Expanded(
                                         child: StatCardWidget(
-                                          title: "Product",
-                                          value: "32",
-                                          imageUrl: "assets/images/product.png",
-                                          color: Colors.green,
+                                          title: "Visitors",
+                                          value: "566",
+                                          imageUrl: "assets/images/user.png",
+                                          color: isLight ? Colors.green : theme.colorScheme.primary,
                                         ),
                                       ),
-                                      SizedBox(width: 12),
+                                      const SizedBox(width: 12),
                                       Expanded(
                                         child: StatCardWidget(
-                                          title: "Customers",
-                                          value: "10",
-                                          imageUrl: "assets/images/community.png",
-                                          color: Colors.blue,
+                                          title: "Pageviews",
+                                          value: "2,638",
+                                          imageUrl: "assets/images/marketing.png",
+                                          color: isLight ? Colors.blue : theme.colorScheme.primary,
                                         ),
                                       ),
-                                      SizedBox(width: 12),
+                                      const SizedBox(width: 12),
                                       Expanded(
                                         child: StatCardWidget(
-                                          title: "Reviews",
-                                          value: "236",
+                                          title: "Bounce Rate",
+                                          value: "56%",
                                           color: AppColors.PRIMARY_BLUE_COLOR,
-                                          imageUrl: "assets/images/responsiveness.png",
+                                          imageUrl: "assets/images/analytics.png",
                                         ),
                                       ),
                                     ],
                                   ),
-                                  SizedBox(height: 16),
-
+                                  const SizedBox(height: 16),
+                                  // Top Most Visit Pages + Top Browsers
                                   Row(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Expanded(flex: 2, child: RecentOrdersWidget()),
-                                      Expanded(flex: 1, child: CustomerReviewsWidget()),
+                                      Expanded(
+                                        flex: 2,
+                                        child: TopVisitPagesWidget(
+                                          data: [
+                                            VisitPageStat(title: "MartFury - Laravel Ecommerce system", views: 245),
+                                            VisitPageStat(title: "Login", views: 102),
+                                            VisitPageStat(title: "Shofy - Multipurpose eCommerce Laravel Script", views: 77),
+                                            VisitPageStat(title: "Stories - Laravel Personal Blog Script", views: 70),
+                                            VisitPageStat(title: "Phones", views: 69),
+                                            VisitPageStat(title: "Nest - Laravel Multipurpose eCommerce Script", views: 54),
+                                            VisitPageStat(title: "Products", views: 53),
+                                          ],
+                                        ),
+                                      ),
+                                      const SizedBox(width: 12),
+                                      Expanded(
+                                        child: TopBrowsersWidget(
+                                          data: [
+                                            BrowserStat(name: "Chrome", sessions: 538),
+                                            BrowserStat(name: "Safari", sessions: 43),
+                                            BrowserStat(name: "Firefox", sessions: 39),
+                                            BrowserStat(name: "Edge", sessions: 28),
+                                            BrowserStat(name: "Opera", sessions: 14),
+                                            BrowserStat(name: "(not set)", sessions: 2),
+                                            BrowserStat(name: "Android Webview", sessions: 2),
+                                            BrowserStat(name: "Samsung Internet", sessions: 1),
+                                          ],
+                                        ),
+                                      ),
                                     ],
                                   ),
-
-                                  // Top selling + Inventory
+                                  const SizedBox(height: 16),
+                                  // Top Selling Products + Recent Orders
                                   Row(
                                     crossAxisAlignment: CrossAxisAlignment.start,
                                     children: [
-                                      Flexible(
-                                        flex: 2,
-                                        child: TopSellingProductsWidget(),
-                                      ),
-                                      // Expanded(flex: 1, child: InventoryStatusCard()),
+                                      Expanded(flex: 2, child: TopSellingProductsWidget()),
+                                      const SizedBox(width: 12),
+                                      Expanded(child: RecentOrdersWidget()),
                                     ],
-                                  )
+                                  ),
+                                  const SizedBox(height: 16),
+                                  // Customer Reviews + Ecommerce side by side, puis Top Referrers + Activities
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Expanded(flex: 2, child: CustomerReviewsWidget()),
+                                      const SizedBox(width: 12),
+                                      Expanded(child: EcommerceOverviewWidget()),
+                                    ],
+                                  ),
+                                  const SizedBox(height: 16),
+                                  Row(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      const Expanded(flex: 2, child: TopReferrersWidget()),
+                                      const SizedBox(width: 12),
+                                      const Expanded(child: ActivitiesLogsWidget()),
+                                    ],
+                                  ),
                                 ],
                               );
                             } else {
                               // ✅ Mobile layout (tout en Column)
                               return Column(
                                 children: [
-                                  SizedBox(height: 30),
+                                  const SizedBox(height: 20),
+                                  const SalesChartWidget(),
+                                  const SizedBox(height: 16),
                                   // Stat cards scroll horizontal
                                   SingleChildScrollView(
                                     scrollDirection: Axis.horizontal,
@@ -164,12 +216,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       ],
                                     ),
                                   ),
-                                  SizedBox(height: 16),
-                                  // StoreOverviewCard(),
-                                  // Charts en colonne
-                                  SalesChartWidget(),
-                                  SizedBox(height: 16),
-                                  // InventoryPieChart(inStock: 5, lowStock: 4, outOfStock: 2),
+                                  const SizedBox(height: 16),
                                   TopVisitPagesWidget(
                                     data: [
                                       VisitPageStat(title: "MartFury - Laravel Ecommerce system", views: 100),
@@ -179,7 +226,7 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       VisitPageStat(title: "Flex Home", views: 29),
                                     ],
                                   ),
-                                  SizedBox(height: 16),
+                                  const SizedBox(height: 16),
                                   TopBrowsersWidget(
                                     data: [
                                       BrowserStat(name: "Chrome", sessions: 364),
@@ -189,13 +236,19 @@ class _DashboardScreenState extends State<DashboardScreen> {
                                       BrowserStat(name: "Opera", sessions: 11),
                                     ],
                                   ),
-                                  SizedBox(height: 16),
-                                  RecentOrdersWidget(),
-                                  SizedBox(height: 16),
-                                  CustomerReviewsWidget(),
-                                  SizedBox(height: 16),
+                                  const SizedBox(height: 16),
                                   TopSellingProductsWidget(),
-                                  SizedBox(height: 16),
+                                  const SizedBox(height: 16),
+                                  RecentOrdersWidget(),
+                                  const SizedBox(height: 16),
+                                  EcommerceOverviewWidget(),
+                                  const SizedBox(height: 16),
+                                  TopReferrersWidget(),
+                                  const SizedBox(height: 16),
+                                  ActivitiesLogsWidget(),
+                                  const SizedBox(height: 16),
+                                  CustomerReviewsWidget(),
+                                  const SizedBox(height: 16),
                                   // InventoryStatusCard(),
                                 ],
                               );

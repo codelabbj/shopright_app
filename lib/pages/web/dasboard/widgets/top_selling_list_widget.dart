@@ -39,18 +39,23 @@ class TopSellingProductsWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isLight = theme.brightness == Brightness.light;
     return Card(
-      color: Colors.white,
-      margin: EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 15),
+      color: theme.cardColor,
+      margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 15),
       child: Column(
         children: [
           ListTile(
-            leading: Icon(Icons.trending_up, color: Colors.blue),
+            leading: const Icon(Icons.trending_up, color: Colors.blue),
             title: Text("Top Selling Products", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
           ),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 12, vertical: 8),
-            decoration: BoxDecoration(color: Colors.grey[200], border: Border.all(color: Colors.grey[300]!)),
+            padding: const EdgeInsets.symmetric(horizontal: 12, vertical: 8),
+            decoration: BoxDecoration(
+              color: isLight ? const Color(0xFFF5F7FA) : theme.colorScheme.surface,
+              border: Border.all(color: theme.dividerColor),
+            ),
             child: Row(
               children: [
                 Expanded(flex: 4, child: Text("Name", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold))),

@@ -82,12 +82,12 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                     width: Const.screenWidth(context) * 0.19,
                     height: 35,
                     decoration: BoxDecoration(
-                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.101 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                      color: context.read<SwitchPageCubit>().state.selectedPage == 1.11 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                     ),
                     child: TextButton(
                       onPressed: () {
-                        context.read<SwitchPageCubit>().switchPage(1.101);
-                        context.go('/ecommerce/reports');
+                        context.read<SwitchPageCubit>().switchPage(1.11);
+                        context.go('/ecommerce/report');
                       },
                       style: ButtonStyle(
                         overlayColor: MaterialStateProperty.resolveWith<Color?>(
@@ -105,13 +105,13 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                             "assets/images/business-report.png",
                             width: 20,
                             height: 20,
-                            color: context.read<SwitchPageCubit>().state.selectedPage == 1.101 ? Colors.white : Colors.grey[500],
+                            color: context.read<SwitchPageCubit>().state.selectedPage == 1.11 ? Colors.white : Colors.grey[500],
                           ),
                           SizedBox(width: 5),
                           Text(
                             'Report',
                             style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 1.101 ? Colors.white : Colors.grey[500],
+                                  color: context.read<SwitchPageCubit>().state.selectedPage == 1.11 ? Colors.white : Colors.grey[500],
                                 ),
                           ),
                         ],

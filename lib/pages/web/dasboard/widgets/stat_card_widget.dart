@@ -13,8 +13,11 @@ class StatCardWidget extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final resolvedBg = color ?? theme.colorScheme.primary;
+    final textOnBg = Colors.white;
     return Card(
-      color: color ?? Colors.white,
+      color: resolvedBg,
       shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
       child: Padding(
         padding: const EdgeInsets.all(10),
@@ -29,30 +32,18 @@ class StatCardWidget extends StatelessWidget {
                   '$imageUrl', // Remplace par ton image
                   width: 60,
                   height: 60,
-                  color: Colors.white,
+                  color: textOnBg,
                 ),
               ),
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(title,
-                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                          fontSize: 14,
-                          color: Colors.white,
-                        )),
+                Text(title, style: theme.textTheme.labelSmall!.copyWith(fontSize: 14, color: textOnBg)),
                 const SizedBox(height: 8),
-                Text(value,
-                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                          fontSize: 40,
-                          fontWeight: FontWeight.bold,
-                          color: Colors.white,
-                        )),
+                Text(value, style: theme.textTheme.labelSmall!.copyWith(fontSize: 40, fontWeight: FontWeight.bold, color: textOnBg)),
                 const SizedBox(height: 4),
-                Text(subtitle ?? "",
-                    style: Theme.of(context).textTheme.labelSmall!.copyWith(
-                          color: Colors.white,
-                        )),
+                Text(subtitle ?? "", style: theme.textTheme.labelSmall!.copyWith(color: textOnBg)),
                 const SizedBox(height: 8),
                 // Text(
                 //   percentage,

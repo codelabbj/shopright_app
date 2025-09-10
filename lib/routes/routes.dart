@@ -64,11 +64,21 @@ import '../pages/web/pages-section/screens/pages_screen.dart';
 import '../pages/web/pages-section/screens/create_page_screen.dart';
 import '../pages/web/paiements/screens/payment_logs_screen.dart';
 import '../pages/web/paiements/screens/payments_screen.dart';
+import '../pages/web/ecommerce/orders/screens/incomplete_orders_screen.dart';
 import '../pages/web/product/screen/product_web_screen.dart';
 import '../pages/web/testimonials/screens/testimonals_screen.dart';
 import '../pages/web/locations/screens/countries_screen.dart';
 import '../pages/web/locations/screens/states_screen.dart';
 import '../pages/web/locations/screens/cities_screen.dart';
+import '../pages/web/system/screens/system_admin_screen.dart';
+import '../pages/web/settings/screens/settings_overview_screen.dart';
+import '../pages/web/locations/screens/import_locations_screen.dart';
+import '../pages/web/tools/screens/export_import_overview_screen.dart';
+import '../pages/web/locations/screens/export_locations_screen.dart';
+import '../pages/web/locations/screens/create_country_screen.dart';
+import '../pages/web/locations/screens/create_city_screen.dart';
+import '../pages/web/dasboard/screens/ecommerce_report_screen.dart';
+import '../pages/web/marketplace/screens/marketplace_report_screen.dart';
 
 class AppRouter {
   static final GoRouter router = GoRouter(
@@ -151,6 +161,13 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: '/ecommerce/report',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(1.11);
+          return const EcommerceReportScreen();
+        },
+      ),
+      GoRoute(
         path: '/ecommerce/orders',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(1.2);
@@ -182,7 +199,7 @@ class AppRouter {
         path: '/ecommerce/order-incomplete',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(1.3);
-          return const InvoicesScreen();
+          return const IncompleteOrdersScreen();
         },
       ),
       GoRoute(
@@ -432,6 +449,13 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: '/marketplace/report',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(3.1);
+          return const MarketplaceReportScreen();
+        },
+      ),
+      GoRoute(
         path: '/marketplace/stores/create',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(3.2);
@@ -474,6 +498,20 @@ class AppRouter {
         },
       ),
       GoRoute(
+        path: '/system',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(9.9);
+          return const SystemAdminScreen();
+        },
+      ),
+      GoRoute(
+        path: '/settings',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(9.8);
+          return const SettingsOverviewScreen();
+        },
+      ),
+      GoRoute(
         path: '/locations/countries',
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(8.1);
@@ -492,6 +530,41 @@ class AppRouter {
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(8.3);
           return const CitiesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/locations/importer',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(8.4);
+          return const ImportLocationsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/tools/export-import',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(8.9);
+          return const ExportImportOverviewScreen();
+        },
+      ),
+      GoRoute(
+        path: '/tools/export-locations',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(8.5);
+          return const ExportLocationsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/locations/countries/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(8.1);
+          return const CreateCountryScreen();
+        },
+      ),
+      GoRoute(
+        path: '/locations/cities/create',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(8.3);
+          return const CreateCityScreen();
         },
       ),
       GoRoute(

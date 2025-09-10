@@ -30,30 +30,7 @@ class _PluginsDrawerWidgetState extends State<PluginsDrawerWidget> {
                 padding: EdgeInsets.symmetric(vertical: 10),
                 width: Const.screenWidth(context) * 0.19,
                 height: 35,
-                decoration: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(6),
-                  boxShadow: [
-                    // context.read<SwitchPageCubit>().state.selectedPage == 1
-                    //     ? BoxShadow(
-                    //         color: Colors.grey.withValues(alpha: 0.2),
-                    //         spreadRadius: 10,
-                    //         blurRadius: 10,
-                    //         offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                    //       )
-                    //     : context.read<SwitchPageCubit>().state.selectedPage == 6
-                    //         ? BoxShadow()
-                    //         : context.read<SwitchPageCubit>().state.selectedPage == 7
-                    //             ? BoxShadow()
-                    //             : context.read<SwitchPageCubit>().state.selectedPage == 7
-                    //                 ? BoxShadow(
-                    //                     color: Colors.grey.withValues(alpha: 0.2),
-                    //                     spreadRadius: 10,
-                    //                     blurRadius: 10,
-                    //                     offset: Offset(0, 3),
-                    //                   )
-                    //                 : BoxShadow(),
-                  ],
-                ),
+                decoration: BoxDecoration(),
                 child: TextButton(
                   onPressed: () {
                     if (state.selectedPage == 12 || isExpanded) {
@@ -105,125 +82,107 @@ class _PluginsDrawerWidgetState extends State<PluginsDrawerWidget> {
             isExpanded
                 // context.read<SwitchPageCubit>().state.selectedPage == 6 ||
                 // context.read<SwitchPageCubit>().state.selectedPage == 7
-                ? Padding(
-                    padding: const EdgeInsets.symmetric(horizontal: 10),
-                    child: Column(
-                      children: [
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                ? Column(
+                    children: [
+                      Container(
+                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(6),
+                          color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(4);
+                            context.go('/promote');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(4);
-                              context.go('/promote');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/folder.png",
+                                width: 20,
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/folder.png",
-                                  width: 20,
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Installed Plugins',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Installed Plugins',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
-                        Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
-                          height: 35,
-                          decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
-                            color:
-                                context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                      ),
+                      Container(
+                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
+                        padding: EdgeInsets.symmetric(vertical: 10),
+                        width: Const.screenWidth(context) * 0.19,
+                        height: 35,
+                        decoration: BoxDecoration(
+                          // borderRadius: BorderRadius.circular(6),
+                          // boxShadow: [
+                          //   context.read<SwitchPageCubit>().state.selectedPage == 3
+                          //       ? BoxShadow(
+                          //           color: Colors.grey.withValues(alpha: 0.2),
+                          //           spreadRadius: 10,
+                          //           blurRadius: 10,
+                          //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
+                          //         )
+                          //       : BoxShadow(
+                          //
+                          //           // Décalage horizontal et vertical de l'ombre
+                          //           )
+                          // ],
+                          color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
+                        ),
+                        child: TextButton(
+                          onPressed: () {
+                            context.read<SwitchPageCubit>().switchPage(3);
+                            context.go('/orders');
+                          },
+                          style: ButtonStyle(
+                            overlayColor: MaterialStateProperty.resolveWith<Color?>(
+                              (Set<MaterialState> states) {
+                                if (states.contains(MaterialState.hovered)) {
+                                  return Colors.transparent; // Pas d'effet au survol
+                                }
+                                return null; // Laisser les autres états par défaut
+                              },
+                            ),
                           ),
-                          child: TextButton(
-                            onPressed: () {
-                              context.read<SwitchPageCubit>().switchPage(3);
-                              context.go('/orders');
-                            },
-                            style: ButtonStyle(
-                              overlayColor: MaterialStateProperty.resolveWith<Color?>(
-                                (Set<MaterialState> states) {
-                                  if (states.contains(MaterialState.hovered)) {
-                                    return Colors.transparent; // Pas d'effet au survol
-                                  }
-                                  return null; // Laisser les autres états par défaut
-                                },
+                          child: Row(
+                            children: [
+                              Image.asset(
+                                "assets/images/groups.png",
+                                height: 20,
+                                color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
                               ),
-                            ),
-                            child: Row(
-                              children: [
-                                Image.asset(
-                                  "assets/images/groups.png",
-                                  height: 20,
-                                  color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                ),
-                                SizedBox(width: 5),
-                                Text(
-                                  'Add New Plugin',
-                                  style: Theme.of(context).textTheme.displaySmall?.copyWith(
-                                        color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
-                                      ),
-                                ),
-                              ],
-                            ),
+                              SizedBox(width: 5),
+                              Text(
+                                'Add New Plugin',
+                                style: Theme.of(context).textTheme.displaySmall?.copyWith(
+                                      color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Colors.white : Colors.grey[500],
+                                    ),
+                              ),
+                            ],
                           ),
                         ),
-                      ],
-                    ),
+                      ),
+                    ],
                   )
                 : SizedBox()
           ],

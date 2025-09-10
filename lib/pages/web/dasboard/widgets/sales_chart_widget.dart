@@ -2,7 +2,7 @@ import 'package:fl_chart/fl_chart.dart';
 
 import 'package:flutter/material.dart';
 
-import '../../../../theme/app_colors.dart';
+// import '../../../../theme/app_colors.dart';
 
 class SalesChartWidget extends StatefulWidget {
   const SalesChartWidget({super.key});
@@ -26,10 +26,11 @@ class _SalesChartWidgetState extends State<SalesChartWidget> {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
     return Stack(
       children: <Widget>[
         Card(
-          color: Colors.white,
+          color: theme.cardColor,
           shape: RoundedRectangleBorder(borderRadius: BorderRadius.circular(12)),
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
@@ -92,8 +93,9 @@ class _SalesChartWidgetState extends State<SalesChartWidget> {
   }
 
   Widget bottomTitleWidgets(double value, TitleMeta meta) {
+    final isLight = Theme.of(context).brightness == Brightness.light;
     final style = Theme.of(context).textTheme.displaySmall!.copyWith(
-          color: Colors.grey[400],
+          color: isLight ? Colors.grey[600] : Colors.white70,
           fontSize: 8,
           fontWeight: FontWeight.bold,
         );
@@ -192,10 +194,10 @@ class _SalesChartWidgetState extends State<SalesChartWidget> {
         verticalInterval: 1,
         getDrawingHorizontalLine: (value) {
           if (value == 6) return FlLine(strokeWidth: 0);
-          return FlLine(color: Colors.grey[400], strokeWidth: 0, dashArray: [5, 5]);
+          return FlLine(color: Theme.of(context).brightness == Brightness.light ? Colors.grey[400]! : Colors.white24, strokeWidth: 0, dashArray: [5, 5]);
         },
         getDrawingVerticalLine: (value) {
-          return FlLine(color: Colors.grey[400]!, strokeWidth: 0.2, dashArray: [5, 5]);
+          return FlLine(color: Theme.of(context).brightness == Brightness.light ? Colors.grey[400]! : Colors.white24, strokeWidth: 0.2, dashArray: [5, 5]);
         },
       ),
       titlesData: FlTitlesData(
@@ -222,7 +224,7 @@ class _SalesChartWidgetState extends State<SalesChartWidget> {
         show: true,
         border: Border(
           bottom: BorderSide(
-            color: Colors.grey[400]!, // ou une autre couleur si tu veux
+            color: Theme.of(context).brightness == Brightness.light ? Colors.grey[400]! : Colors.white24,
             width: 1,
           ),
           top: BorderSide.none,
@@ -246,9 +248,7 @@ class _SalesChartWidgetState extends State<SalesChartWidget> {
             FlSpot(11, 4),
           ],
           isCurved: true,
-          gradient: LinearGradient(
-            colors: gradientColors,
-          ),
+          gradient: LinearGradient(colors: [Theme.of(context).colorScheme.primary.withOpacity(0.8), Theme.of(context).colorScheme.primary]),
           barWidth: 2,
           isStrokeCapRound: true,
           dotData: const FlDotData(
@@ -257,15 +257,10 @@ class _SalesChartWidgetState extends State<SalesChartWidget> {
           belowBarData: BarAreaData(
             show: true,
             gradient: LinearGradient(
-              colors: [
-                Colors.blue.withOpacity(0.3), // couleur avec transparence (ombre)
-                Colors.transparent, // fondu vers transparent
-              ],
+              colors: [Theme.of(context).colorScheme.primary.withOpacity(0.25), Colors.transparent],
               begin: Alignment.topCenter,
               end: Alignment.bottomCenter,
             ),
-            // Tu peux aussi ajouter un peu de "blur" avec la propriété shadow
-            // mais fl_chart ne gère pas directement le blur, il faut faire une astuce visuelle
           ),
         ),
       ],

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
+import '../../../../theme/app_colors.dart';
 import '../../../../widgets/app_bar_widget.dart';
 import '../../../../widgets/card_list_widget.dart';
 import '../../../../widgets/custom_search_widget.dart';
@@ -22,10 +24,8 @@ class CitiesScreen extends StatelessWidget {
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),
                 child: Row(children: [
-                  Text('Dashboard/ ',
-                      style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
-                  Text('Locations / Cities',
-                      style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
+                  Text('Dashboard/ ', style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.blue)),
+                  Text('Locations / Cities', style: Theme.of(context).textTheme.displaySmall!.copyWith(fontWeight: FontWeight.bold)),
                 ]),
               ),
               Expanded(
@@ -37,6 +37,23 @@ class CitiesScreen extends StatelessWidget {
                       child: CardListWidget(
                         buttons: const [CustomSearchWidget()],
                         actions: [
+                          InkWell(
+                            onTap: () => context.go('/locations/cities/create'),
+                            child: Container(
+                              padding: const EdgeInsets.all(10),
+                              decoration: BoxDecoration(
+                                color: AppColors.PRIMARY_BLUE_COLOR,
+                                borderRadius: BorderRadius.circular(5),
+                              ),
+                              child: Row(children: [
+                                const Icon(Icons.add, size: 18, color: Colors.white),
+                                const SizedBox(width: 10),
+                                Text('Create',
+                                    style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold, color: Colors.white)),
+                              ]),
+                            ),
+                          ),
+                          const SizedBox(width: 10),
                           Container(
                             padding: const EdgeInsets.all(10),
                             decoration: BoxDecoration(
@@ -50,7 +67,15 @@ class CitiesScreen extends StatelessWidget {
                             ]),
                           ),
                         ],
-                        child: const SingleChildScrollView(scrollDirection: Axis.horizontal, child: CitiesWidget()),
+                        child: SingleChildScrollView(
+                          scrollDirection: Axis.horizontal,
+                          child: ConstrainedBox(
+                            constraints: BoxConstraints(
+                              minWidth: MediaQuery.of(context).size.width,
+                            ),
+                            child: CitiesWidget(),
+                          ),
+                        ),
                       ),
                     ),
                   ]),
@@ -63,5 +88,3 @@ class CitiesScreen extends StatelessWidget {
     );
   }
 }
-
-

@@ -1,4 +1,6 @@
 import 'package:e_com_app/pages/web/ecommerce/brands-reviews/widgets/upload_files_widget.dart';
+import 'package:e_com_app/theme/app_colors.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 
 import '../../../../../widgets/custom_drop_menu.dart';
@@ -24,6 +26,24 @@ class _CreateReviewWidgetState extends State<CreateReviewWidget> {
   final List<String> discountOptions = ['No Discount', 'Percentage %', 'Bundling'];
   final List<String> statuses = ['Published', 'Draft', 'Archived'];
   final List<String> products = ['Passoire', 'Laptop', 'Macbook'];
+  Future<void> pickFile(BuildContext context) async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.any, // tu peux mettre FileType.image / video / custom
+      allowMultiple: false, // true si tu veux plusieurs fichiers
+    );
+
+    if (result != null) {
+      final file = result.files.single;
+      ScaffoldMessenger.of(context).showSnackBar(
+        SnackBar(content: Text("Fichier sélectionné: ${file.name}")),
+      );
+    } else {
+      ScaffoldMessenger.of(context).showSnackBar(
+        const SnackBar(content: Text("Aucun fichier sélectionné.")),
+      );
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Container(
@@ -98,7 +118,45 @@ class _CreateReviewWidgetState extends State<CreateReviewWidget> {
               }
             },
           ),
-          UploadFilesWidget(),
+          Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              // Section Images
+              Text("Images", style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
+              const SizedBox(height: 8),
+              InkWell(
+                onTap: () => pickFile(context),
+                child: Container(
+                  padding: EdgeInsets.all(10),
+                  decoration: BoxDecoration(
+                    border: Border.all(
+                      color: Colors.grey,
+                      style: BorderStyle.solid,
+                    ),
+                    borderRadius: BorderRadius.circular(8),
+                    color: Colors.white,
+                  ),
+                  child: Column(
+                    children: [
+                      Image.asset(
+                        "assets/images/gallery.png",
+                        height: 100,
+                        width: 100,
+                        color: Colors.grey,
+                      ),
+                      TextButton(
+                          style: TextButton.styleFrom(padding: EdgeInsets.zero),
+                          onPressed: () => pickFile(context),
+                          child: Text(
+                            "Choose an image",
+                            style: Theme.of(context).textTheme.labelSmall!.copyWith(color: AppColors.PRIMARY_BLUE_COLOR, fontWeight: FontWeight.bold),
+                          ))
+                    ],
+                  ),
+                ),
+              ),
+            ],
+          ),
         ],
       ),
     );
