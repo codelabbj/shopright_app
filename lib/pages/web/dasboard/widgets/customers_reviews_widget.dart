@@ -1,5 +1,6 @@
 import 'package:e_com_app/pages/web/dasboard/widgets/reviews_item.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../models/reviews_model.dart';
 
@@ -65,9 +66,11 @@ class CustomerReviewsWidget extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.go('/ecommerce/customers');
+              },
               child: Text(
-                "View All Products",
+                "View All Customers",
                 style: Theme.of(context).textTheme.labelSmall,
               ),
             ),

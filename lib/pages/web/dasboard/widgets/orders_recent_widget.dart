@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../models/order_model.dart';
 import 'oders_row.dart';
@@ -58,7 +59,9 @@ class RecentOrdersWidget extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.go('/ecommerce/orders');
+              },
               child: Text(
                 "View All Orders",
                 style: Theme.of(context).textTheme.labelSmall,

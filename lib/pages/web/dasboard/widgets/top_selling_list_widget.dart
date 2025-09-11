@@ -1,5 +1,6 @@
 import 'package:e_com_app/pages/web/dasboard/widgets/top_selling%20product_card.dart';
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 import '../../../../../models/product_model.dart';
 
@@ -69,7 +70,9 @@ class TopSellingProductsWidget extends StatelessWidget {
           Align(
             alignment: Alignment.centerRight,
             child: TextButton(
-              onPressed: () {},
+              onPressed: () {
+                context.go('/ecommerce/products');
+              },
               child: Text("View Full Products", style: Theme.of(context).textTheme.labelSmall!.copyWith(color: Colors.blue)),
             ),
           )

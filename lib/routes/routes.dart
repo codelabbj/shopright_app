@@ -71,6 +71,11 @@ import '../pages/web/locations/screens/countries_screen.dart';
 import '../pages/web/locations/screens/states_screen.dart';
 import '../pages/web/locations/screens/cities_screen.dart';
 import '../pages/web/system/screens/system_admin_screen.dart';
+import '../pages/web/system/screens/users_screen.dart';
+import '../pages/web/system/screens/roles_screen.dart';
+import '../pages/web/system/screens/request_logs_screen.dart';
+import '../pages/web/system/screens/activities_logs_screen.dart';
+import '../pages/web/system/screens/cache_management_screen.dart';
 import '../pages/web/settings/screens/settings_overview_screen.dart';
 import '../pages/web/locations/screens/import_locations_screen.dart';
 import '../pages/web/tools/screens/export_import_overview_screen.dart';
@@ -502,6 +507,41 @@ class AppRouter {
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(9.9);
           return const SystemAdminScreen();
+        },
+      ),
+      GoRoute(
+        path: '/system/activities-logs',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(9.94);
+          return const ActivitiesLogsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/system/cache-management',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(9.95);
+          return const CacheManagementScreen();
+        },
+      ),
+      GoRoute(
+        path: '/system/users',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(9.91);
+          return const PlatformUsersScreen();
+        },
+      ),
+      GoRoute(
+        path: '/system/roles',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(9.92);
+          return const RolesPermissionsScreen();
+        },
+      ),
+      GoRoute(
+        path: '/system/request-logs',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(9.93);
+          return const RequestLogsScreen();
         },
       ),
       GoRoute(
