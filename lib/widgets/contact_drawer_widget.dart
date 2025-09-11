@@ -28,7 +28,7 @@ class _ContactDrawerWidgetState extends State<ContactDrawerWidget> {
               child: Container(
                 // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
 
                 child: TextButton(
@@ -82,7 +82,7 @@ class _ContactDrawerWidgetState extends State<ContactDrawerWidget> {
                       Container(
                         // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           // borderRadius: BorderRadius.circular(6),
@@ -138,23 +138,9 @@ class _ContactDrawerWidgetState extends State<ContactDrawerWidget> {
                       ),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
-                          // borderRadius: BorderRadius.circular(6),
-                          // boxShadow: [
-                          //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                          //       ? BoxShadow(
-                          //           color: Colors.grey.withValues(alpha: 0.2),
-                          //           spreadRadius: 10,
-                          //           blurRadius: 10,
-                          //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                          //         )
-                          //       : BoxShadow(
-                          //
-                          //           // Décalage horizontal et vertical de l'ombre
-                          //           )
-                          // ],
                           color: context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                         ),
                         child: TextButton(

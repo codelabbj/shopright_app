@@ -24,9 +24,8 @@ class _FaqsDrawerWidgetState extends State<FaqsDrawerWidget> {
             InkWell(
               onTap: () {},
               child: Container(
-                // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(
                   // borderRadius: BorderRadius.circular(6),
@@ -100,7 +99,7 @@ class _FaqsDrawerWidgetState extends State<FaqsDrawerWidget> {
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           // borderRadius: BorderRadius.circular(6),
@@ -156,7 +155,7 @@ class _FaqsDrawerWidgetState extends State<FaqsDrawerWidget> {
                       ),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           // borderRadius: BorderRadius.circular(6),

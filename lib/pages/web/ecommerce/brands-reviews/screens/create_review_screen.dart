@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../../widgets/app_bar_widget.dart';
+import '../../../../../widgets/app_bar_vendor_widget.dart';
 import '../../../../../widgets/drawer_widget.dart';
 import '../../products/widgets/validation_widget.dart';
 import '../widgets/create_review_widget.dart';
@@ -15,13 +16,14 @@ class CreateReviewScreen extends StatefulWidget {
 class _CreateReviewScreenState extends State<CreateReviewScreen> {
   @override
   Widget build(BuildContext context) {
+    final isLargeScreen = MediaQuery.of(context).size.width > 1150;
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      drawer: DrawerDashboard(),
+      drawer: isLargeScreen ? null : const DrawerDashboard(),
       body: SafeArea(
         child: Row(
           children: [
-            const DrawerDashboard(),
+            if (isLargeScreen) const DrawerDashboard(),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -29,10 +31,10 @@ class _CreateReviewScreenState extends State<CreateReviewScreen> {
                   LayoutBuilder(
                     builder: (context, constraints) {
                       double width = constraints.maxWidth;
-                      if (width > 1024) {
-                        return SizedBox(height: 60, child: AppbarDashboard());
+                      if (width > 1150) {
+                        return const SizedBox(height: 60, child: AppbarDashboard());
                       } else {
-                        return AppbarDashboard();
+                        return const AppBarVendorWidget();
                       }
                     },
                   ),

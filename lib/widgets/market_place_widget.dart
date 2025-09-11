@@ -26,9 +26,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
             InkWell(
               onTap: () {},
               child: Container(
-                // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(),
                 child: TextButton(
@@ -78,14 +77,11 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
               ),
             ),
             state.isMaketPlaceExpanded
-                // context.read<SwitchPageCubit>().state.selectedPage == 6 ||
-                // context.read<SwitchPageCubit>().state.selectedPage == 7
                 ? Column(
                     children: [
                       Container(
-                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           color:
@@ -126,9 +122,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                         ),
                       ),
                       Container(
-                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           color:
@@ -168,9 +163,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                         ),
                       ),
                       Container(
-                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           // borderRadius: BorderRadius.circular(6),
@@ -225,9 +219,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                         ),
                       ),
                       Container(
-                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           // borderRadius: BorderRadius.circular(6),
@@ -282,9 +275,8 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                         ),
                       ),
                       Container(
-                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           // borderRadius: BorderRadius.circular(6),
@@ -339,25 +331,10 @@ class _MarketPlaceWidgetState extends State<MarketPlaceWidget> {
                         ),
                       ),
                       Container(
-                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
-                          // borderRadius: BorderRadius.circular(6),
-                          // boxShadow: [
-                          //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                          //       ? BoxShadow(
-                          //           color: Colors.grey.withValues(alpha: 0.2),
-                          //           spreadRadius: 10,
-                          //           blurRadius: 10,
-                          //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                          //         )
-                          //       : BoxShadow(
-                          //
-                          //           // Décalage horizontal et vertical de l'ombre
-                          //           )
-                          // ],
                           color:
                               context.read<SwitchPageCubit>().state.selectedPage == 3.6 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                         ),

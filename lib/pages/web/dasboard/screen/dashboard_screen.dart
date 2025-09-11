@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import '../../../../models/browser_stat_model.dart';
 import '../../../../models/visit_model.dart';
 import '../../../../theme/app_colors.dart';
+import '../../../../widgets/app_bar_vendor_widget.dart';
 import '../widgets/customers_reviews_widget.dart';
 import '../widgets/orders_recent_widget.dart';
 import '../widgets/sales_chart_widget.dart';
@@ -26,18 +27,29 @@ class DashboardScreen extends StatefulWidget {
 class _DashboardScreenState extends State<DashboardScreen> {
   @override
   Widget build(BuildContext context) {
+    final isLargeScreen = MediaQuery.of(context).size.width > 1150;
     final theme = Theme.of(context);
     final isLight = theme.brightness == Brightness.light;
     return Scaffold(
       backgroundColor: theme.scaffoldBackgroundColor,
+      drawer: isLargeScreen ? null : const DrawerDashboard(),
       body: SafeArea(
         child: Row(
           children: [
-            DrawerDashboard(),
+            if (isLargeScreen) const DrawerDashboard(),
             Expanded(
               child: Column(
                 children: [
-                  SizedBox(height: 60, child: AppbarDashboard()),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      double width = constraints.maxWidth;
+                      if (width > 1150) {
+                        return SizedBox(height: 60, child: AppbarDashboard());
+                      } else {
+                        return AppBarVendorWidget();
+                      }
+                    },
+                  ),
                   SizedBox(height: 30),
                   Expanded(
                     child: SingleChildScrollView(

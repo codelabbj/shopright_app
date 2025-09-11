@@ -31,7 +31,7 @@ class _BlogDrawerWidgetState extends State<BlogDrawerWidget> {
               child: Container(
                 // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(
                   // borderRadius: BorderRadius.circular(6),
@@ -108,7 +108,7 @@ class _BlogDrawerWidgetState extends State<BlogDrawerWidget> {
                     children: [
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           // borderRadius: BorderRadius.circular(6),
@@ -165,7 +165,7 @@ class _BlogDrawerWidgetState extends State<BlogDrawerWidget> {
                       Container(
                         // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           color:
@@ -206,7 +206,7 @@ class _BlogDrawerWidgetState extends State<BlogDrawerWidget> {
                       ),
                       Container(
                         padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           color:

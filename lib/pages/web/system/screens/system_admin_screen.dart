@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 
 import '../../../../widgets/app_bar_widget.dart';
+import '../../../../widgets/app_bar_vendor_widget.dart';
 import '../../../../widgets/drawer_widget.dart';
 import '../widgets/system_admin_widget.dart';
 
@@ -9,13 +10,24 @@ class SystemAdminScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final isLargeScreen = MediaQuery.of(context).size.width > 1150;
     return Scaffold(
+      drawer: isLargeScreen ? null : const DrawerDashboard(),
       body: SafeArea(
         child: Row(children: [
-          const DrawerDashboard(),
+          if (isLargeScreen) const DrawerDashboard(),
           Expanded(
             child: Column(children: [
-              const SizedBox(height: 60, child: AppbarDashboard()),
+              LayoutBuilder(
+                builder: (context, constraints) {
+                  double width = constraints.maxWidth;
+                  if (width > 1150) {
+                    return const SizedBox(height: 60, child: AppbarDashboard());
+                  } else {
+                    return const AppBarVendorWidget();
+                  }
+                },
+              ),
               const SizedBox(height: 12),
               Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 12.0),

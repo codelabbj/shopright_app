@@ -28,32 +28,9 @@ class _AppearenceWidgetState extends State<AppearenceWidget> {
               child: Container(
                 // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
-                decoration: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(6),
-                  boxShadow: [
-                    // context.read<SwitchPageCubit>().state.selectedPage == 1
-                    //     ? BoxShadow(
-                    //         color: Colors.grey.withValues(alpha: 0.2),
-                    //         spreadRadius: 10,
-                    //         blurRadius: 10,
-                    //         offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                    //       )
-                    //     : context.read<SwitchPageCubit>().state.selectedPage == 6
-                    //         ? BoxShadow()
-                    //         : context.read<SwitchPageCubit>().state.selectedPage == 7
-                    //             ? BoxShadow()
-                    //             : context.read<SwitchPageCubit>().state.selectedPage == 7
-                    //                 ? BoxShadow(
-                    //                     color: Colors.grey.withValues(alpha: 0.2),
-                    //                     spreadRadius: 10,
-                    //                     blurRadius: 10,
-                    //                     offset: Offset(0, 3),
-                    //                   )
-                    //                 : BoxShadow(),
-                  ],
-                ),
+                decoration: BoxDecoration(),
                 child: TextButton(
                   onPressed: () {
                     if (state.selectedPage == 9 || isExpanded) {
@@ -110,25 +87,11 @@ class _AppearenceWidgetState extends State<AppearenceWidget> {
                     child: Column(
                       children: [
                         Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
+                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          width: Const.screenWidth(context),
                           height: 35,
                           decoration: BoxDecoration(
                             borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
                             color:
                                 context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                           ),
@@ -167,9 +130,8 @@ class _AppearenceWidgetState extends State<AppearenceWidget> {
                           ),
                         ),
                         Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
+                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          width: Const.screenWidth(context),
                           height: 35,
                           decoration: BoxDecoration(
                             // borderRadius: BorderRadius.circular(6),
@@ -223,25 +185,12 @@ class _AppearenceWidgetState extends State<AppearenceWidget> {
                           ),
                         ),
                         Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
+                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          width: Const.screenWidth(context),
                           height: 35,
                           decoration: BoxDecoration(
                             // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
+
                             color:
                                 context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                           ),
@@ -280,25 +229,10 @@ class _AppearenceWidgetState extends State<AppearenceWidget> {
                           ),
                         ),
                         Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
+                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          width: Const.screenWidth(context),
                           height: 35,
                           decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
                             color:
                                 context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                           ),
@@ -337,25 +271,10 @@ class _AppearenceWidgetState extends State<AppearenceWidget> {
                           ),
                         ),
                         Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
+                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          width: Const.screenWidth(context),
                           height: 35,
                           decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
                             color:
                                 context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                           ),
@@ -394,25 +313,10 @@ class _AppearenceWidgetState extends State<AppearenceWidget> {
                           ),
                         ),
                         Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
+                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          width: Const.screenWidth(context),
                           height: 35,
                           decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
                             color:
                                 context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                           ),
@@ -451,25 +355,10 @@ class _AppearenceWidgetState extends State<AppearenceWidget> {
                           ),
                         ),
                         Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
+                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          width: Const.screenWidth(context),
                           height: 35,
                           decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
                             color:
                                 context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                           ),
@@ -508,25 +397,10 @@ class _AppearenceWidgetState extends State<AppearenceWidget> {
                           ),
                         ),
                         Container(
-                          // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                          padding: EdgeInsets.symmetric(vertical: 10),
-                          width: Const.screenWidth(context) * 0.19,
+                          padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                          width: Const.screenWidth(context),
                           height: 35,
                           decoration: BoxDecoration(
-                            // borderRadius: BorderRadius.circular(6),
-                            // boxShadow: [
-                            //   context.read<SwitchPageCubit>().state.selectedPage == 3
-                            //       ? BoxShadow(
-                            //           color: Colors.grey.withValues(alpha: 0.2),
-                            //           spreadRadius: 10,
-                            //           blurRadius: 10,
-                            //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                            //         )
-                            //       : BoxShadow(
-                            //
-                            //           // Décalage horizontal et vertical de l'ombre
-                            //           )
-                            // ],
                             color:
                                 context.read<SwitchPageCubit>().state.selectedPage == 3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                           ),

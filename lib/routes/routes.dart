@@ -77,6 +77,9 @@ import '../pages/web/system/screens/request_logs_screen.dart';
 import '../pages/web/system/screens/activities_logs_screen.dart';
 import '../pages/web/system/screens/cache_management_screen.dart';
 import '../pages/web/settings/screens/settings_overview_screen.dart';
+import '../pages/web/settings/screens/settings_general_screen.dart';
+import '../pages/web/settings/screens/settings_languages_screen.dart';
+import '../pages/web/settings/screens/settings_locales_screen.dart';
 import '../pages/web/locations/screens/import_locations_screen.dart';
 import '../pages/web/tools/screens/export_import_overview_screen.dart';
 import '../pages/web/locations/screens/export_locations_screen.dart';
@@ -512,35 +515,35 @@ class AppRouter {
       GoRoute(
         path: '/system/activities-logs',
         builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(9.94);
+          context.read<SwitchPageCubit>().switchPage(9.9);
           return const ActivitiesLogsScreen();
         },
       ),
       GoRoute(
         path: '/system/cache-management',
         builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(9.95);
+          context.read<SwitchPageCubit>().switchPage(9.9);
           return const CacheManagementScreen();
         },
       ),
       GoRoute(
         path: '/system/users',
         builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(9.91);
+          context.read<SwitchPageCubit>().switchPage(9.9);
           return const PlatformUsersScreen();
         },
       ),
       GoRoute(
         path: '/system/roles',
         builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(9.92);
+          context.read<SwitchPageCubit>().switchPage(9.9);
           return const RolesPermissionsScreen();
         },
       ),
       GoRoute(
         path: '/system/request-logs',
         builder: (BuildContext context, GoRouterState state) {
-          context.read<SwitchPageCubit>().switchPage(9.93);
+          context.read<SwitchPageCubit>().switchPage(9.9);
           return const RequestLogsScreen();
         },
       ),
@@ -549,6 +552,27 @@ class AppRouter {
         builder: (BuildContext context, GoRouterState state) {
           context.read<SwitchPageCubit>().switchPage(9.8);
           return const SettingsOverviewScreen();
+        },
+      ),
+      GoRoute(
+        path: '/settings/general',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(9.8);
+          return const SettingsGeneralScreen();
+        },
+      ),
+      GoRoute(
+        path: '/settings/languages',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(9.8);
+          return const SettingsLanguagesScreen();
+        },
+      ),
+      GoRoute(
+        path: '/settings/locales',
+        builder: (BuildContext context, GoRouterState state) {
+          context.read<SwitchPageCubit>().switchPage(9.8);
+          return const SettingsLocalesScreen();
         },
       ),
       GoRoute(

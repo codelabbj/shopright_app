@@ -2,8 +2,8 @@ import 'package:e_com_app/pages/web/ecommerce/brands-reviews/widgets/create_bran
 import 'package:flutter/material.dart';
 
 import '../../../../../widgets/app_bar_widget.dart';
+import '../../../../../widgets/app_bar_vendor_widget.dart';
 import '../../../../../widgets/drawer_widget.dart';
-import '../../../product/screen/add_product_info_screen.dart';
 import '../../products/widgets/categorie_check_widget.dart';
 
 import '../../products/widgets/validation_widget.dart';
@@ -19,13 +19,14 @@ class CreateBrandScreen extends StatefulWidget {
 class _CreateBrandScreenState extends State<CreateBrandScreen> {
   @override
   Widget build(BuildContext context) {
+    final isLargeScreen = MediaQuery.of(context).size.width > 1150;
     return Scaffold(
       backgroundColor: Colors.grey[100],
-      drawer: DrawerDashboard(),
+      drawer: isLargeScreen ? null : const DrawerDashboard(),
       body: SafeArea(
         child: Row(
           children: [
-            const DrawerDashboard(),
+            if (isLargeScreen) const DrawerDashboard(),
             Expanded(
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,10 +34,10 @@ class _CreateBrandScreenState extends State<CreateBrandScreen> {
                   LayoutBuilder(
                     builder: (context, constraints) {
                       double width = constraints.maxWidth;
-                      if (width > 1024) {
-                        return SizedBox(height: 60, child: AppbarDashboard());
+                      if (width > 1150) {
+                        return const SizedBox(height: 60, child: AppbarDashboard());
                       } else {
-                        return AppbarDashboard();
+                        return const AppBarVendorWidget();
                       }
                     },
                   ),

@@ -28,7 +28,7 @@ class _PluginsDrawerWidgetState extends State<PluginsDrawerWidget> {
               child: Container(
                 // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(),
                 child: TextButton(
@@ -85,8 +85,7 @@ class _PluginsDrawerWidgetState extends State<PluginsDrawerWidget> {
                 ? Column(
                     children: [
                       Container(
-                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                        padding: EdgeInsets.symmetric(vertical: 10),
+                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                         width: Const.screenWidth(context) * 0.19,
                         height: 35,
                         decoration: BoxDecoration(
@@ -128,8 +127,7 @@ class _PluginsDrawerWidgetState extends State<PluginsDrawerWidget> {
                         ),
                       ),
                       Container(
-                        // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
-                        padding: EdgeInsets.symmetric(vertical: 10),
+                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
                         width: Const.screenWidth(context) * 0.19,
                         height: 35,
                         decoration: BoxDecoration(

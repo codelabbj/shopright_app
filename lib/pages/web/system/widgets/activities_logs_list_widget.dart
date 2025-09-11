@@ -23,7 +23,7 @@ class ActivitiesLogsListWidget extends StatelessWidget {
         DataColumn(label: SizedBox(width: 24)),
         DataColumn(label: Text('ID')),
         DataColumn(label: Text('ACTION')),
-        DataColumn(label: SizedBox.shrink()),
+        DataColumn(label: Text('OERATION')),
       ],
       rows: rows,
     );
@@ -35,19 +35,26 @@ class ActivitiesLogsListWidget extends StatelessWidget {
       const DataCell(Icon(Icons.radio_button_unchecked, size: 18)),
       DataCell(Text('$id')),
       DataCell(Row(children: [
-        CircleAvatar(radius: 16, backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.15), child: Icon(Icons.shopping_bag, color: theme.colorScheme.primary)),
+        CircleAvatar(
+            radius: 13,
+            backgroundColor: theme.colorScheme.primary.withValues(alpha: 0.15),
+            child: Icon(
+              Icons.shopping_bag,
+              color: theme.colorScheme.primary,
+              size: 15,
+            )),
         const SizedBox(width: 12),
         Flexible(
           child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
             Wrap(crossAxisAlignment: WrapCrossAlignment.center, spacing: 8, children: [
-              Text(user, style: theme.textTheme.labelLarge!.copyWith(color: Colors.blue)),
+              Text(user, style: theme.textTheme.labelSmall!.copyWith(color: Colors.blue)),
               if (role.isNotEmpty)
                 Container(
-                  padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
-                  decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(20)),
-                  child: Text(role, style: theme.textTheme.labelSmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
+                  padding: const EdgeInsets.symmetric(horizontal: 5, vertical: 4),
+                  decoration: BoxDecoration(color: Colors.blue, borderRadius: BorderRadius.circular(5)),
+                  child: Text(role, style: theme.textTheme.displaySmall!.copyWith(color: Colors.white, fontWeight: FontWeight.bold)),
                 ),
-              Text(action, style: theme.textTheme.labelLarge),
+              Text(action, style: theme.textTheme.labelSmall),
             ]),
             const SizedBox(height: 4),
             if (timeago.isNotEmpty)
@@ -71,5 +78,3 @@ class ActivitiesLogsListWidget extends StatelessWidget {
     );
   }
 }
-
-

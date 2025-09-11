@@ -27,26 +27,12 @@ class DrawerDashboard extends StatefulWidget {
 }
 
 class _DrawerDashboardState extends State<DrawerDashboard> {
-  // @override
-  // void initState() {
-  //   super.initState();
-  //   context.read<CollaborateursCubit>().getCustomerDetails();
-  //   _loadRoleId();
-  // }
-  //
-  // Future<void> _loadRoleId() async {
-  //   final id = await SharedPreferencesUtils.getInt('role_id');
-  //   log("Voici le roleId: $id");
-  //   setState(() {
-  //     roleId = id;
-  //   });
-  // }
-
   @override
   Widget build(BuildContext context) {
+    final isLargeScreen = MediaQuery.of(context).size.width > 1150;
     return BlocBuilder<SwitchPageCubit, SwitchPageState>(
       builder: (context, state) => Container(
-        width: Const.screenWidth(context) * 0.2,
+        width: isLargeScreen ? Const.screenWidth(context) * 0.2 : 300,
         height: Const.screenHeight(context),
         color: AppColors.PRIMARY_BLACK3_COLOR,
         child: SingleChildScrollView(
@@ -89,20 +75,6 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(6),
-                  boxShadow: [
-                    // context.read<SwitchPageCubit>().state.selectedPage == 0
-                    //     ? BoxShadow(
-                    //         color: Colors.grey.withValues(alpha: 0.2),
-                    //         spreadRadius: 10,
-                    //         blurRadius: 10,
-                    //         offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                    //       )
-                    //     : BoxShadow(
-                    //
-                    //         // Décalage horizontal et vertical de l'ombre
-                    //         )
-                  ],
                   color: context.read<SwitchPageCubit>().state.selectedPage == 0 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                 ),
                 child: TextButton(
@@ -141,25 +113,10 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
               ProductSpecificationWidget(),
               MarketPlaceWidget(),
               Container(
-                // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(6),
-                  // boxShadow: [
-                  //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                  //       ? BoxShadow(
-                  //           color: Colors.grey.withValues(alpha: 0.2),
-                  //           spreadRadius: 10,
-                  //           blurRadius: 10,
-                  //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                  //         )
-                  //       : BoxShadow(
-                  //
-                  //           // Décalage horizontal et vertical de l'ombre
-                  //           )
-                  // ],
                   color: context.read<SwitchPageCubit>().state.selectedPage == 4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                 ),
                 child: TextButton(
@@ -199,25 +156,10 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
               BlogDrawerWidget(),
               TransactionDrawerWidget(),
               Container(
-                // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(
-                  // borderRadius: BorderRadius.circular(6),
-                  // boxShadow: [
-                  //   context.read<SwitchPageCubit>().state.selectedPage == 4
-                  //       ? BoxShadow(
-                  //           color: Colors.grey.withValues(alpha: 0.2),
-                  //           spreadRadius: 10,
-                  //           blurRadius: 10,
-                  //           offset: Offset(0, 3), // Décalage horizontal et vertical de l'ombre
-                  //         )
-                  //       : BoxShadow(
-                  //
-                  //           // Décalage horizontal et vertical de l'ombre
-                  //           )
-                  // ],
                   color: context.read<SwitchPageCubit>().state.selectedPage == 7 ? Theme.of(context).colorScheme.primary : Colors.transparent,
                 ),
                 child: TextButton(
@@ -255,9 +197,8 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
                 ),
               ),
               Container(
-                // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(
                   color: context.read<SwitchPageCubit>().state.selectedPage == 8 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -298,9 +239,8 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
               ),
               AdsDrawerWidget(),
               Container(
-                // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(
                   // borderRadius: BorderRadius.circular(6),
@@ -400,9 +340,8 @@ class _DrawerDashboardState extends State<DrawerDashboard> {
               // ),
               FaqsDrawerWidget(),
               Container(
-                // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(
                   color: context.read<SwitchPageCubit>().state.selectedPage == 12 ? Theme.of(context).colorScheme.primary : Colors.transparent,

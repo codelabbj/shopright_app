@@ -25,7 +25,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
           onTap: () {},
           child: Container(
             padding: EdgeInsets.symmetric(vertical: 10),
-            width: Const.screenWidth(context) * 0.19,
+            width: Const.screenWidth(context),
             height: 35,
             child: TextButton(
               onPressed: () {
@@ -79,7 +79,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                 children: [
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.11 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -120,7 +120,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.2 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -161,7 +161,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.3 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -202,7 +202,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.4 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -243,7 +243,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.5 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -287,7 +287,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.6 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -331,7 +331,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.7 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -375,7 +375,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.9 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -416,7 +416,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.10 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -457,7 +457,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.14 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -498,7 +498,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.15 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -539,7 +539,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                   ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.16 ? Theme.of(context).colorScheme.primary : Colors.transparent,
@@ -625,7 +625,7 @@ class _EcomDrawerWidgetState extends State<EcomDrawerWidget> {
                   // ),
                   Container(
                     padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                    width: Const.screenWidth(context) * 0.19,
+                    width: Const.screenWidth(context),
                     height: 35,
                     decoration: BoxDecoration(
                       color: context.read<SwitchPageCubit>().state.selectedPage == 1.18 ? Theme.of(context).colorScheme.primary : Colors.transparent,

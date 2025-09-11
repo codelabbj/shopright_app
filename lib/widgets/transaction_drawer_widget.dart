@@ -27,7 +27,7 @@ class _TransactionDrawerWidgetState extends State<TransactionDrawerWidget> {
               onTap: () {},
               child: Container(
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(
                   // borderRadius: BorderRadius.circular(6),
@@ -80,8 +80,8 @@ class _TransactionDrawerWidgetState extends State<TransactionDrawerWidget> {
                 ? Column(
                     children: [
                       Container(
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           color:
@@ -122,8 +122,8 @@ class _TransactionDrawerWidgetState extends State<TransactionDrawerWidget> {
                         ),
                       ),
                       Container(
-                        padding: EdgeInsets.symmetric(vertical: 10, horizontal: 14),
-                        width: Const.screenWidth(context) * 0.19,
+                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           color:

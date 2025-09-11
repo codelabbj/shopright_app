@@ -10,38 +10,72 @@ class AppbarDashboard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+    final isLight = theme.brightness == Brightness.light;
+    final screenWidth = MediaQuery.of(context).size.width;
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 10),
       color: AppColors.PRIMARY_BLACK3_COLOR, // fond général
       child: Row(
         mainAxisAlignment: MainAxisAlignment.end,
         children: [
-          Container(
-            width: Const.screenWidth(context) * 0.23,
-            // height: 38,
-            // decoration: BoxDecoration(
-            //   color: Colors.white,
-            //   borderRadius: BorderRadius.circular(30),
-            // ),
-            // padding: const EdgeInsets.symmetric(horizontal: 15),
-            child: Row(
-              children: [
-                // Icon(Icons.search, size: 20, color: Colors.grey),
-                SizedBox(width: 10),
-                Expanded(
-                  child: TextField(
-                    style: Theme.of(context).textTheme.labelSmall,
-                    decoration: InputDecoration(
-                      hintText: 'Search anything...',
-                      hintStyle: Theme.of(context).textTheme.labelSmall,
-                      border: InputBorder.none,
-                      isDense: true,
+          if (screenWidth > 1150)
+            Container(
+              width: Const.screenWidth(context) * 0.23,
+              child: Row(
+                children: [
+                  SizedBox(width: 10),
+                  Expanded(
+                    child: TextField(
+                      style: Theme.of(context).textTheme.labelSmall,
+                      decoration: InputDecoration(
+                        hintText: 'Search anything...',
+                        hintStyle: Theme.of(context).textTheme.labelSmall,
+                        border: InputBorder.none,
+                        isDense: true,
+                      ),
                     ),
                   ),
-                ),
-              ],
+                ],
+              ),
+            )
+          else
+            Icon(
+              Icons.search,
+              color: isLight ? Colors.grey[300] : Colors.black,
             ),
-          ),
+          // LayoutBuilder(
+          //   builder: (context, constraints) {
+          //     double width = constraints.maxWidth;
+          //     if (width > 1150) {
+          //       return Container(
+          //         width: Const.screenWidth(context) * 0.23,
+          //         child: Row(
+          //           children: [
+          //             // Icon(Icons.search, size: 20, color: Colors.grey),
+          //             SizedBox(width: 10),
+          //             Expanded(
+          //               child: TextField(
+          //                 style: Theme.of(context).textTheme.labelSmall,
+          //                 decoration: InputDecoration(
+          //                   hintText: 'Search anything...',
+          //                   hintStyle: Theme.of(context).textTheme.labelSmall,
+          //                   border: InputBorder.none,
+          //                   isDense: true,
+          //                 ),
+          //               ),
+          //             ),
+          //           ],
+          //         ),
+          //       );
+          //     } else {
+          //       return Icon(
+          //         Icons.search,
+          //         color: isLight ? Colors.grey[300] : Colors.black,
+          //       );
+          //     }
+          //   },
+          // ),
 
           const SizedBox(width: 20),
 

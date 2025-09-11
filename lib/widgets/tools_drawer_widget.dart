@@ -28,7 +28,7 @@ class _ToolsDrawerWidgetState extends State<ToolsDrawerWidget> {
               child: Container(
                 // margin: EdgeInsets.symmetric(vertical: 6, horizontal: 8),
                 padding: EdgeInsets.symmetric(vertical: 10),
-                width: Const.screenWidth(context) * 0.19,
+                width: Const.screenWidth(context),
                 height: 35,
                 decoration: BoxDecoration(),
                 child: TextButton(
@@ -79,8 +79,8 @@ class _ToolsDrawerWidgetState extends State<ToolsDrawerWidget> {
                 ? Column(
                     children: [
                       Container(
-                        padding: EdgeInsets.symmetric(vertical: 10),
-                        width: Const.screenWidth(context) * 0.19,
+                        padding: EdgeInsets.symmetric(horizontal: 10, vertical: 10),
+                        width: Const.screenWidth(context),
                         height: 35,
                         decoration: BoxDecoration(
                           color:

@@ -1,12 +1,11 @@
 import 'package:e_com_app/widgets/customs_text_form_field.dart';
 import 'package:flutter/material.dart';
-import '../../../../../theme/app_colors.dart';
 import '../../../../../widgets/app_bar_widget.dart';
+import '../../../../../widgets/app_bar_vendor_widget.dart';
 import '../../../../../widgets/card_list_widget.dart';
 import '../../../../../widgets/custom_search_widget.dart';
 import '../../../../../widgets/drawer_widget.dart';
 import '../../../pages-section/widgets/filter_widget.dart';
-import '../../widgets/market_stores_widget.dart';
 import '../widgets/market_withdrawal_widget.dart';
 
 class MarketWithdrawalScreen extends StatefulWidget {
@@ -27,25 +26,26 @@ class _MarketWithdrawalScreenState extends State<MarketWithdrawalScreen> {
   int filterCounter = 0;
   @override
   Widget build(BuildContext context) {
+    final isLargeScreen = MediaQuery.of(context).size.width > 1150;
     return Scaffold(
+      drawer: isLargeScreen ? null : const DrawerDashboard(),
       body: SafeArea(
         child: Row(
           children: [
-            DrawerDashboard(),
+            if (isLargeScreen) const DrawerDashboard(),
             Expanded(
               child: Column(
                 children: [
-                  // LayoutBuilder(
-                  //   builder: (context, constraints) {
-                  //     double width = constraints.maxWidth;
-                  //     if (width > 1024) {
-                  //       // return SizedBox(height: 60, child: AppBarWidget());
-                  //     } else {
-                  //       // return AppBarVendorWidget();
-                  //     }
-                  //   },
-                  // ),
-                  SizedBox(height: 60, child: AppbarDashboard()),
+                  LayoutBuilder(
+                    builder: (context, constraints) {
+                      double width = constraints.maxWidth;
+                      if (width > 1150) {
+                        return const SizedBox(height: 60, child: AppbarDashboard());
+                      } else {
+                        return const AppBarVendorWidget();
+                      }
+                    },
+                  ),
 
                   SizedBox(height: 12),
                   Padding(

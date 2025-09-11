@@ -46,17 +46,32 @@ class SystemAdminWidget extends StatelessWidget {
       _SysTileData('System Updater', 'Update your system to the latest version', Icons.system_update_alt_outlined),
     ];
 
-    return GridView.builder(
-      shrinkWrap: true,
-      padding: const EdgeInsets.all(12),
-      itemCount: tiles.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-        crossAxisCount: 3,
-        crossAxisSpacing: 12,
-        mainAxisSpacing: 12,
-        childAspectRatio: 3.6,
-      ),
-      itemBuilder: (context, index) => _SysTile(data: tiles[index]),
+    return LayoutBuilder(
+      builder: (context, constraints) {
+        final double maxWidth = constraints.maxWidth;
+        final double gap = 12;
+        final int columns = maxWidth >= 1500
+            ? 4
+            : maxWidth >= 1150
+                ? 3
+                : maxWidth >= 750
+                    ? 2
+                    : 1;
+        final double tileWidth = (maxWidth - gap * (columns - 1)) / columns;
+
+        return SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.all(12.0),
+            child: Wrap(
+              spacing: gap,
+              runSpacing: gap,
+              children: [
+                for (final t in tiles) SizedBox(width: tileWidth, child: _SysTile(data: t)),
+              ],
+            ),
+          ),
+        );
+      },
     );
   }
 }

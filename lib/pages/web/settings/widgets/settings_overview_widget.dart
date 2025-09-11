@@ -1,17 +1,22 @@
 import 'package:flutter/material.dart';
+import 'package:go_router/go_router.dart';
 
 class SettingsOverviewWidget extends StatelessWidget {
   const SettingsOverviewWidget({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: const [
+    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
       _SettingsSection(title: 'Common', tiles: [
-        _Tile('General', 'View and update your general settings and activate license', Icons.settings_outlined),
+        _Tile('General', 'View and update your general settings and activate license', Icons.settings_outlined, onTap: () {
+          context.go('/settings/general');
+        }),
         _Tile('Email', 'View and update your email settings and email templates', Icons.email_outlined),
         _Tile('Email rules', 'Configure email rules for validation', Icons.rule_folder_outlined),
         _Tile('Media', 'View and update your media settings', Icons.perm_media_outlined),
-        _Tile('Languages', 'View and update your website languages', Icons.language_outlined),
+        _Tile('Languages', 'View and update your website languages', Icons.language_outlined, onTap: () {
+          context.go('/settings/languages');
+        }),
         _Tile('Admin appearance', 'View and update logo, favicon, layout,...', Icons.palette_outlined),
         _Tile('Permalink', 'View and update your permalink settings', Icons.link_outlined),
         _Tile('API Settings', 'View and update your API settings', Icons.api_outlined),
@@ -21,14 +26,16 @@ class SettingsOverviewWidget extends StatelessWidget {
         _Tile('Optimize', 'Minify HTML output, inline CSS, remove comments...', Icons.tune_outlined),
         _Tile('Sitemap', 'Manage sitemap configuration', Icons.map_outlined),
       ]),
-      SizedBox(height: 16),
+      const SizedBox(height: 16),
       _SettingsSection(title: 'Localization', tiles: [
-        _Tile('Locales', 'View, download and import locales', Icons.public_outlined),
+        _Tile('Locales', 'View, download and import locales', Icons.public_outlined, onTap: () {
+          context.go('/settings/locales');
+        }),
         _Tile('Theme Translations', 'Manage the theme translations', Icons.translate_outlined),
         _Tile('Other Translations', 'Manage the other translations', Icons.g_translate_outlined),
       ]),
-      SizedBox(height: 16),
-      _SettingsSection(title: 'Ecommerce', tiles: [
+      const SizedBox(height: 16),
+      const _SettingsSection(title: 'Ecommerce', tiles: [
         _Tile('General', 'View and update your general settings', Icons.settings_suggest_outlined),
         _Tile('Currencies', 'View and update currency settings', Icons.currency_exchange_outlined),
         _Tile('Products', 'View and update your products settings', Icons.shopping_bag_outlined),
@@ -89,7 +96,8 @@ class _Tile {
   final String title;
   final String subtitle;
   final IconData icon;
-  const _Tile(this.title, this.subtitle, this.icon);
+  final VoidCallback? onTap;
+  const _Tile(this.title, this.subtitle, this.icon, {this.onTap});
 }
 
 class _TileCard extends StatelessWidget {
@@ -107,28 +115,29 @@ class _TileCard extends StatelessWidget {
           borderRadius: BorderRadius.circular(10),
           border: Border.all(color: Theme.of(context).dividerColor),
         ),
-        child: Row(children: [
-          Container(
-            width: 36,
-            height: 36,
-            decoration: BoxDecoration(
-              color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.08),
-              borderRadius: BorderRadius.circular(8),
+        child: InkWell(
+          onTap: t.onTap,
+          child: Row(children: [
+            Container(
+              width: 36,
+              height: 36,
+              decoration: BoxDecoration(
+                color: Theme.of(context).colorScheme.primary.withValues(alpha: 0.08),
+                borderRadius: BorderRadius.circular(8),
+              ),
+              child: Icon(t.icon, size: 20, color: Theme.of(context).colorScheme.primary),
             ),
-            child: Icon(t.icon, size: 20, color: Theme.of(context).colorScheme.primary),
-          ),
-          const SizedBox(width: 10),
-          Expanded(
-            child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-              Text(t.title, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
-              const SizedBox(height: 2),
-              Text(t.subtitle, style: Theme.of(context).textTheme.displaySmall),
-            ]),
-          ),
-        ]),
+            const SizedBox(width: 10),
+            Expanded(
+              child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+                Text(t.title, style: Theme.of(context).textTheme.labelSmall!.copyWith(fontWeight: FontWeight.bold)),
+                const SizedBox(height: 2),
+                Text(t.subtitle, style: Theme.of(context).textTheme.displaySmall),
+              ]),
+            ),
+          ]),
+        ),
       ),
     );
   }
 }
-
-

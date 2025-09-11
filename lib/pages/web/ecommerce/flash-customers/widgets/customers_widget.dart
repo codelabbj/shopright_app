@@ -45,7 +45,6 @@ class _CustomersWidgetState extends State<CustomersWidget> {
     return DataTable(
       columnSpacing: 12,
       dataRowMaxHeight: 65,
-      headingRowColor: MaterialStateProperty.all(Colors.grey[200]),
       columns: [
         DataColumn(
           label: Transform.scale(
